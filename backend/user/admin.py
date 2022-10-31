@@ -15,9 +15,9 @@ class UserAdmin(UserAdmin):
     )
     # fields when reading / updating an instance
     fieldsets = (
-        (None, {'fields': ('email', 'username', 'password', 'avatar')}),
+        (None, {'fields': ('email', 'username', 'password', 'image')}),
         ('Personal info', {'fields': ('first_name', 'last_name')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions')}),
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
     # fields which are shown when looking at an list of instances
