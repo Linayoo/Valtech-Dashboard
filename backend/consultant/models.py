@@ -1,6 +1,11 @@
 from django.db import models
+
+from addition_skill.models import Addition_skill
+from certificate.models import Certificate
+from education.models import Education
 from language.models import Language
 from skill.models import Skill
+from user_project.models import User_project
 
 
 class Consultant(models.Model):
@@ -32,11 +37,13 @@ class Consultant(models.Model):
     is_active = models.BooleanField(default=True)
     is_disabled = models.BooleanField(default=False)
     primary_language = models.CharField(max_length=100)
-    educations = models.TextField(null=True)  # Levi will change it to ManyToMany filed.
-    projects = models.TextField(null=True)  # Levi will change it to ManyToMany filed.
+    educations = models.ManyToManyField(to=Education, related_name='educations')
+    projects = models.ManyToManyField(to=User_project, related_name='projects', blank=True)
     language_skills = models.ManyToManyField(to=Language, related_name='language_skills')
     managed_skills = models.ManyToManyField(to=Skill, related_name='managed_skills')
+    addition_skills = models.ManyToManyField(to=Addition_skill, related_name='addition_skills')
     managed_certificates = models.CharField(max_length=250)
+    certificates = models.ManyToManyField(to=Certificate, related_name='certificates')
     title = models.CharField(max_length=200)
     edited_time = models.DateTimeField(auto_now=True)
     manager_display_name = models.CharField(max_length=100)
