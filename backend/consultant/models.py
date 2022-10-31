@@ -1,4 +1,6 @@
 from django.db import models
+from language.models import Language
+from skill.models import Skill
 
 
 class Consultant(models.Model):
@@ -30,6 +32,10 @@ class Consultant(models.Model):
     is_active = models.BooleanField(default=True)
     is_disabled = models.BooleanField(default=False)
     primary_language = models.CharField(max_length=100)
+    educations = models.TextField(null=True)  # Levi will change it to ManyToMany filed.
+    projects = models.TextField(null=True)  # Levi will change it to ManyToMany filed.
+    language_skills = models.ManyToManyField(to=Language, related_name='language_skills')
+    managed_skills = models.ManyToManyField(to=Skill, related_name='managed_skills')
     managed_certificates = models.CharField(max_length=250)
     title = models.CharField(max_length=200)
     edited_time = models.DateTimeField(auto_now=True)
