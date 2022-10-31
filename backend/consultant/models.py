@@ -39,3 +39,5 @@ class Consultant(models.Model):
     manager_on_premises_user_principal_name = models.CharField(max_length=250)
     role_category = models.CharField(max_length=100, choices=ROLES)
 
+    def __str__(self):
+        return f'ID {self.id} : {self.display_name}'
