@@ -52,3 +52,19 @@ class SearchConsultant(ListAPIView):
     serializer_class = ConsultantSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['display_name']
+
+
+#class PatchTimeframe(GenericAPIView):
+ #   serializer_class = ConsultantSerializer
+  #  queryset = Consultant.objects.all()
+   # lookup_url_kwarg = 'id'
+
+    #def patch(self, request, *args, **kwargs):
+     #   consultant = self.get_object()
+      #  timeframe = self.request.unavailable
+       # timeframe_is_in = timeframe in consultant.unavailable.all()
+        #if timeframe_is_in:
+         #   consultant.unavailable.remove(timeframe)
+        #else:
+            #consultant.unavailable.add(timeframe)
+        #return Response()

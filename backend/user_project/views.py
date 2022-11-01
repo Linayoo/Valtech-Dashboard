@@ -2,7 +2,7 @@ from rest_framework import filters
 from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
 from user_project.models import UserProject
-from user_project.serializers import UserProjectSerializer
+from user_project.serializers import UserProjectSerializer, TimeFrameProjectSerializer
 
 
 # GET all the projects (api/projects/)
@@ -29,7 +29,7 @@ class RetrievePatchDeleteProject(GenericAPIView):
 
     def get(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = UserProjectSerializer(instance)
+        serializer = TimeFrameProjectSerializer(instance)
         return Response(serializer.data)
 
     def patch(self, request, *args, **kwargs):
