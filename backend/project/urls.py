@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/consultants/', include('consultant.urls')),
     path('api/projects/', include('user_project.urls')),
+    path('api/timeframes/', include('timeframe.urls')),
 
     # JWT
     path('token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
