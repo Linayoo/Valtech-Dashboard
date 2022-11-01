@@ -12,6 +12,7 @@ class UserProject(models.Model):
     position = models.CharField(max_length=100, blank=True)
     external_link = models.URLField(blank=True)
     image = models.ImageField(null=True, blank=True) # added image just in case...
+    test = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return f'ID {self.id} : {self.name}'
