@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'skill',
     'user',
     'user_project',
+    'timeframe',
 
     # 3rd party apps
     'rest_framework',
