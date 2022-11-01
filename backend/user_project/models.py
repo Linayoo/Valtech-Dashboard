@@ -3,10 +3,10 @@ from django.db import models
 from skill.models import Skill
 
 
-class User_project(models.Model):
+class UserProject(models.Model):
     name = models.CharField(max_length=100)
-    date_started = models.DateField(blank=True)
-    date_finished = models.DateField(blank=True)
+    date_started = models.DateField(blank=True, null=True)
+    date_finished = models.DateField(blank=True, null=True)
     description = models.CharField(max_length=1000, blank=True)
     tools = models.ManyToManyField(to=Skill, blank=True, related_name='tools')
     position = models.CharField(max_length=100, blank=True)

@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from user_project.models import User_project
+from user_project.models import UserProject
 
-admin.site.register(User_project)
+admin.site.register(UserProject)
