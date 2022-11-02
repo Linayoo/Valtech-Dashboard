@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 
-
+const transparentAutofill = keyframes`
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+`
 
 export const LoginMain = styled.div`
 background-image: url("65.png");
@@ -36,65 +42,14 @@ height: 70%;
 border-radius:10px;
 position: absolute;
 margin-left: 35%;
-/* filter: brightness(100%); */
 `;
-
-// export const LoginLeft =styled.div`
-// width: 50%;
-// height: 100%;
-// display: flex;
-// flex-direction: column;
-// align-items: center;
-// `;
-
-// export const LoginRight =styled.div`
-// width: 50%;
-// height: 100%;
-// display: flex;
-// flex-direction: column;
-// align-items: center;
-// `;
-
-// export const WelcomeLog = styled.div`
-// color: white;
-// display: flex;
-// flex-direction: column;
-// align-items: center;
-// justify-content: center;
-// margin-top: 160px;
-// font-size: 50px;
-// opacity: 100%;
-// `;
-
-// export const AboutText = styled.div`
-// color: white;
-// display: flex;
-// flex-direction: column;
-// font-size: 25px;
-// width: 50%;
-// height: 100%;
-// padding-left: 50px;
-// padding-right: 50px;
-// align-items: center;
-// justify-content: center;
-// margin-top: 5px;
-// `;
-
 
 export const LogoString = styled.div`
 color: white;
-/* -webkit-text-fill-color: transparent;
-background-image: linear-gradient(45deg, #f3ec78, #af4261);
-background-size: 100%;
-background-clip: text; */
-/* margin-top: 100px; */
 font-size: 70px;
 font-family: "Helvetica Neue",sans-serif;
 font-weight: 900;
 display: flex;
-
-/* justify-content: flex-start;
-align-items: flex-start; */
 `;
 
 export const LoginForm = styled.form`
@@ -104,11 +59,9 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
-color: white;
 input{
 outline: none;    
-background: transparent;/* background-size: cover; */
-color: white;
+background: transparent;
 width: 250px;
 border: none;
 font-size: 20px;
@@ -116,14 +69,37 @@ display: flex;
 flex-direction: column;
 padding-left: 15px;
 padding-bottom: 15px;
-border-color: white;
 margin-top: 20px;
 border-bottom: 0.5px solid white;
+
+
+/* &:-webkit-autofill,
+  &:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s white;
+} */
+
+
 
 ::placeholder {
     color: white;
 }
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+border: 1px solid transparent;
+-webkit-text-fill-color: white;
+-webkit-box-shadow: 0 0 0px 1000px transparent inset;
+transition: background-color 5000s ease-in-out 0s;
+border-bottom: 0.5px solid white;
+}
+
 `;
 
 export const LoginRemember = styled.div`
@@ -134,7 +110,7 @@ margin-right: 150px;
 margin-bottom: 20px;
 margin-top: 10px;
 font-family: "Helvetica Neue",sans-serif;
-padding-right: 18px;
+padding-right: 5px;
 p{
     padding-left: 5px;
     font-size: 12px;
@@ -147,7 +123,6 @@ display: flex;
 width: 110px;
 align-items: center;
 justify-content: center;
-/* margin-top: 2%; */
 font-size: 15px;
 border-radius: 50px;
 background-color: white;
