@@ -170,5 +170,5 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: center;
-margin-top: 100px;
+margin-top: 10%;
 `;
