@@ -2,7 +2,7 @@
 __pychache__
 .idea/workspace.xml
 .DS-Store
-*.sqlite
+
 
 # If you are using PyCharm #
 .idea/

@@ -1,0 +1,10 @@
+main {
+  min-height: 100%;
+  max-width: 100%;
+  background-color: #f2f2f2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+    }
