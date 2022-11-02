@@ -26,7 +26,7 @@ const ProjectResults = () => {
         renderEditButton(!editButton)
         setRendernumber(event.target.id)
     }
-    debugger
+
     return (
         <ProjectResultsContainer>
           <OverFlow>
@@ -57,11 +57,11 @@ const ProjectResults = () => {
                         <td>
                             <button onClick={changeRender} id={key}>Button</button>
                         </td>
+                        <td>{key == rendernumber && editButton == true ? <EditButtons test={rendernumber}/> : ''}</td>
                     </tr>
                 )
             })}
             </table>
-            {editButton ? <EditButtons test={rendernumber}/> : "" }
             </OverFlow>
         </ProjectResultsContainer>
     )
