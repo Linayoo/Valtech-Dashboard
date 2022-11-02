@@ -44,7 +44,7 @@ function Login() {
             <LoginForm id='log' onSubmit={handleSubmit}>
                 <input form="log" type="text" name="email" placeholder="Email" onChange={(e) => setUsername(e.target.value)}></input>
                 <input form="log" type="text" name="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
-            </LoginForm>
+            </LoginForm> 
             <LoginRemember>
                 <input type="checkbox"></input>
                 <p>Remember me</p>
