@@ -19,6 +19,8 @@ button {
 }
 
 p {
+    display: flex;
+    align-items: center;
     color: #5a5757d2;
     margin-left: 15px;
     margin-right: 10px;
