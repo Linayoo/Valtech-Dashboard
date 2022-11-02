@@ -1,11 +1,12 @@
-import {BsSearch, BsBell} from "react-icons/bs";
+import {BsSearch, BsBell, BsChevronDown} from "react-icons/bs";
 import { HeaderContainer } from "./Header.styles";
+
 
 const Header = () => {
     return (
         <HeaderContainer>
             <button ><BsBell size={22} color={"#5a5757"}/></button>
-            <p>Name</p>
+            <p>Good Morning, User <BsChevronDown/> </p>
             <img src="/images/patricia.png"/>
         </HeaderContainer>
     )
