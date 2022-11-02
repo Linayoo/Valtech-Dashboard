@@ -1,25 +1,32 @@
 import { ProjectResultsContainer, OverFlow } from "./project-results.styles"
 import { BsChevronDown, BsPencilSquare } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditButtons from "../Edit-buttons/Edit-buttons";
 
 // fetching example data
 
-const data = [
-    { name: "Levi's", country: "switzerland", project: "10",  available: "12-11-2022", status: "open" /*true?*/ },
-    { name: "Rolex", country: "switzerland", project: "9",  available: "12-11-2022", status: "demo" /*true?*/ },
-    { name: "Valtech", country: "switzerland", project: "2",  available: "12-11-2022", status: "open" /*true?*/ },
-    { name: "SIT", country: "switzerland", project: "-",  available: "12-11-2022", status: "closed" /*true?*/ },
-    { name: "Levi's", country: "switzerland", project: "10",  available: "12-11-2022", status: "open" /*true?*/ },
-    { name: "Rolex", country: "switzerland", project: "9",  available: "12-11-2022", status: "demo" /*true?*/ },
-    { name: "Valtech", country: "switzerland", project: "2",  available: "12-11-2022", status: "open" /*true?*/ },
-    { name: "SIT", country: "switzerland", project: "-",  available: "12-11-2022", status: "closed" /*true?*/ },
-  
-  ]
-
-
 const ProjectResults = () => {
+
+    const data = [
+        { name: "Levi's", country: "switzerland", project: "1",  available: "12-11-2022", status: "open" /*true?*/ },
+        { name: "Rolex", country: "switzerland", project: "2",  available: "12-11-2022", status: "demo" /*true?*/ },
+        { name: "Valtech", country: "switzerland", project: "3",  available: "12-11-2022", status: "open" /*true?*/ },
+        { name: "SIT", country: "switzerland", project: "4",  available: "12-11-2022", status: "closed" /*true?*/ },
+        { name: "Levi's", country: "switzerland", project: "5",  available: "12-11-2022", status: "open" /*true?*/ },
+        { name: "Rolex", country: "switzerland", project: "6",  available: "12-11-2022", status: "demo" /*true?*/ },
+        { name: "Valtech", country: "switzerland", project: "7",  available: "12-11-2022", status: "open" /*true?*/ },
+        { name: "SIT", country: "switzerland", project: "8",  available: "12-11-2022", status: "closed" /*true?*/ },
+      
+      ]
+    
+    const [rendernumber, setRendernumber] = useState() 
     const [editButton, renderEditButton] = useState(false)
+
+    const changeRender = (event) => {
+        renderEditButton(!editButton)
+        setRendernumber(event.target.id)
+    }
+    debugger
     return (
         <ProjectResultsContainer>
           <OverFlow>
@@ -48,16 +55,15 @@ const ProjectResults = () => {
                         <td>{val.status} </td>
                         <td><button>details</button></td>
                         <td>
-                            <button onClick={() => renderEditButton(!editButton) }><BsPencilSquare/></button>
-                            {editButton ? <EditButtons/> : "" }
+                            <button onClick={changeRender} id={key}>Button</button>
                         </td>
                     </tr>
                 )
             })}
             </table>
+            {editButton ? <EditButtons test={rendernumber}/> : "" }
             </OverFlow>
         </ProjectResultsContainer>
-       
     )
 }
 

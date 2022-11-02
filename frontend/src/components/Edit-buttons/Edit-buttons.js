@@ -1,9 +1,9 @@
 import { EditButtonsContainer } from "./Edit.buttons.styles"
 
-const EditButtons = () => {
+const EditButtons = (props) => {
     return (
         <EditButtonsContainer>
-            <button>edit</button> 
+            <button>{props.test}</button> 
             <button>delete</button>
         </EditButtonsContainer>
     )
