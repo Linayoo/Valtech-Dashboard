@@ -16,22 +16,6 @@ const data = [
     { name: "Anon5", country: "switzerland", project: "SIT", manager: "test2", available: "05-01-2022", status: "unavailable" /*true?*/ },
   ]
 
-{/* <table>
-<tr>
-  <th>Name</th>
-  <th>Age</th>
-  <th>Gender</th>
-</tr>
-{data.map((val, key) => {
-  return (
-    <tr key={key}>
-      <td>{val.name}</td>
-      <td>{val.country}</td>
-      <td>{val.manager}</td>
-    </tr>
-  )
-})}
-</table> */}
 
 
 const Results = () => {
@@ -53,7 +37,7 @@ const Results = () => {
                 
             {data.map((val, key) => {
                 return (
-                    <tr>
+                    <tr key={key}>
                         <td>{val.name}</td>
                         <td>{val.country}</td>
                         <td>{val.project}</td>
