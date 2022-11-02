@@ -28,7 +28,7 @@ function Login() {
         event.preventDefault();
         fetch("http://localhost:8000/token/", postconfig)
             .then(response => response.json())
-            .then((data) => {localStorage.setItem("valtech-auth", JSON.stringify(data.access)); navigate('nav/') })
+            .then((data) => {localStorage.setItem("valtech-auth", JSON.stringify(data.access)); navigate('home/') })
             .catch(error => console.log(error))
     }
 
