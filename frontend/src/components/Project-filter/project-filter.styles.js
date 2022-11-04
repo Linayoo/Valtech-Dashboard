@@ -63,3 +63,15 @@ button:hover {
     transform: scale(0.9);
 }
 `;
+
+export const GridItem = styled.div`
+grid-column: span 2;
+width: 80%;
+button {
+    border: none;
+    margin-left: -2px;
+}
+input {
+    padding: 10px;
+}
+`;

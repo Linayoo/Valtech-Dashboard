@@ -19,7 +19,7 @@ h1 {
 
 form {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   /* grid-template-rows: 35px; */
   grid-row-gap: 10px;
   grid-column-gap: 10px;
@@ -61,5 +61,18 @@ button {
 
 button:hover {
     transform: scale(0.9);
+}
+`;
+
+export const GridItem = styled.div`
+grid-column: span 2;
+width: 80%;
+button {
+    border: none;
+    margin-left: -2px;
+
+}
+input {
+    padding: 10px;
 }
 `;

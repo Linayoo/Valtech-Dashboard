@@ -1,8 +1,11 @@
-import { ProjectFilterContainer, Flex } from "./project-filter.styles"
+import { ProjectFilterContainer, Flex, GridItem } from "./project-filter.styles"
 import { useState } from "react"
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const ProjectFilter = () => {
-
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
     const [formData, setFormData] = useState(
         {name: "",
         client: "",
@@ -21,14 +24,30 @@ const ProjectFilter = () => {
             }
         })
     }
+    
     return (
+        <div>
+              
         <ProjectFilterContainer>
+           
             <h1>Projects</h1>
+           
             <Flex>
             <form>
                 <input type="text" name="name" placeholder="Filter by project name" onChange = {handleChange}/>
+                <GridItem>
+                 <DatePicker
+                selectsRange={true}
+                startDate={startDate}
+                endDate={endDate}
+                onChange={(update) => {
+                    setDateRange(update);
+                }}
+                isClearable={true}
+                />
+                </GridItem>
                 <input type="text" name="client" placeholder="Filter by client name" onChange = {handleChange}/>
-                <input type="date" name="date"  onChange = {handleChange}/>
+                
                 <select value={formData.country} name="country" onChange={handleChange} >
                     <option value="">Select a country ...</option>
                     <option value="switzerland">Switzerland</option>
@@ -46,6 +65,8 @@ const ProjectFilter = () => {
             <button>Search</button>
             </Flex>
         </ProjectFilterContainer>
+             
+        </div>
     )
 }
 
