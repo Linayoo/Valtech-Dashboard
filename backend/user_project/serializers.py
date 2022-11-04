@@ -7,4 +7,4 @@ class UserProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProject
         fields = '__all__'
-        depth = 2
+        # depth = 1
