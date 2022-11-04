@@ -12,4 +12,4 @@ class Skill(models.Model):
     category = models.CharField(max_length=50, choices=CATEGORIES)
 
     def __str__(self):
-        return f'ID {self.id} : {self.category}'
+        return f'ID {self.id} : {self.title}'
