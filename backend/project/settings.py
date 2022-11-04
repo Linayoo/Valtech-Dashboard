@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r&mwi+m^)j13$knywztdf!j!o!_4e6-1*6@z6bobqp&l3xx(05'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
+CSRF_TRUSTED_ORIGINS = ['http://167.99.243.225', "http://localhost:3000"]
 
 # Application definition
 
@@ -66,6 +66,10 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "*"
+]
+
 ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
@@ -90,23 +94,23 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ.get('POSTGRES_DB'),
-#         "PORT": os.environ.get('POSTGRES_PORT'),
-#         "HOST": os.environ.get('POSTGRES_HOST'),
-#         "USER": os.environ.get('POSTGRES_USER'),
-#         "PASSWORD": os.environ.get('POSTGRES_PASSWORD'),
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        "PORT": os.environ.get('POSTGRES_PORT'),
+        "HOST": os.environ.get('POSTGRES_HOST'),
+        "USER": os.environ.get('POSTGRES_USER'),
+        "PASSWORD": os.environ.get('POSTGRES_PASSWORD'),
+    }
+}
 
 
 # Password validation
@@ -147,7 +151,7 @@ STATIC_URL = "/static-files/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-files/'
 print('static root', STATIC_ROOT)
 
-MEDIA_URL = "/media-files/" if DEBUG else 'https://luna-tuna.propulsion-learn.ch/media-files/'
+MEDIA_URL = "/media-files/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media-files') if DEBUG else '/media-files'
 print('media root', MEDIA_ROOT)
 
