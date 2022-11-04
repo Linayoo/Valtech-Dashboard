@@ -22,4 +22,3 @@ class EducationAdmin(admin.ModelAdmin):
     # fields which are shown when looking at a list of instances
     list_display = ('id', 'title', 'school', 'date_finished')
     ordering = ('-id', )
-

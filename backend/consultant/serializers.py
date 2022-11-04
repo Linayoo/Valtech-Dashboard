@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from consultant.models import Consultant
-from timeframe.serializers import TimeFrameSerializer
+# from timeframe.serializers import TimeFrameSerializer
 
 
 class ConsultantSerializer(serializers.ModelSerializer):

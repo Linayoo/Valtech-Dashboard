@@ -22,4 +22,3 @@ class TimeFrameAdmin(admin.ModelAdmin):
     # fields which are shown when looking at a list of instances
     list_display = ('id', 'date_started', 'date_finished')
     ordering = ('-id', )
-

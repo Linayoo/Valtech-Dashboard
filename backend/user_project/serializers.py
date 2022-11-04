@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from timeframe.serializers import TimeFrameSerializer
+# from timeframe.serializers import TimeFrameSerializer
 from user_project.models import UserProject
 
 

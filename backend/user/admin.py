@@ -1,5 +1,4 @@
 from django.contrib import admin
-from consultant.models import Consultant
 from user.models import User
 
 
@@ -26,4 +25,3 @@ class UserAdmin(admin.ModelAdmin):
     # fields which are shown when looking at a list of instances
     list_display = ('id', 'first_name', 'last_name')
     ordering = ('-id', )
-
