@@ -22,4 +22,3 @@ class LanguageAdmin(admin.ModelAdmin):
     # fields which are shown when looking at a list of instances
     list_display = ('id', 'title', 'category')
     ordering = ('-id', )
-
