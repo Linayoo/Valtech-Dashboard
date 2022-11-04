@@ -8,7 +8,7 @@ const SideNav = () => {
     const navigate = useNavigate();
 
     const toConsultants = () => {
-        navigate('/toconsultantsorsomething/')
+        navigate('/home')
     }
 
     const toInsights = () => {
