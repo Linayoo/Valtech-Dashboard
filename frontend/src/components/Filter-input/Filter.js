@@ -1,8 +1,11 @@
-import { FilterContainer, Flex } from "./Filter.styles"
+import { FilterContainer, Flex, GridItem } from "./Filter.styles"
 import { useState } from "react"
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const Filter = () => {
-
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
     const [formData, setFormData] = useState(
         {name: "",
         title: "",
@@ -29,7 +32,6 @@ const Filter = () => {
             <form>
                 <input type="text" name="name" placeholder="Filter by name" onChange = {handleChange}/>
                 <input type="text" name="title" placeholder="Filter by title" onChange = {handleChange}/>
-                <input type="date" name="date" onChange = {handleChange}/>
                 <select value={formData.country} name="country" onChange={handleChange} >
                     <option value="">Select a country ...</option>
                     <option value="switzerland">Switzerland</option>
@@ -51,6 +53,17 @@ const Filter = () => {
                     <option value="italian">Italian</option>
                     <option value="swiss">Swiss</option>
                 </select>
+                <GridItem>
+                 <DatePicker
+                selectsRange={true}
+                startDate={startDate}
+                endDate={endDate}
+                onChange={(update) => {
+                    setDateRange(update);
+                }}
+                isClearable={true}
+                />
+                </GridItem>
             </form>
             <button>Search</button>
             </Flex>
