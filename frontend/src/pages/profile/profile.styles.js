@@ -8,28 +8,37 @@ height: 100vh;
 
 export const ProfileInfo = styled.div`
 background: linear-gradient(to top, #531ebd, #8d54e966);
-width: 100vw;
-height: 40%;
+width: 100%;
+height: 35%;
 display: flex;
 flex-direction: row;
 `;
 
 export const ProfileInfoLeftSide = styled.div`
-width: 35%;
+width: 40%;
 height: 100%;
 display: flex;
 align-items: center;
-justify-content: center;
-flex-direction: column;
+flex-direction: row;
 button {
-    color: black;
+    color: white;
     align-items: flex-end;
+    background-color: blue;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    height: 40px;
+    width: 100px;
+    border: none;
+    margin: 5px;
 }
 `;
 
 export const ProfilePhoto = styled.div`
-width: 300px;
-height: 300px;
+width: 50%;
+height: 95%;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -38,51 +47,65 @@ background-image: url("profile_photo.webp");
 `;
 
 export const ProfileRightSide = styled.div`
-width: 65%;
-height: 300px;
+width: 60%;
+height: 100%;
 display: flex;
 /* justify-content: center; */
 flex-direction: column;
-margin-top: 30px;
+margin-top: 1%;
 `;
 
 export const NameLocation = styled.div`
 width: 100%;
-height: 30px;
+height: 20%;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
+margin-left: -20%;
+/* align-items: flex-start; */
 
 `;
 
 export const ProfileName = styled.form`
 width: 50%;
-height: 30px;
+height: 20%;
 color: white;
 display: flex;
 flex-direction: row;
 align-items: flex-start;
 justify-content: flex-start;
-font-size: 20px;
+span{
+    color: black;
+}
+
+
 input{
     background-color: transparent;
     border: none;
-    color: white;
     font-size: 20px;
-    width: 50%;
+    width: 90%;
+    color: white;
+    padding-left: 5px;
 }
+
 `;
 
 export const ProfileLocation = styled.div`
 width: 50%;
-height: 30px;
-color: white;
+height: 20%;
+/* color: black; */
+/* margin-left: -23%; */
+span{
+    color: black;
+}
 input{
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     font-size: 20px;
-    width: 30%;
+    width: 90%;
+    color: white;
+    padding-left: 5px;
 }
 `;
 
@@ -93,13 +116,18 @@ color: black;
 display: flex;
 flex-direction: row;
 width: 100%;
-height: 100px;
+height: 5%;
+margin-left: -20%;
+span{
+    color: black;
+}
 input{
     background-color: transparent;
     border: none;
-    color: white;
     font-size: 20px;
-    width: 65%;
+    width: 90%;
+    color: white;
+    padding-left: 5px;
 }
 `;
 
@@ -108,222 +136,351 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 width: 100%;
-height: 250px;
+height: 50%;
 align-items: flex-end;
 `;
 
 export const FuncContacts = styled.div`
-color: white;
+button {
+    color: white;
+    align-items: flex-end;
+    background-color: blue;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    height: 40px;
+    width: 100px;
+    border: none;
+}
 `;
 
 export const FuncReportUser = styled.div`
-color: white;
+button {
+    color: white;
+    align-items: flex-end;
+    background-color: blue;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    height: 40px;
+    width: 100px;
+    border: none;
+}
 `;
 
 export const FuncSendMess = styled.div`
-color: white;
+button {
+    color: white;
+    align-items: flex-end;
+    background-color: blue;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    height: 40px;
+    width: 100px;
+    border: none;
+}
 `;
 
 export const FunctionTabs = styled.div`
+/* margin-bottom: 3%; */
 display: flex;
 flex-direction: row;
 justify-content: space-around;
 width: 50%;
-height: 250px;
+height: 30%;
 align-items: flex-end;
 font-weight: 800;
-margin-left: -70px;
+margin-left: -20%;
 `;
 
-export const TabAbout = styled.div`
-color: black
+export const TabAboutButton = styled.button`
+color: black;
+display: flex;
+width: 110px;
+align-items: flex-start;
+justify-content: center;
+font-size: 15px;
+border-radius: 50px;
+background-color: white;
+font-family: Arial, Helvetica, sans-serif;
+/* padding: 20px; */
+border: none;
+height: 40px;
+margin-bottom: -10px; 
+cursor: pointer;
+&:hover {
+    background-color: #f6f4fbb5;
+}
+
+
+/* width: 80px;
+height: 100px; */
+/* border-bottom: 10px solid white; */
 `;
 
-export const TabTimeline = styled.div`
-color: black
+export const TabTimelineButton = styled.button`
+color: black;
+display: flex;
+width: 110px;
+align-items: flex-start;
+justify-content: center;
+font-size: 15px;
+border-radius: 50px;
+background-color: white;
+font-family: Arial, Helvetica, sans-serif;
+/* padding: 20px; */
+border: none;
+height: 40px;
+margin-bottom: -10px; 
+cursor: pointer;
+&:hover {
+    background-color: #f6f4fbb5;
+}
+`;
+
+export const StringsWork = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-left: 15px;
+margin-right: 15px;
+margin-top: 20px;
+border-bottom: 3px solid black;
 `;
 
 export const WorkContact = styled.div`
-width: 100vw;
+width: 100%;
 height: 35%;
 background-color: white;
 display: flex;
 flex-direction: row;
-justify-content: space-around;
-`; 
+/* justify-content: space-evenly; */
 
+`; 
 
 
 export const ProfileWork = styled.div`
 display: flex;
 flex-direction: column;
-/* background-color: grey; */
 justify-content: space-around;
+height:100%;
+width: 35%;
+/* margin-top: -0.45%; */
+margin-left: 15px;
+margin-top: 15px;
 `;
 
 export const WorkExperience = styled.div`
 color: black;
 display: flex;
-margin-top: 30px;
-/* align-items: flex-start;
-justify-content: flex-start; */
-border-bottom: 1px solid black;
-padding-bottom: 5px;
+/* margin-top: 30px; */
 `;
 
 export const PrimaryWork = styled.form`
 display: flex;
 flex-direction: column;
+/* width:100%; */
 input{
     background-color: transparent;
     border: none;
     color: white;
     font-size: 20px;
-    width: 85%;
+    width: 90%;
+    color: black;
+    padding-left: 5px;
 }
-/* background-color: green; */
 `;
 
 export const SecondaryWork = styled.form`
 display: flex;
 flex-direction: column;
+/* width: 100%; */
+/* height: 5%; */
 input{
     background-color: transparent;
     border: none;
     color: white;
     font-size: 20px;
-    width: 85%;
+    width: 90%;
+    color: black;
+    padding-left: 5px;
 }
-/* background-color: green; */
 `;
 
 export const ProfileContact = styled.div`
 display: flex;
 flex-direction: column;
+align-items: flex-start;
 /* background-color: blue; */
 justify-content: space-around;
-height: 80%;
-margin-top: 20px;
+width: 35%;
+height: 100%;
 `;
 
 export const ProfileString = styled.div`
 color: black;
 display: flex;
-margin-top: -20px;
-border-bottom: 1px solid black;
 padding-bottom: 5px;
+width: 35%;
+justify-content: center;
 `;
 
-export const ProfilePhone = styled.div`
+export const ProfilePhone = styled.form`
 display: flex;
 input{
     background-color: transparent;
     border: none;
     color: white;
     font-size: 20px;
-    width: 80%;
+    width: 90%;
+    color: black;
+    padding-left: 5px;
 }
 `;
 
-export const ProfileAddress = styled.div`
+export const ProfileAddress = styled.form`
 display: flex;
 input{
     background-color: transparent;
     border: none;
     color: white;
     font-size: 20px;
-    width: 53%;
+    width: 90%;
+    color: black;
+    padding-left: 5px;
 }
 `;
 
-export const ProfileEmail = styled.div`
+export const ProfileEmail = styled.form`
 display: flex;
 input{
     background-color: transparent;
     border: none;
     color: white;
     font-size: 20px;
-    width: 43%;
+    width: 90%;
+    color: black;
+    padding-left: 5px;
 }
 `;
 
-export const ProfileSite = styled.div`
+export const ProfileSite = styled.form`
 display: flex;
 input{
     background-color: transparent;
     border: none;
     color: white;
     font-size: 20px;
-    width: 35%;
-}
+    width: 90%;
+    color: black;
+    padding-left: 5px;    
+}   
 `;
 
 export const ProfileDescription = styled.div`
 display: flex;
-color: black;
 flex-direction: column;
-justify-content: space-between;
-/* align-items: flex-start; */
-margin-bottom: 22%;
-width: 30%;
-
+/* background-color: blue; */
+/* justify-content: space-evenly; */
+width: 35%;
+margin-top: 5px;
+height: 100%;
 `;
 
 export const DescriptionString = styled.div`
 display: flex;
 color: black;
-justify-content: flex-start;
-align-items: flex-start;
-border-bottom: 2px solid black;
+/* justify-content: flex-start;
+align-items: flex-start; */
 padding-bottom: 5px;
+width: 30%;
+justify-content: center;
 `;
 
 export const TextDescription = styled.form`
-
 display: flex;
 color: black;
 display: flex;
 flex-direction: column;
+justify-content: center;
+align-items: center;
 /* background-color: blue; */
-justify-content: space-around;
-height: 80%;
-margin-top: 23px;
+/* justify-content: space-ar; */
+/* height: 100%; */
+/* margin-top: 23px; */
 input {
 /* margin-top: 35px; */
+padding-top: 5%;
+width: 90%;
+height: 100%;
 background: transparent;
 border: none;
 font-size: 20px;
+width: 90%;
+color: black;
+padding-left: 5px;
 }
 `;
 
-export const SkillsBasic = styled.div`
-width: 100%;
-height: 25%;
+
+export const StringsSkills = styled.div`
 display: flex;
 flex-direction: row;
-justify-content: space-between;
-`; 
-
-export const ProfileSkills = styled.div`
-width: 50%;
-height: 100%;
-display: flex;
-font-size: 30px;
-flex-direction: column;
-justify-content: space-between;
-margin-left: 100px;
-`; 
+justify-content: space-around;
+border-bottom: 3px solid black; 
+`;
 
 export const SkillsString = styled.div`
 color: black;
 display: flex;
-border-bottom: 2px solid black;
+font-size: 25px;
+font-family: Arial,Helvetica,sans-serif;
+font-weight: 900;
+/* justify-content: center; */
 `;
+
+export const BasicString = styled.div`
+color: black;
+font-size: 25px;
+font-family: Arial,Helvetica,sans-serif;
+font-weight: 900;
+`;
+
+export const SkillsBasic = styled.div`
+width: 100%;
+height: 20%;
+display: flex;
+flex-direction: row;
+/* justify-content: center;
+align-items: center; */
+margin-left: 15px;
+`; 
+
+export const ProfileSkills = styled.div`
+width: 50%;
+/* height: 80%; */
+display: flex;
+font-size: 20px;
+flex-direction: column;
+justify-content: center;
+align-items: align-items;
+margin-bottom: 20px;
+`; 
+
+
 
 export const SkillsAll = styled.div`
 color: black;
 display: flex;
 flex-direction: column;
+/* justify-content: space-between; */
 `;
 
 
@@ -332,42 +489,47 @@ flex-direction: column;
 
 export const ProfileBasicInformation = styled.div`
 width: 50%;
-height: 100%;
+height: 80%;
 display: flex;
+font-size: 20px;
 flex-direction: column;
-justify-content: space-between;
+justify-content: center;
+align-items: center;
+margin-top: 30px;
 `; 
 
-export const BasicString = styled.div`
-color: black;
-font-size: 30px;
-border-bottom: 2px solid black;
-`;
 
-export const ProfileBirthday = styled.div`
-width: 100vw;
-height: 25%;
+
+export const ProfileBirthday = styled.form`
+width: 100%;
+height: 50%;
 display: flex;
 flex-direction: row;
+justify-content: center;
 input{
     background-color: transparent;
     border: none;
     color: white;
-    font-size: 20px;
-    width: 40%;
+    font-size: 25px;
+    width: 90%;
 }
+
+
+
+
 `; 
 
 export const ProfileGender = styled.div`
-width: 100vw;
-height: 25%;
+width: 100%;
+height: 50%;
 display: flex;
 flex-direction: row;
+justify-content: center;
 input{
     background-color: transparent;
     border: none;
     color: white;
-    font-size: 20px;
-    width: 50%;
+    font-size: 25px;
+    width: 90%;
 }
 `; 
