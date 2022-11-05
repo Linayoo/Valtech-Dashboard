@@ -17,7 +17,6 @@ p {
 
 table {
     width: 100%;
- 
 }
 
 table > tr:first-of-type{
@@ -26,12 +25,13 @@ table > tr:first-of-type{
 
 table > tr{
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    flex-wrap: wrap;
     height: 50px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 15px;
+    width: 1100px;
+    flex-wrap: wrap;
 }
 
 
@@ -76,9 +76,16 @@ table > tr > th:nth-of-type(1), th:nth-of-type(2), th:nth-of-type(3) {
    
 }
 
-table > tr > td:last-of-type {
+/* table > tr > td:last-of-type {
     margin-left: -30px;
+} */
+table > tr > th {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
+
+
 
 table > tr > td > button {
     background: none;
@@ -106,21 +113,46 @@ table >  tr > td:nth-of-type(8) > button:last-of-type {
     color: black;
 }
 
+table >  tr > td:nth-of-type(7), td:nth-of-type(8), td:nth-of-type(9){
+    width: 40px;
+}
+
+
 tr {
   border: 1px solid transparent;
+
+ 
 }
 tr:hover td{
   cursor:pointer;
   transform: scale(1.2);
   border-top: 1px solid #80808071;
   border-bottom: 1px solid #80808071;
-
+  
 }
 tr:first-child:hover td {
   border-top: none;
 }
 tr:last-child:hover td {
   border-bottom: none;
+}
+
+div {
+    position: relative;
+    button {
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        border: none;
+    }
+
+    i {
+        position: absolute;
+        z-index:0;
+        left:14px;
+        bottom: 9px;
+    }
+
 }
 `;
 
