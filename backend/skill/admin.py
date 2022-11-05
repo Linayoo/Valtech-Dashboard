@@ -1,5 +1,4 @@
 from django.contrib import admin
-from language.models import Language
 from skill.models import Skill
 
 
@@ -23,4 +22,3 @@ class LanguageAdmin(admin.ModelAdmin):
     # fields which are shown when looking at a list of instances
     list_display = ('id', 'title', 'category')
     ordering = ('-id', )
-

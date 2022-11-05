@@ -28,4 +28,3 @@ class ConsultantAdmin(admin.ModelAdmin):
     # fields which are shown when looking at a list of instances
     list_display = ('id', 'display_name', 'role_category')
     ordering = ('-id', )
-
