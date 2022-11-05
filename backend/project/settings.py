@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-r&mwi+m^)j13$knywztdf!j!o!_4e6-1*6@z6bobqp&l3xx(05
 DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
-CSRF_TRUSTED_ORIGINS = ['http://167.99.243.225', "http://localhost:3000", 'http://valtech-dashboard.propulsion-learn.ch']
+CSRF_TRUSTED_ORIGINS = ['http://167.99.243.225', "http://localhost:3000", 'https://valtech-dashboard.propulsion-learn.ch']
 
 # Application definition
 
@@ -70,7 +70,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:8001",
     "http://167.99.243.225",
-    'http://valtech-dashboard.propulsion-learn.ch'
+    'https://valtech-dashboard.propulsion-learn.ch'
 ]
 
 ROOT_URLCONF = 'project.urls'
