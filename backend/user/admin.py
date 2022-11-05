@@ -1,25 +1,27 @@
 from django.contrib import admin
-from .models import User
-from django.contrib.auth.admin import UserAdmin
+from user.models import User
 
 
 @admin.register(User)
-class UserAdmin(UserAdmin):
-    readonly_fields = ('date_joined',)
+class UserAdmin(admin.ModelAdmin):
+    readonly_fields = ()
+
     # fields shown when creating a new instance
     add_fieldsets = (
         (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'username', 'password1', 'password2')}
-         ),
+            'classes': ('wide', ),
+            'fields': ('first_name', 'last_name', 'username', 'password', 'password2')
+        }),
     )
+
     # fields when reading / updating an instance
-    fieldsets = (
-        (None, {'fields': ('email', 'username', 'password', 'image')}),
-        ('Personal info', {'fields': ('first_name', 'last_name')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
-        ('Important dates', {'fields': ('last_login', 'date_joined')}),
+    field_sets = (
+        (None, {'fields': ('first_name', 'last_name', 'username')}),
+        ('Location', {'fields': ('country', 'city', 'office_category')}),
+        ('Contacts', {'fields': 'email'}),
+        ('Personal Details', {'fields': 'image'}),
     )
-    # fields which are shown when looking at an list of instances
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
-    ordering = ('email',)
+
+    # fields which are shown when looking at a list of instances
+    list_display = ('id', 'first_name', 'last_name')
+    ordering = ('-id', )
