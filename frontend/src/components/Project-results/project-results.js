@@ -2,6 +2,8 @@ import { ProjectResultsContainer, OverFlow } from "./project-results.styles"
 import { BsChevronDown, BsPencilSquare } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import EditButtons from "../Edit-buttons/Edit-buttons";
+import ProjectDetails from "../Project-details/Project-details";
+import { useNavigate } from "react-router";
 
 // fetching example data
 
@@ -18,6 +20,24 @@ const ProjectResults = () => {
         { name: "SIT", country: "switzerland", project: "8",  available: "12-11-2022", status: "closed" /*true?*/ },
       
       ]
+
+    
+      const navigate = useNavigate();
+
+      // pass props to project details page + navigate there why doesnt it work??????????????
+      const [projectInfo, setProjectInfo] = useState()
+
+      const navigateToProjectDetails = (event, val) => {
+        setProjectInfo(val)
+        console.log(projectInfo)
+        // {projectInfo && <ProjectDetails {...val} />}
+        // navigate('/project-details');
+      };
+
+      {projectInfo && <ProjectDetails project={projectInfo}/>}
+    
+    
+    
     
     const [rendernumber, setRendernumber] = useState() 
     const [editButton, renderEditButton] = useState(false)
@@ -37,7 +57,7 @@ const ProjectResults = () => {
                     <th>Name</th>
                     <th>Client</th>
                     <th>Country</th>
-                    <th>working on project</th>
+                    <th>Consultants</th>
                     <th>Startdate</th>
                     <th>Status</th>
                     <th></th>
@@ -53,16 +73,20 @@ const ProjectResults = () => {
                         <td>{val.project}</td>
                         <td>{val.available}</td>
                         <td>{val.status} </td>
-                        <td><button>details</button></td>
+                        <td><button onClick={(event) => navigateToProjectDetails(event, val)}>View</button></td>
                         <td>
-                            <button onClick={changeRender} id={key}>Button</button>
+                            <div>
+                            <button onClick={changeRender} id={key}></button>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
                         </td>
-                        <td>{key == rendernumber && editButton == true ? <EditButtons test={rendernumber}/> : ''}</td>
+                        <td>{key == rendernumber && editButton == true ? <EditButtons/> : ''}</td>
                     </tr>
                 )
             })}
             </table>
             </OverFlow>
+            
         </ProjectResultsContainer>
     )
 }
