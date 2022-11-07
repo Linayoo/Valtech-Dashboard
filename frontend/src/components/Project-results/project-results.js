@@ -31,7 +31,7 @@ const ProjectResults = () => {
         setProjectInfo(val)
         console.log(projectInfo)
         // {projectInfo && <ProjectDetails {...val} />}
-        // navigate('/project-details');
+        navigate(`/project/${val.project}`);
       };
 
       {projectInfo && <ProjectDetails project={projectInfo}/>}

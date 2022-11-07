@@ -5,9 +5,19 @@ display: flex;
 flex-direction: column;
 justify-content: flex-start;
 margin-top: 110px;
-margin-left: 30px;
+margin-left: 10px;
 width: 100vw;
 height: 100vh;
+
+div > button {
+    margin-left: 800px;
+    height: 25px;
+    width: 60px;
+    margin-top: 20px;
+    position: absolute;
+
+}
+
 
 h1 {
     color: #5f5e5e;
@@ -25,17 +35,20 @@ hr {
     margin-left: 60px;
 }
 
+
 div:not(:first-child) {
     display: flex;
-    width: 1000px;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 60px;
 }
 
 p {
     font-size: 20px;
     color: grey;
     width: 400px;
-    padding: 20px 0;
+    padding: 10px 0;
+
 }
 
 p:first-child {
