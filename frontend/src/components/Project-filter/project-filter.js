@@ -34,29 +34,30 @@ const ProjectFilter = () => {
            
             <Flex>
             <form>
-                <input type="text" name="name" placeholder="Filter by project name" onChange = {handleChange}/>
+                <input type="text" name="name" placeholder="filter by project name" onChange = {handleChange}/>
                 <GridItem>
                  <DatePicker
                 selectsRange={true}
                 startDate={startDate}
                 endDate={endDate}
+                placeholderText={'select project date'}
                 onChange={(update) => {
                     setDateRange(update);
                 }}
                 isClearable={true}
                 />
                 </GridItem>
-                <input type="text" name="client" placeholder="Filter by client name" onChange = {handleChange}/>
+                <input type="text" name="client" placeholder="filter by client name" onChange = {handleChange}/>
                 
                 <select value={formData.country} name="country" onChange={handleChange} >
-                    <option value="">Select a country ...</option>
+                    <option value="">select a country ...</option>
                     <option value="switzerland">Switzerland</option>
                     <option value="germany">Germany</option>
                     <option value="italy">Netherlands</option>
                     <option value="france">France</option>
                 </select>
                 <select value={formData.status} name="status" onChange={handleChange} >
-                    <option value="">Select status</option>
+                    <option value="">select status</option>
                     <option value="open">open</option>
                     <option value="demo">demo</option>
                     <option value="closed">closed</option>

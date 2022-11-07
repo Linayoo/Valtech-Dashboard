@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
       overflow: hidden;
       width: 100vw;
       height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Open Sans, Helvetica, sans-serif;
    }
 
    button {

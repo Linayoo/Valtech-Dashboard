@@ -2,6 +2,7 @@ stages:
   - pull
   - build
   - lint
+  - test
   - push
   - cleanup
   - deploy
@@ -29,6 +30,14 @@ lint:
     - export CI_PIPELINE_ID=$CI_PIPELINE_ID
     - export CI_BUILD_REF_NAME=$CI_COMMIT_REF_NAME
     - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.ci.yml run backend flake8 .
+
+test:
+  stage: test
+  allow_failure: false
+  script:
+    - export CI_PIPELINE_ID=$CI_PIPELINE_ID
+    - export CI_BUILD_REF_NAME=$CI_COMMIT_REF_NAME
+    - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.ci.yml run backend python manage.py test .
 
 push image:
   stage: push
