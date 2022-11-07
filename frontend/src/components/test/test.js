@@ -18,9 +18,10 @@ const Test = () => {
 
     const assigneeHandleChange = (event) => {
         setProjectAssignee(prevFormData => {
+            console.log(assignee)
             return {
                 ...prevFormData,
-                [event.target.name]: event.target.value
+                [event.target.name]: event.target.value,
             }
         })
     }
@@ -38,7 +39,7 @@ const Test = () => {
     const post = "POST"
 
     const headers = new Headers({
-        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3ODE2MzAwLCJpYXQiOjE2NjczODQzMDAsImp0aSI6IjZkNGFjN2RjZGM5YjQyMjE5OTU2MjQ1MzZhNDczMTdkIiwidXNlcl9pZCI6MX0.SKPN0pUVSu0sjAIG4vD5XXilzVLu8RKvGq035D4lDeM`,
+        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MjQ5MzMwLCJpYXQiOjE2Njc4MTczMzAsImp0aSI6ImFiMDk5Yzg3MjRkMTRmY2NiYThmZGQ1Y2JkZjU5OWQ2IiwidXNlcl9pZCI6MX0.2E0ZLI8aE0DWzogP_ORPWWFLfTIE44p57eDzQX5WYZc`,
         'content-type': 'application/json'
     })
 
@@ -60,6 +61,8 @@ const Test = () => {
     const assignee = JSON.stringify({
         "assignee": JSON.parse(`[${projectAssignee.assignee}]`),
     })
+
+    console.log(assignee)
 
     const timeframeConfig = {
         method: post,
@@ -107,7 +110,7 @@ const Test = () => {
         event.preventDefault();
         const formData = new FormData();
         formData.append('assignee', projectAssignee.assignee);   //append the values with key, value pair
-        fetch('http://localhost:8000/api/projects/6/', assigneeConfig)
+        fetch('http://localhost:8000/api/projects/1/', assigneeConfig)
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.log(error));
