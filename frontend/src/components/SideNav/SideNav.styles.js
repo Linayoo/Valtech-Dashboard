@@ -3,7 +3,9 @@ import styled from "styled-components"
 export const NavContainer  = styled.div`
 width: 215px;
 height: 100vh;
-background: linear-gradient(to top, #7c47e6, #8e54e9);
+
+background: linear-gradient(to top, #42018c, #220641); 
+/* background-color: black; */
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -17,10 +19,10 @@ box-shadow: 0px 0px 25px -2px #555;
 
 h1 {
     padding-top: 50px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
-
+    color: #ffffffdf;
+    font-family: Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
     @media only screen and (min-width: 1500px) {
     font-size: 45px;
 }
@@ -60,17 +62,27 @@ button:first-of-type {
 }
 
 button:hover {
-    background-color: #6228df64;
+    background-color:#42018c ;
     transform: scale(1.1);
     width: 90%;
 }
 
 button:focus {
-    background-color: #6228df8f;
+    background-color: #170d22a7;
     transform: scale(1.1);
     border-left: 2px solid #fafafa8f ;
     width: 90%;
     height: 70px;
+}
+
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    margin-top: 100%;
+    width: 100%;
 }
 
     

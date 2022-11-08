@@ -4,14 +4,14 @@ import styled from "styled-components";
 export const ProjectResultsContainer = styled.div`
 position: sticky;
 margin-top: 0%;
-margin-left: 2%;
+margin-left: 6%;
 width: 100%;
 color: grey;
 height: 500px;
 
 p {
-    margin-left: 40%;
-    margin-bottom: -0%;
+    margin-left: 1%;
+    margin-top: -0%;
     font-style: italic;
 }
 
@@ -39,6 +39,7 @@ table > tr > th {
     display: flex;
     width: 160px;
     justify-content: center;
+    color: #1b253d;
 }
 
 
@@ -139,6 +140,7 @@ tr:last-child:hover td {
 
 div {
     position: relative;
+    z-index: 4;
     button {
         width: 30px;
         height: 30px;
@@ -148,7 +150,7 @@ div {
 
     i {
         position: absolute;
-        z-index:0;
+        z-index3;
         left:14px;
         bottom: 9px;
     }

@@ -66,14 +66,13 @@ const ProjectResults = () => {
                 
             {data.map((val, key) => {
                 return (
-                    <tr key={key}>
+                    <tr onClick={(event) => navigateToProjectDetails(event, val)} key={key}>
                         <td>Name</td>
                         <td>{val.name}</td>
                         <td>{val.country}</td>
                         <td>{val.project}</td>
                         <td>{val.available}</td>
                         <td>{val.status} </td>
-                        <td><button onClick={(event) => navigateToProjectDetails(event, val)}>View</button></td>
                         <td>
                             <div>
                             <button onClick={changeRender} id={key}></button>

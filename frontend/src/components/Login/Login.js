@@ -39,7 +39,7 @@ function Login() {
             </LoginBg> */}
             <LoginBar>
             <LogoString>
-                Valtech_
+                valtech_
             </LogoString>
             <LoginForm id='log' onSubmit={handleSubmit}>
                 <input form="log" type="text" name="email" placeholder="Email" onChange={(e) => setUsername(e.target.value)}></input>

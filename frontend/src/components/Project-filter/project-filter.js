@@ -1,4 +1,4 @@
-import { ProjectFilterContainer, Flex, GridItem } from "./project-filter.styles"
+import { ProjectFilterContainer, Flex, GridItem, HeaderStyle } from "./project-filter.styles"
 import { useState } from "react"
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -29,9 +29,10 @@ const ProjectFilter = () => {
         <div>
               
         <ProjectFilterContainer>
-           
+            <HeaderStyle>
             <h1>Projects</h1>
-           
+            <button>Create new project</button>
+            </HeaderStyle>
             <Flex>
             <form>
                 <input type="text" name="name" placeholder="filter by project name" onChange = {handleChange}/>
@@ -63,7 +64,6 @@ const ProjectFilter = () => {
                     <option value="closed">closed</option>
                 </select>
             </form>
-            <button>Search</button>
             </Flex>
         </ProjectFilterContainer>
              

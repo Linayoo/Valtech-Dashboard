@@ -14,13 +14,13 @@ p {
 }
 
 
+
 table > tr:first-of-type{
    background-color: #f3e9e94;
 }
 
 table > tr{
     display: flex;
-    
 }
 
 
@@ -29,6 +29,7 @@ table > tr > th {
     width: 150px;
     justify-content: flex-start;
     padding: 15px;
+    color: #1b253d;
 }
 
 
@@ -103,6 +104,10 @@ tr:first-child:hover td {
 }
 tr:last-child:hover td {
   border-bottom: none;
+}
+
+table > tr > td:last-of-type {
+    padding-left: 70px;
 }
 `;
 
