@@ -60,14 +60,14 @@ width: 100%;
 height: 20%;
 display: flex;
 flex-direction: row;
-justify-content: space-around;
+justify-content: space-between;
 margin-left: -20%;
 /* align-items: flex-start; */
 
 `;
 
 export const ProfileName = styled.form`
-width: 50%;
+width: 30%;
 height: 20%;
 color: white;
 display: flex;
@@ -77,41 +77,63 @@ justify-content: flex-start;
 span{
     color: black;
 }
-
+p{
+    width: 35%;
+}
 
 input{
     background-color: transparent;
     border: none;
     font-size: 20px;
-    width: 90%;
+    width: 70%;
     color: white;
     padding-left: 5px;
 }
 
 `;
 
-export const ProfileLocation = styled.div`
-width: 50%;
-height: 20%;
-/* color: black; */
-/* margin-left: -23%; */
-span{
-    color: black;
-}
-input{
-    background-color: transparent;
-    border: none;
-    color: black;
-    font-size: 20px;
-    width: 90%;
-    color: white;
-    padding-left: 5px;
-}
-`;
+// export const ProfileLocation = styled.div`
+// width: 50%;
+// height: 20%;
+// /* color: black; */
+// /* margin-left: -23%; */
+// span{
+//     color: black;
+// }
+// input{
+//     background-color: transparent;
+//     border: none;
+//     color: black;
+//     font-size: 20px;
+//     width: 90%;
+//     color: white;
+//     padding-left: 5px;
+// }
+// `;
 
 
 
-export const Proffession = styled.div`
+// export const Proffession = styled.div`
+// color: black;
+// display: flex;
+// flex-direction: row;
+// width: 100%;
+// height: 5%;
+// margin-left: -20%;
+// span{
+//     color: black;
+// }
+// input{
+//     background-color: transparent;
+//     border: none;
+//     font-size: 20px;
+//     width: 90%;
+//     color: white;
+//     padding-left: 5px;
+// }
+// `;
+
+export const ProfileUsername = styled.div`
 color: black;
 display: flex;
 flex-direction: row;
@@ -156,21 +178,7 @@ button {
 }
 `;
 
-export const FuncReportUser = styled.div`
-button {
-    color: white;
-    align-items: flex-end;
-    background-color: blue;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    height: 40px;
-    width: 100px;
-    border: none;
-}
-`;
+
 
 export const FuncSendMess = styled.div`
 button {
@@ -455,7 +463,7 @@ font-weight: 900;
 
 export const SkillsBasic = styled.div`
 width: 100%;
-height: 20%;
+height: 25%;
 display: flex;
 flex-direction: row;
 /* justify-content: center;
@@ -469,9 +477,10 @@ width: 50%;
 display: flex;
 font-size: 20px;
 flex-direction: column;
-justify-content: center;
+justify-content: flex-start;
 align-items: align-items;
 margin-bottom: 20px;
+padding-top: 10px;
 `; 
 
 
@@ -480,6 +489,7 @@ export const SkillsAll = styled.div`
 color: black;
 display: flex;
 flex-direction: column;
+font-size: 30px;
 /* justify-content: space-between; */
 `;
 
@@ -493,8 +503,8 @@ height: 80%;
 display: flex;
 font-size: 20px;
 flex-direction: column;
-justify-content: center;
-align-items: center;
+/* justify-content: center; */
+/* align-items: center; */
 margin-top: 30px;
 `; 
 
@@ -502,7 +512,7 @@ margin-top: 30px;
 
 export const ProfileBirthday = styled.form`
 width: 100%;
-height: 50%;
+height: 40%;
 display: flex;
 flex-direction: row;
 justify-content: center;
@@ -512,16 +522,14 @@ input{
     color: white;
     font-size: 25px;
     width: 90%;
+    padding-left: 5px
 }
-
-
-
 
 `; 
 
 export const ProfileGender = styled.div`
 width: 100%;
-height: 50%;
+height: 40%;
 display: flex;
 flex-direction: row;
 justify-content: center;
@@ -531,5 +539,22 @@ input{
     color: white;
     font-size: 25px;
     width: 90%;
+    padding-left: 5px;
+}
+`; 
+
+export const ProfileJoined = styled.div`
+width: 100%;
+height: 40%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+input{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+    width: 90%;
+    padding-left: 5px;
 }
 `; 
