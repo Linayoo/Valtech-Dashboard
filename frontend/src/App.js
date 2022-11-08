@@ -5,6 +5,7 @@ import ProjectsPage from "./pages/projects/projects-page";
 import ProjectDetailsPage from "./pages/projectDetails/project-details-page";
 import ProfilePage from "./pages/profile/profile-page";
 import InsightsPage from "./pages/insights/insights-page";
+import Test from "./components/test/test";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="projects/" element={<ProjectsPage />} />
           <Route path="project/:projectId" element={<ProjectDetailsPage />} />
           <Route path="profile/" element={<ProfilePage />} />
+          <Route path="test/" element={<Test />} />
         </Routes>
       </main>
     </BrowserRouter>

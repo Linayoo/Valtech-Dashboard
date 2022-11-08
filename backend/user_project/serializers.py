@@ -6,7 +6,7 @@ class UserProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProject
         fields = '__all__'
-        # depth = 1
+        depth = 1
 
 
 # class ProjectPatchSerializer(serializers.ModelSerializer): # if we just want to add item to an array
