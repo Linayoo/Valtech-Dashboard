@@ -27,7 +27,8 @@ const Results = (props) => {
                         <td>{val.display_name}</td>
                         <td>{val.country}</td>
                         <td>{val.city}</td>
-                        <td>populate db w/ managers</td>
+                        <td><img src={val.image_path}/></td>
+                        <>{console.log(val.image_path)}</>
                         <td>{val.unavailable.map(e => `${e.date_finished}`)}</td>
                         <td>{(val.unavailable[0] == undefined || new Date() > new Date(`${val.unavailable[0].date_finished}Z`)) ? 'Available' : 'On project'}</td>
                         <td><button>edit</button><button>delete</button></td>

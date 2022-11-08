@@ -5,9 +5,10 @@ import { HeaderContainer } from "./Header.styles";
 const Header = () => {
     return (
         <HeaderContainer>
-            <button ><BsBell size={22} color={"#5a5757"}/></button>
-            <p>Good Morning, User <BsChevronDown/> </p>
             <img src="/images/patricia.png"/>
+            <p>Jane Doe </p>
+            <BsChevronDown size={22} color={"#1b253d"} />
+            <button ><BsBell size={22} color={"#5a5757"}/></button>
         </HeaderContainer>
     )
 }
