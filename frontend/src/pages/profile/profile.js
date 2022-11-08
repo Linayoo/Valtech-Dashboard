@@ -6,7 +6,6 @@ import { ProfileContainer } from "./profile-styles";
 
 const ProfilePage = () => {
     
-    // const [tomapout, setTomapout] = useState()
 
     return (
         <ProfileContainer>
