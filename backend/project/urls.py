@@ -10,6 +10,9 @@ urlpatterns = [
     path('api/consultants/', include('consultant.urls')),
     path('api/projects/', include('user_project.urls')),
     path('api/timeframes/', include('timeframe.urls')),
+    path('api/languages/', include('language.urls')),
+    path('api/skills/', include('skill.urls')),
+    path('api/me/', include('user.urls')),
 
     # JWT
     path('token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),

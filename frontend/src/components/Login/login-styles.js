@@ -23,15 +23,15 @@ height: 100vh;
 z-index: 0;
 position: relative;
 display: flex;
-opacity: 80%;
+/* opacity: 80%; */
 /* flex-direction: column; */
 align-items: center;
 `;
 
 export const LoginBar = styled.div`
-background: linear-gradient(to top, #531ebd, #8d54e966);/* background-size: cover; */
-color: purple;
-filter: none;
+background: linear-gradient(to top, #42018c, #220641);
+/* color: purple; */
+/* filter: none; */
 z-index: 1;
 display: flex;
 align-items: center;
@@ -46,9 +46,9 @@ margin-left: 35%;
 
 export const LogoString = styled.div`
 color: white;
-font-size: 70px;
+font-size: 80px;
 font-family: "Helvetica Neue",sans-serif;
-font-weight: 900;
+font-weight: 400;
 display: flex;
 `;
 

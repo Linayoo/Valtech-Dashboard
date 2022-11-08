@@ -4,8 +4,11 @@ import HomePage from './pages/home/home-page';
 import ProjectsPage from "./pages/projects/projects-page";
 import ProjectDetailsPage from "./pages/projectDetails/project-details-page";
 import ProfilePage from "./pages/profile/profile";
+import ProjectCreatePage from "./pages/projectCreate/project-create-page";
+import ProjectEditPage from "./pages/projectEdit/project-edit-page";
+import ProfilePage from "./pages/profile/profile-page";
 import InsightsPage from "./pages/insights/insights-page";
-// import UserProfile from "./components/User_Profile/profile-page";
+import Test from "./components/test/test";
 
 
 function App() {
@@ -18,7 +21,10 @@ function App() {
           <Route path="home/" element={<HomePage />} />
           <Route path="projects/" element={<ProjectsPage />} />
           <Route path="project/:projectId" element={<ProjectDetailsPage />} />
-          <Route path="profile/" element={<ProfilePage/>} />
+          <Route path="/create" element={<ProjectCreatePage/>} />
+          <Route path="/edit" element={<ProjectEditPage />} />
+          <Route path="profile/" element={<ProfilePage />} />
+          <Route path="test/" element={<Test />} />
         </Routes>
       </main>
     </BrowserRouter>

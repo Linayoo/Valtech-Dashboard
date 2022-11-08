@@ -1,18 +1,19 @@
-import { ProjectDetailsWrapper } from "./Project-details.styles"
+import { ProjectDetailsWrapper, HeaderStyle, ConsultantStyle } from "./Project-details.styles"
 import { useParams } from "react-router"
-import { useEffect, useState } from "react"
+import { useEffect, useState} from "react"
 import ProjectConsultants from "../Project-consultants/Project-consultants"
+import { useNavigate } from "react-router"
 
 
 const ProjectDetails = (props) => {
-    console.log(props.project)
+    const navigate = useNavigate()
     const initialID = useParams().projectId
 
     const [projects, setProjects] = useState()
 
     const get = "GET"
     const header = new Headers({
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NzQ2ODg2LCJpYXQiOjE2NjczMTQ4ODYsImp0aSI6IjNhYzEwZjgzOGZmMTQ2YmY4NjJiZTFkZDIwYmIyZmVmIiwidXNlcl9pZCI6Mn0.5wUHo8VqAp8wEzR5tItvcOVYWZlXxaaMW7zajfpEn5A`,
+        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2Mzg3NzI4LCJpYXQiOjE2Njc3NDc3MjgsImp0aSI6Ijg0YjQ0MzEyOTUxOTRlZGJhZWRkYTlhNDNkYjcwMTI4IiwidXNlcl9pZCI6Mn0.FS1KwjKjILhd0ab6tP4fI0d675XaSgEEoORZBPCkyrM`,
         "content-type": "application/json",
     })    
     const getconfig = {
@@ -20,9 +21,9 @@ const ProjectDetails = (props) => {
         headers: header
     }
     useEffect((state) => {
-        fetch(`http://localhost:8000/api/projects/${initialID}`, getconfig)
+        fetch(`http://localhost:8000/api/projects/${initialID}/`, getconfig)
           .then(response => response.json())
-          .then(data => {setProjects(data)})
+          .then(data =>  {setProjects(data)})
           .catch(error => console.log(error));
 
     },[])
@@ -30,42 +31,43 @@ const ProjectDetails = (props) => {
     return (
         <ProjectDetailsWrapper>
             <div>
-            <button>Edit</button>
+            <HeaderStyle>
             <h1>Project details</h1>
+            <button onClick={() => navigate('/edit')}>Edit details</button>
+            </HeaderStyle>
             <hr></hr>
             <div>
-                <p>Project name</p>
-                <p>props.project.name</p>
+                <p>Image</p>
+                {/* <img src={projects.image}/> */}
             </div>
             <div>
-                <p>Client </p>
-                <p>props.project.name</p>
+                <p>Name</p>
+                <p>{projects?.name}</p>
             </div>
             <div>
-                <p>Country</p>
-                <p>props.project.name</p>
+                <p>Description </p>
+                <p>{projects?.description}</p>
+            </div>
+            <div>
+                <p>External link</p>
+                <p>{projects?.external_link}</p>
             </div>
             <div>
                 <p>Project duration</p>
-                <p>props.project.name</p>
-            </div>
-            <div>
-                <p>Status</p>
-                <p>props.project.name</p>
+                <p>{projects?.time_frame}</p>
             </div>
             <div>
                 <p>Amount of consultants <br/> working on project</p>
-                <p>props.project.name</p>
+                <p>{projects?.assignee}</p>
             </div>
             <div>
                 <p>Skills needed</p>
-                <p>props.project.name</p>
+                <p>{projects?.tools}</p>
             </div>
-            <div>
+            <ConsultantStyle>
             <p>Consultants currently assigned to project:</p>
-            <p></p>
-            </div>
             <ProjectConsultants/>
+            </ConsultantStyle>
             </div>
             
         </ProjectDetailsWrapper>

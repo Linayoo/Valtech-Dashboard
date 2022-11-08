@@ -2,40 +2,15 @@ import React, { useState } from "react";
 
 const Test = () => {
 
-    const [startDate, setStartDate] = useState()
-    const [endDate, setEndDate] = useState()
-    const [projectName, setProjectName] = useState()
-    const [projectDescription, setProjectDescription] = useState()
-    const [projectTimeFrame, setProjectTimeFrame] = useState()
-    const [consultantTimeFrame, setConsultantTimeFrame] = useState({
-        'unavailable': []
-    })
-    const [projectAssignee, setProjectAssignee] = useState({
-        'assignee': []
-    })
+    const [projectName, setProjectName] = useState("")
+    const [projectDescription, setProjectDescription] = useState("")
+    const [link, setLink] = useState("")
+    const [image, setImage] = useState(null)
+    const [tools, setTools] = useState("")
+    const [startdate, setStartDate] = useState("")
+    const [endDate, setEndDate] = useState("")
+    const [projectAssignee, setProjectAssignee] = useState("")
 
-    // console.log(projectAssignee.assignee)
-
-    const assigneeHandleChange = (event) => {
-        setProjectAssignee(prevFormData => {
-            console.log(assignee)
-            return {
-                ...prevFormData,
-                [event.target.name]: event.target.value,
-            }
-        })
-    }
-
-    const timeframeHandleChange = (event) => {
-        setConsultantTimeFrame(prevFormData => {
-            return {
-                ...prevFormData,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
-
-    const patch = "PATCH"
     const post = "POST"
 
     const headers = new Headers({
@@ -43,32 +18,20 @@ const Test = () => {
         'content-type': 'application/json'
     })
 
-    const timeframe = JSON.stringify({
-        "date_started": `${startDate}`,
-        "date_finished": `${endDate}`,
-    })
+    const parseStringToList = (inputString) => { return inputString.split(",").map(Number)} 
 
     const project = JSON.stringify({
         "name": `${projectName}`,
         "description": `${projectDescription}`,
-        "time_frame": `${projectTimeFrame}`,
+        "external_link": `${link}`,
+        "image": `${image}`,
+        "tools": parseStringToList(tools),
+        "time_frame": {
+            "date_started": `${startdate}`,
+            "date_finished": `${endDate}`
+        },
+        "assignee": parseStringToList(projectAssignee)
     })
-
-    const consultant = JSON.stringify({
-        "unavailable": JSON.parse(`[${consultantTimeFrame.unavailable}]`),
-    })
-
-    const assignee = JSON.stringify({
-        "assignee": JSON.parse(`[${projectAssignee.assignee}]`),
-    })
-
-    console.log(assignee)
-
-    const timeframeConfig = {
-        method: post,
-        headers: headers,
-        body: timeframe,
-    }
 
     const projectConfig = {
         method: post,
@@ -76,52 +39,10 @@ const Test = () => {
         body: project,
     }
 
-    const consultantConfig = {
-        method: patch,
-        headers: headers,
-        body: consultant,
-    }
-
-    const assigneeConfig = {
-        method: patch,
-        headers: headers,
-        body: assignee,
-    }
-
-   
-
-    const fetchTimeFrame = (event) => {
+    const createProject = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:8000/api/timeframes/new/`, timeframeConfig)
-            .then(response => response.json())
-            .then((data) => console.log(data))
-            .catch(error => console.log(error));
-    }
-
-    const fetchProject = (event) => {
-        event.preventDefault();
+        console.log(projectConfig.body)
         fetch(`http://localhost:8000/api/projects/new/`, projectConfig)
-            .then(response => response.json())
-            .then((data) => console.log(data))
-            .catch(error => console.log(error));
-    }
-
-    const patchAssignee = (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append('assignee', projectAssignee.assignee);   //append the values with key, value pair
-        fetch('http://localhost:8000/api/projects/1/', assigneeConfig)
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
-    }
-
-    const fetchConsultant = (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append('unavailable', consultantTimeFrame.unavailable);
-        console.log(consultant)
-        fetch(`http://localhost:8000/api/consultants/2/`, consultantConfig)
             .then(response => response.json())
             .then((data) => console.log(data))
             .catch(error => console.log(error));
@@ -129,29 +50,39 @@ const Test = () => {
 
     return (
         <>
-            <p>Create Timeframe</p>
-            <form id='test' onSubmit={fetchTimeFrame}>
-                <input form='test' type='text' onChange={(e) => setStartDate(e.target.value)}></input>
-                <input form='test' type='text' onChange={(e) => setEndDate(e.target.value)}></input>
+            <p>Let's create a Project!</p>
+            <form id='test' onSubmit={createProject}>
+                <div>
+                    Project Name
+                    <input form='test' type='text' name='name' onChange={(e) => setProjectName(e.target.value)}></input>
+                </div>
+                <div>
+                    Description
+                    <input form='test' type='text' onChange={(e) => setProjectDescription(e.target.value)}></input>
+                </div>
+                <div>
+                    External Link
+                    <input form='test' type='text' onChange={(e) => setLink(e.target.value)}></input>
+                </div>
+                <div>
+                    Image URL
+                    <input form='test' type='file' onChange={(e) => setImage(e.target.value)}></input>
+                </div>
+                <div>
+                    Tools
+                    <input form='test' type='text' onChange={(e) => setTools(e.target.value)}></input>
+                </div>
+                <div>
+                    Timeframe
+                    <input form='test' type='text' onChange={(e) => setStartDate(e.target.value)}></input>
+                    <input form='test' type='text' onChange={(e) => setEndDate(e.target.value)}></input>
+                </div>
+                <div>
+                    Assignee
+                    <input form='test' type='text' onChange={(e) => setProjectAssignee(e.target.value)}></input>
+                </div>
                 <button type='submit' form='test'>SEND IT BABY</button>
             </form>
-            <p>Create Project</p>
-            <form id='project' onSubmit={fetchProject}>
-                <input form='project' type='text' onChange={(e) => setProjectName(e.target.value)}></input>
-                <input form='project' type='text' onChange={(e) => setProjectDescription(e.target.value)}></input>
-                <input form='project' type='text' onChange={(e) => setProjectTimeFrame(e.target.value)}></input>
-                <button type='submit' form='project'>SEND IT TO PROJECT BABY</button>
-            </form>
-            <p>Patch Assignee to the Project</p>
-            <form id='assignee' onSubmit={patchAssignee}>
-                <input form='assignee' name="assignee" type='text' onChange={assigneeHandleChange}></input>
-                <button type='submit' form='assignee'>SEND IT TO PROJECT BABY</button>
-            </form>
-            <p>Patch availability</p>
-        <form id='consultant' onSubmit={fetchConsultant}>
-            <input form='consultant' name="unavailable" type='text' onChange={timeframeHandleChange}></input>
-            <button type='submit' form='consultant'>SEND IT TO USER BABY</button>
-        </form>
         </>
     )
 }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const ProjectFilterContainer = styled.div`
-height: 200px;
+height: 180px;
 width: 800px;
 position: sticky;
 z-index: 1;
@@ -11,8 +11,10 @@ margin-top: 70px;
 padding: 15px;
 
 h1 {
-    color: #808080d9;
-    font-weight: lighter;
+    /* color: #808080d9; */
+    color: #1b253d;
+    font-weight: bolder;
+    /* font-weight: lighter; */
     padding: 5px;
     margin-bottom:15px;
 }
@@ -49,19 +51,6 @@ export const Flex = styled.div`
 display: flex;
 align-items: center;
 
-button {
-    height: 30px;
-    width: 100px;
-    color: grey;
-    border-radius: 25px;
-    border: 1px solid #837b7b5d;
-    margin-left: 20px;
-    font-size: 15px;
-}
-
-button:hover {
-    transform: scale(0.9);
-}
 `;
 
 export const GridItem = styled.div`
@@ -73,5 +62,26 @@ button {
 }
 input {
     padding: 10px;
+}
+`;
+
+export const HeaderStyle = styled.div`
+display: flex;
+align-items: center;
+button {
+    color: #1b253d;
+    border: 1px solid #42018cc2;
+    height: 30px;
+    width: 150px;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin-left:20px;
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #220641;
+    color: white;
 }
 `;

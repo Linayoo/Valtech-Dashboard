@@ -1,8 +1,10 @@
 import { ProjectConsultantsContainer, OverFlow } from "./Project-consultants.styles"
 import { BsChevronDown } from "react-icons/bs";
+import { useNavigate } from "react-router";
 
 const ProjectConsultants = () => {
-    
+
+const navigate = useNavigate();
 
 const data = [
     { name: "Eugene Samarin", country: "switzerland", project: "Frontend developer", manager: "Ruben Villalon", available: "12-11-2022", status: "available" /*true?*/ },
@@ -28,14 +30,18 @@ const data = [
                 </tr>
             {data.map((val, key) => {
                 return (
-                    
-                    <tr key={key}>
+                    // onclick needs to bring you to the clicked consultant details
+                    <tr key={key} onClick={() => navigate('/home')}>
                         <td>{val.name}</td>
                         <td>{val.project}</td>
                         <td>{val.country}</td>
                         <td>{val.manager}</td>
                         <td>{val.available}</td>
-                        <td><button>edit</button><button>delete</button></td>
+                        <td>
+                            <div>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </td>
                     </tr>
                    
                 )
