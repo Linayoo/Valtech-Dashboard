@@ -6,7 +6,6 @@ import ProjectDetailsPage from "./pages/projectDetails/project-details-page";
 import ProfilePage from "./pages/profile/profile";
 import ProjectCreatePage from "./pages/projectCreate/project-create-page";
 import ProjectEditPage from "./pages/projectEdit/project-edit-page";
-import ProfilePage from "./pages/profile/profile";
 import InsightsPage from "./pages/insights/insights-page";
 import Test from "./components/test/test";
 
