@@ -2,8 +2,10 @@ import { ProjectFilterContainer, Flex, GridItem, HeaderStyle } from "./project-f
 import { useState } from "react"
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router";
 
 const ProjectFilter = () => {
+    const navigate = useNavigate()
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const [formData, setFormData] = useState(
@@ -31,7 +33,7 @@ const ProjectFilter = () => {
         <ProjectFilterContainer>
             <HeaderStyle>
             <h1>Projects</h1>
-            <button>Create new project</button>
+            <button onClick={() => navigate('/create')}>Create new project</button>
             </HeaderStyle>
             <Flex>
             <form>
