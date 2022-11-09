@@ -10,23 +10,25 @@ import { useSyncExternalStore } from "react";
 
 const Filter = (props) => {
 
-    const inputref = useRef([])
+    const inputref = useRef([]);
 
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
-    const [consultants, setConsultants] = useState()
-    const [skills, setSkills] = useState()
-    const [languages, setLanguages] = useState()
+    const [consultants, setConsultants] = useState();
+    const [skills, setSkills] = useState();
+    const [languages, setLanguages] = useState();
 
     const get = "GET"
     const header = new Headers({
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2Mzg3NzI4LCJpYXQiOjE2Njc3NDc3MjgsImp0aSI6Ijg0YjQ0MzEyOTUxOTRlZGJhZWRkYTlhNDNkYjcwMTI4IiwidXNlcl9pZCI6Mn0.FS1KwjKjILhd0ab6tP4fI0d675XaSgEEoORZBPCkyrM`,
+        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MzY0NzM1LCJpYXQiOjE2Njc5MzI3MzUsImp0aSI6ImVjYTk5ZTYxMTg1ZTQ2OTRhNDg0N2VkODg5YWFkOTliIiwidXNlcl9pZCI6Mn0.0rsTH6W_ehRitYh5ezU_HHzPpG6EfSlQIdFAfbUKyag`,
         "content-type": "application/json",
-    })
+    });
+
     const getconfig = {
         method: get,
         headers: header
-    }
+    };
+
     useEffect((state) => {
         fetch(`http://localhost:8000/api/consultants/`, getconfig)
             .then(response => response.json())
@@ -43,9 +45,9 @@ const Filter = (props) => {
             .then(data => setLanguages(data))
             .catch(error => console.log(error));
 
-    }, [])
+    }, []);
 
-    const handleNameChange = () => {
+    const handleChange = () => {
         
         const query = {
             name: inputref.current.name.value,
@@ -55,8 +57,6 @@ const Filter = (props) => {
             languages: inputref.current.languages.value,
             dates: inputref.current.date.value,
         }
-
-        console.log(inputref.current.date.value)
 
         let updatedList = [...consultants];
         updatedList = updatedList.filter(element =>
@@ -71,28 +71,28 @@ const Filter = (props) => {
     const handleDatePicker = (update) => {
         inputref.current.date.value = update;
         setDateRange(update);
-        handleNameChange()
-    }
+        handleChange()
+    };
 
     return (
         <FilterContainer>
             <h1>Consultants</h1>
             <Flex>
                 <form id='filter'>
-                    <input ref={ref => inputref.current.name = ref} type="text" name="name" placeholder="Filter by name" autoComplete="none" onChange={handleNameChange} />
-                    <input ref={ref => inputref.current.city = ref} type="text" name="city" placeholder="Filter by city" autoComplete="none" onChange={handleNameChange} />
-                    <select ref={ref => inputref.current.country = ref} name="country" onChange={handleNameChange}>
+                    <input ref={ref => inputref.current.name = ref} type="text" name="name" placeholder="Filter by name" autoComplete="none" onChange={handleChange} />
+                    <input ref={ref => inputref.current.city = ref} type="text" name="city" placeholder="Filter by city" autoComplete="none" onChange={handleChange} />
+                    <select ref={ref => inputref.current.country = ref} name="country" onChange={handleChange}>
                         <option value="">Select a country ...</option>
                         <option value="switzerland">Switzerland</option>
                         <option value="germany">Germany</option>
                         <option value="italy">Netherlands</option>
                         <option value="france">France</option>
                     </select>
-                    <select ref={ref => inputref.current.skills = ref} name="skills" onChange={handleNameChange}>
+                    <select ref={ref => inputref.current.skills = ref} name="skills" onChange={handleChange}>
                         <option value='0'>Select a skill</option>
                         {skills === undefined ? <option>Loading...</option> : skills.map(element => <option value={element.id}>{element.title}</option>)}
                     </select>
-                    <select ref={ref => inputref.current.languages = ref} name="language" onChange={handleNameChange}>
+                    <select ref={ref => inputref.current.languages = ref} name="language" onChange={handleChange}>
                         <option value="0">Select a language</option>
                         {languages === undefined ? <option>Loading...</option> : languages.map(element => <option value={element.id}>{element.title} - {element.level_category}</option>)}
                     </select>
@@ -104,6 +104,7 @@ const Filter = (props) => {
                             endDate={endDate}
                             onChange={update => handleDatePicker(update)}
                             isClearable={true}
+                            value={dateRange}
                         />
                     </GridItem>
                 </form>
