@@ -7,7 +7,7 @@ import ProjectCreatePage from "./pages/projectCreate/project-create-page";
 import ProjectEditPage from "./pages/projectEdit/project-edit-page";
 import ProfilePage from "./pages/profile/profile-page";
 import InsightsPage from "./pages/insights/insights-page";
-import Test from "./components/test/test";
+import Test2 from "./components/test/test2";
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Route path="/create" element={<ProjectCreatePage/>} />
           <Route path="/edit" element={<ProjectEditPage />} />
           <Route path="profile/" element={<ProfilePage />} />
-          <Route path="test/" element={<Test />} />
+          <Route path="test2/" element={<Test2 />} />
         </Routes>
       </main>
     </BrowserRouter>

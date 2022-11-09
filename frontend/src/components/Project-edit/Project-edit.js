@@ -2,38 +2,41 @@ import { EditProjectContainer } from "./project-edit.styles"
 import { useState } from "react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router"
+import { useRef } from "react"
+import Tags from "./Consultant-tag"
+import AddTag from "./Consultant-add-tag"
+import ToolTag from "./Tool-tag"
+import ToolAddTag from "./Tool-add-tag"
 
 
 const EditProjects = () => {
+
+    const inputref = useRef([])
     const navigate = useNavigate()
     // form state 
+    const [allcons, setAllcons] = useState()
+    const [consultants, setConsultants] = useState([])
+    const [consresults, setConsresults] = useState()
+    const [alltools, setAlltools] = useState()
+    const [tools, setTools] = useState([])
+    const [toolsresults, setToolsresults] = useState()   
     const [formData, setFormData] = useState(
         {
-        projectObj: [],
-        name: "",
-        description: "",
-        link: "",
-        image: "",
-        date: "",
-        consultants: "",
+            projectObj: [],
+            name: "",
+            description: "",
+            link: "",
+            image: "",
+            date: "",
         }
     )
-
-    const handleChange = (event) => {
-        setFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
 
     // fetch data 
 
     const get = "GET"
     const patch = "PATCH";
     const header = new Headers({
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2Mzg3NzI4LCJpYXQiOjE2Njc3NDc3MjgsImp0aSI6Ijg0YjQ0MzEyOTUxOTRlZGJhZWRkYTlhNDNkYjcwMTI4IiwidXNlcl9pZCI6Mn0.FS1KwjKjILhd0ab6tP4fI0d675XaSgEEoORZBPCkyrM`,
+        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MzY0NzM1LCJpYXQiOjE2Njc5MzI3MzUsImp0aSI6ImVjYTk5ZTYxMTg1ZTQ2OTRhNDg0N2VkODg5YWFkOTliIiwidXNlcl9pZCI6Mn0.0rsTH6W_ehRitYh5ezU_HHzPpG6EfSlQIdFAfbUKyag`,
         "content-type": "application/json",
     })
 
@@ -71,11 +74,24 @@ const EditProjects = () => {
                     link: data.external_link,
                     image: data.image,
                     // date: time_frame,
-                    // consultants: assignee,
+                    // consultants: data.assignee,
 
-                })
+                });
+                setConsultants(data.assignee);
+                setTools(data.tools)
             })
             .catch()
+        fetch(`http://localhost:8000/api/consultants/`, getconfig)
+            .then(response => response.json())
+            .then(data => setAllcons(data))
+            .catch(error => console.log(error));
+
+        fetch(`http://localhost:8000/api/skills/`, getconfig)
+            .then(response => response.json())
+            .then(data => setAlltools(data))
+            .catch(error => console.log(error));
+
+
     }, [])
 
     const handleSubmit = (event) => {
@@ -85,40 +101,122 @@ const EditProjects = () => {
             .then((data) => { navigate("/project/1/") })
             .catch(error => console.log(error))
     }
-    
+
+    const handleChange = (event) => {
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+
+    const handleUserFilter = () => {
+        const query = {
+            name: inputref.current.name.value,
+        }
+        let updatedList = [...allcons];
+        updatedList = updatedList.filter(element =>
+            element.display_name.toLowerCase().indexOf(query.name.toLowerCase()) !== -1      
+        )
+        if (query.name === "") {
+            setConsresults([])
+        } else {
+            setConsresults(updatedList)
+        }
+    }
+
+    const handleToolFilter = () => {
+        const query = {
+            tools: inputref.current.tools.value,
+        }
+        let updatedList = [...alltools];
+        updatedList = updatedList.filter(element =>
+            element.title.toLowerCase().indexOf(query.tools.toLowerCase()) !== -1      
+        )
+        if (query.tools === "") {
+            setToolsresults([])
+        } else {
+            setToolsresults(updatedList)
+        }
+    }
+
+    const handleAddConsultant = (event) => {
+        event.preventDefault()
+        let newArray = [...consultants]
+        newArray.push(JSON.parse(event.target.id))
+        setConsultants(newArray)
+        console.log(consultants)
+    }
+
+    const handleDeleteConsultant = (event) => {
+        event.preventDefault()
+        let newArray = [...consultants]
+        newArray.splice(event.target.id, 1);
+        setConsultants(newArray)
+    }
+
+    const handleAddTool = (event) => {
+        event.preventDefault()
+        let newArray = [...tools]
+        newArray.push(JSON.parse(event.target.id))
+        setTools(newArray)
+        console.log(consultants)
+    }
+
+    const handleDeleteTool = (event) => {
+        event.preventDefault()
+        let newArray = [...tools]
+        newArray.splice(event.target.id, 1);
+        setTools(newArray)
+    }
+
+
     return (
         <EditProjectContainer>
             <h1>Edit Project</h1>
-            <hr/>
+            <hr />
+
+            <form className="search">
+                <input ref={ref => inputref.current.name = ref} type='text' placeholder='Search for employees' onChange={handleUserFilter} />
+                <input ref={ref => inputref.current.tools = ref} type='text' placeholder='Search for tools' onChange={handleToolFilter} />
+            </form>
+            <div className="tags">
+            {consresults === undefined ? "" : consresults.map((element, index) => <AddTag  element={element} add={handleAddConsultant}/>)}
+            {toolsresults === undefined ? "" : toolsresults.map((element, index) => <ToolAddTag  element={element} add={handleAddTool}/>)}
+            {tools === undefined ? "" : tools.map((element, index) => <ToolTag id={index} tool={element} remove={handleDeleteTool}/>)}
+            </div>
             <form onSubmit={handleSubmit}>
-            <label htmlFor="">
+                <label htmlFor="">
                     Image
-                    <img src={formData.image}/>
-                    <input type="file" name="image" onChange = {handleChange}/>
+                    <img src={formData.image} />
+                    <input type="file" name="image" onChange={handleChange} />
                 </label>
                 <label htmlFor="name">
-                        Name
-                <input value={formData.name} type="text" name="name" onChange = {handleChange}/>
+                    Name
+                    <input value={formData.name} type="text" name="name" onChange={handleChange} />
                 </label>
                 <label htmlFor="">
                     Description
-                    <input value={formData.description} type="textarea" name="description" onChange = {handleChange}/>
+                    <input value={formData.description} type="textarea" name="description" onChange={handleChange} />
                 </label>
                 <label htmlFor="">
                     External link
-                    <input value={formData.link} type="textarea" name="link" onChange = {handleChange}/>
+                    <input value={formData.link} type="textarea" name="link" onChange={handleChange} />
                 </label>
                 <label htmlFor="">
                     Start - end
-                    <input type="date" name="date" onChange = {handleChange}/>
+                    <input type="date" name="date" onChange={handleChange} />
                 </label>
                 <label htmlFor="">
                     Add consultants to project
-                    <input type="text" name="consultants" onChange = {handleChange}/>
+                    <input type="text" name="consultants" onChange={handleChange} />
+                    {consultants === undefined ? "" : consultants.map((element, index) => <Tags id={index} consultant={element} remove={handleDeleteConsultant}/>)}
                 </label>
                 <button type="submit">Save changes</button>
             </form>
         </EditProjectContainer>
+
     )
 }
 

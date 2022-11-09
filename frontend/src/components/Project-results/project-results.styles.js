@@ -63,6 +63,31 @@ table > tr > td {
     padding: 15px;
 }
 
+table > tr > td:nth-of-type(1), th:nth-of-type(1) {
+    width: 220px;
+}
+
+table > tr > td:nth-of-type(2), th:nth-of-type(2) {
+    width: 350px;
+}
+
+table > tr > td:nth-of-type(3), th:nth-of-type(3) {
+    width: 160px;
+}
+
+table > tr > td:nth-of-type(4), th:nth-of-type(4) {
+    width: 130px;
+}
+
+table > tr > td:nth-of-type(5), th:nth-of-type(5) {
+    width: 130px;
+}
+
+table > tr > td:nth-of-type(6) {
+    width: 100px;
+}
+
+
 table > tr > td:nth-of-type(1), td:nth-of-type(2), td:nth-of-type(3) {
     display: flex;
     align-items: center;
