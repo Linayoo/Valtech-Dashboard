@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const EditProjectContainer  = styled.div`
 display: flex;
-flex-direction: column;
+flex-direction: row;
 background-color: #8080800;
 width: 100vw;
 height: 100vh;
@@ -16,10 +16,20 @@ h1 {
 }
 
 hr {
-    width: 500px;
+    width: 30px;
     border: none;
     height: 2px;
     background-color: grey;
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
 }
 
 button {

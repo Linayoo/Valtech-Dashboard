@@ -1,4 +1,7 @@
 from rest_framework import serializers
+
+from skill.serializers import SkillSerializer
+from timeframe.serializers import TimeFrameSerializer
 from user_project.models import UserProject
 
 
@@ -7,6 +10,9 @@ class UserProjectSerializer(serializers.ModelSerializer):
         model = UserProject
         fields = '__all__'
         depth = 1
+
+    tools = SkillSerializer(many=True, required=False)
+    time_frame = TimeFrameSerializer(required=False)
 
 
 # class ProjectPatchSerializer(serializers.ModelSerializer): # if we just want to add item to an array
