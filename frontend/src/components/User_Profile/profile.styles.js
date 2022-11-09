@@ -7,12 +7,12 @@ import styled from "styled-components"
 export const ProfileMain = styled.div`
 background-color: white;
 width: 100%;
-height: 97%;
-margin-top: 3%;
+height: 96.5%;
+margin-top: 3.5%;
 `;
 
 export const ProfileInfo = styled.div`
-background: linear-gradient(to top, #531ebd, #8d54e966);
+background: linear-gradient(to top, #42018c, #220641); 
 width: 100%;
 height: 35%;
 display: flex;
