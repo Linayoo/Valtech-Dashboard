@@ -24,6 +24,12 @@ const LastTest = () => {
     const [education, setEducation] = useState("")
     const [image, setImage] = useState("")
 
+    const handleUpload = e => {
+        const imageUrl = e.target.files;
+        console.log(e.target.files)
+        setImage(imageUrl[0]);
+    }
+
     const post = "POST"
     const patch = "PATCH"
 
@@ -34,6 +40,7 @@ const LastTest = () => {
 
     const fileUploadHeaders = new Headers({
         "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MjQ5MzMwLCJpYXQiOjE2Njc4MTczMzAsImp0aSI6ImFiMDk5Yzg3MjRkMTRmY2NiYThmZGQ1Y2JkZjU5OWQ2IiwidXNlcl9pZCI6MX0.2E0ZLI8aE0DWzogP_ORPWWFLfTIE44p57eDzQX5WYZc`,
+        // "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
     })
 
     const parseStringToList = (inputString) => { return inputString.split(",").map(Number)} 
@@ -69,15 +76,13 @@ const LastTest = () => {
     }
 
     const imageData = new FormData()
-    imageData.append("image_path", image.image_path)
+    imageData.append("image_path", image)
 
     const imageUploadConfig = {
         method: patch,
         headers: fileUploadHeaders,
         body: imageData
     }
-
-    let id = null
 
     const createConsultant = (event) => {
         event.preventDefault();
@@ -198,7 +203,7 @@ const LastTest = () => {
                     </label>
                     <label>
                         <p>Image</p>
-                        <input type="text" name="unavailable" onChange={e => setUnavailable(e.target.value)}></input>
+                        <input value={imageData.image_path} id="select" multiple type="file" name="image_path" accept='image/' onChange={handleUpload}></input>
                     </label>
                 </div>
                 
