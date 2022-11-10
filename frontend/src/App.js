@@ -8,6 +8,7 @@ import ProjectCreatePage from "./pages/projectCreate/project-create-page";
 import ProjectEditPage from "./pages/projectEdit/project-edit-page";
 import InsightsPage from "./pages/insights/insights-page";
 import LastTest from "./components/test/lastTest";
+import Test from "./components/test/test";
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
           <Route path="/create" element={<ProjectCreatePage/>} />
           <Route path="project/:projectId/edit" element={<ProjectEditPage />} />
           <Route path="profile/" element={<ProfilePage />} />
-          <Route path="lastTest/" element={<LastTest />} />
+          <Route path="createConsultantTest/" element={<LastTest />} />
+          <Route path="createProjectTest/" element={<Test />} />
         </Routes>
       </main>
     </BrowserRouter>

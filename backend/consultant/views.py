@@ -4,7 +4,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 
 from consultant.models import Consultant
-from consultant.serializers import ConsultantSerializer, PatchConsultantSerializer
+from consultant.serializers import ConsultantSerializer
 
 
 # GET all the consultants (api/consultants/)
