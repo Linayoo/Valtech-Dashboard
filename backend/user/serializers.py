@@ -8,4 +8,4 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        exclude = ["last_login", "is_superuser", "is_staff", "is_active", "date_joined"]
+        exclude = ["last_login", "is_superuser", "is_staff", "is_active"]
