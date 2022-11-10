@@ -1,11 +1,13 @@
+from drf_writable_nested import WritableNestedModelSerializer
 from rest_framework import serializers
 
+from consultant.serializers import ConsultantSerializer
 from skill.serializers import SkillSerializer
 from timeframe.serializers import TimeFrameSerializer
 from user_project.models import UserProject
 
 
-class UserProjectSerializer(serializers.ModelSerializer):
+class UserProjectSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
     class Meta:
         model = UserProject
         fields = '__all__'
@@ -13,6 +15,7 @@ class UserProjectSerializer(serializers.ModelSerializer):
 
     tools = SkillSerializer(many=True, required=False)
     time_frame = TimeFrameSerializer(required=False)
+    assignee = ConsultantSerializer(many=True, required=False)
 
 
 # class ProjectPatchSerializer(serializers.ModelSerializer): # if we just want to add item to an array

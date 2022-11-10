@@ -11,3 +11,4 @@ dependencies :
       - gunicorn
       - pillow==9.2.0
       - django-cors-headers
+      - drf-writable-nested==0.7.0

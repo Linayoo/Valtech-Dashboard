@@ -2,12 +2,13 @@ import styled from "styled-components"
 
 export const EditProjectContainer  = styled.div`
 display: flex;
-flex-direction: row;
+flex-direction: column;
 background-color: #8080800;
 width: 100vw;
 height: 100vh;
 padding-top: 6%;
 padding-left: 5%;
+
 
 h1 {
     margin-bottom: 5px;
@@ -16,10 +17,11 @@ h1 {
 }
 
 hr {
-    width: 30px;
+    width: 700px;
     border: none;
     height: 2px;
     background-color: grey;
+    margin-bottom: 30px;
 }
 
 .tags {
@@ -27,29 +29,19 @@ hr {
     flex-direction: column;
 }
 
-.search {
+.dates,
+.search,
+.consultant-search, 
+.consultant-onproject,
+.tools-search,
+.tools-onproject {
     display: flex;
-    flex-direction: column;
-}
-
-button {
-    color: #1b253d;
-    border: 1px solid #42018cc2;
-    height: 30px;
-    width: 120px;
-    font-weight: bolder;
-    border-radius: 5px;
-    font-size: 15px;
-    margin-top: 9%;
-    margin-left: 0%;
+    flex-direction: row;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-top: 30px;
-    height: 300px;
 }
 
 label, input {
@@ -77,12 +69,27 @@ input {
    margin-bottom: 20px;
    color: #646464b0;
    font-size: 18px;
+   margin-right: 50px;
 }
 
 input:focus, select:focus {
     outline: none;
     border-bottom: 1px solid #837b7b8e;
     box-shadow: 0 1px 0 0 #837b7b8e;
+}
+
+.datepicker {
+    height: 50px;
+}
+
+.submitty {
+    color: #1b253d;
+    border: 1px solid #42018cc2;
+    height: 30px;
+    width: 120px;
+    font-weight: bolder;
+    border-radius: 5px;
+    font-size: 15px;
 }
 
 `;

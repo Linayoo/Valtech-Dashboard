@@ -10,19 +10,15 @@ const ProjectResults = (props) => {
     const navigate = useNavigate();
     const [rendernumber, setRendernumber] = useState()
     const [editButton, renderEditButton] = useState(false)
-    const [projectInfo, setProjectInfo] = useState()
 
     const navigateToProjectDetails = (event, val) => {
-        setProjectInfo(val)
-        navigate(`/project/${val.project}`);
+        navigate(`/project/${val.id}`);
     };
 
     const changeRender = (event) => {
         renderEditButton(!editButton)
         setRendernumber(event.target.id)
     }
-
-    { projectInfo && <ProjectDetails project={projectInfo} /> }
 
     return (
         <ProjectResultsContainer>
