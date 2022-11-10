@@ -13,7 +13,7 @@ const UserProfile = () => {
 
     const get = "GET"
     const header = new Headers({
-        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODQ1MDk3OSwiaWF0IjoxNjY4MDE4OTc5LCJqdGkiOiI1ZDIwZTljNDZjYzQ0YjBjYjYyMzkxZmJhOGZhNzlkNyIsInVzZXJfaWQiOjJ9.J2yL1ZvVtx47JGX9v9qYkrZADe6YshjMn9oCrObwXBI","access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4NDUwOTc5LCJpYXQiOjE2NjgwMTg5NzksImp0aSI6IjYzZjg1OGU1ZGMwOTQ1MmJhM2JhZDg1M2M5YzdkZmQ1IiwidXNlcl9pZCI6Mn0.lxYpzor8Na3LYO1F-PijyHNIhPEfeb2mO7GfYJxMZ-4`,
+        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4NTAzMzE0LCJpYXQiOjE2NjgwNzEzMTQsImp0aSI6ImExMTUxY2MwM2E4ODRjNGRhZDA0OTM4ZWU4Mzc4YzM3IiwidXNlcl9pZCI6MX0.efDFxFISLWDdC-0sjLE9iauw7QEAyJ6SVm2bOGgBR_s`,
         "content-type": "application/json",
     })
 
@@ -103,7 +103,12 @@ useEffect((state) => {
                 </ProfileContact>
                 <ProfileDescription>
                         <TextDescription> 
-                        <p><span><CiEdit /></span><input type="text" placeholder="Edit Description"/></p>
+                        <p><span><CiEdit /></span>
+                        Выполните следующие действия:
+Запустите Chrome на компьютере.
+Нажмите на значок с тремя точками в правом верхнем углу экрана Настройки.
+Внизу выберите Дополнительные.
+Включите или отключите параметр</p>
                         </TextDescription>
                 </ProfileDescription>
             </WorkContact>
@@ -132,7 +137,7 @@ useEffect((state) => {
                     </ProfileGender>
                     <ProfileJoined>
                         <h3><span><CiEdit /></span>Joined:</h3>
-                        <p><input type="text" placeholder="Edit Date"/></p>
+                        <p><input type="text" placeholder="Edit Date" value="25/11/2018"/></p>
                     </ProfileJoined>
                 </ProfileBasicInformation>
             </SkillsBasic>
