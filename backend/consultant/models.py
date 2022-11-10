@@ -31,7 +31,7 @@ class Consultant(models.Model):
     office_category = models.CharField(max_length=100, choices=OFFICES)
     email = models.EmailField(unique=False)
     linked_in_link = models.URLField(max_length=200, blank=True, null=True)
-    image_path = models.FileField(upload_to='uploads/', blank=True)
+    image_path = models.FileField(upload_to='uploads/', blank=True, null=True)
     summary = models.TextField(null=True)
     is_subcontractor = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
