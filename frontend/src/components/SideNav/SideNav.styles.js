@@ -2,8 +2,7 @@ import styled from "styled-components"
 
 export const NavContainer  = styled.div`
 width: 215px;
-height: 100vh;
-
+/* margin-top: -80px; */
 background: linear-gradient(to top, #42018c, #220641); 
 /* background-color: black; */
 display: flex;
@@ -11,7 +10,7 @@ flex-direction: column;
 align-items: center;
 border-radius: 0 5px 5px 0;
 box-shadow: 0px 0px 25px -2px #555;
-/* position: absolute; */
+/* position: fixed; */
 
 @media only screen and (min-width: 1500px) {
     width: 15%;

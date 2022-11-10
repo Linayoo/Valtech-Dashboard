@@ -1,11 +1,12 @@
-import { ProjectFilterContainer, Flex, GridItem } from "./project-filter.styles"
+import { ProjectFilterContainer, Flex, GridItem, HeaderStyle } from "./project-filter.styles"
 import { useState, useRef, useEffect } from "react"
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useDebugValue } from "react";
+import { useNavigate } from "react-router";
 
 const ProjectFilter = (props) => {
-
+    const navigate = useNavigate()
     const inputref = useRef([])
 
     const [projects, setProjects] = useState()
@@ -61,7 +62,10 @@ const ProjectFilter = (props) => {
     return (
         <div>
             <ProjectFilterContainer>
+                <HeaderStyle>
                 <h1>Projects</h1>
+                <button onClick={() => navigate(`/create/project`)}>Create project</button>
+                </HeaderStyle>
                 <Flex>
                     <form>
                         <input ref={ref => inputref.current.name = ref} type="text" name="name" placeholder="Filter by name" autoComplete="none" onChange={handleFilter} />

@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './components/Login/Login';
 import HomePage from './pages/home/home-page';
+import ConsultantCreatePage from "./pages/consultantCreate/consultant-create-page";
+import ConsultantDetailsPage from "./pages/consultantDetails/consultant-details-page";
+import ConsultantEditPage from "./pages/consultantEdit/consultant-edit-page";
 import ProjectsPage from "./pages/projects/projects-page";
 import ProjectDetailsPage from "./pages/projectDetails/project-details-page";
 import ProfilePage from "./pages/profile/profile";
@@ -17,10 +20,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="insights/" element={<InsightsPage/>} />
-          <Route path="home/" element={<HomePage />} />
+          <Route path="consultants/" element={<HomePage />} />
+          <Route path="/create/consultant" element={<ConsultantCreatePage/>} />
+          <Route path="consultant/details" element={<ConsultantDetailsPage />} />
+          <Route path="/consultant/edit" element={<ConsultantEditPage />} />
           <Route path="projects/" element={<ProjectsPage />} />
           <Route path="project/:projectId" element={<ProjectDetailsPage />} />
-          <Route path="/create" element={<ProjectCreatePage/>} />
+          <Route path="/create/project" element={<ProjectCreatePage/>} />
           <Route path="project/:projectId/edit" element={<ProjectEditPage />} />
           <Route path="profile/" element={<ProfilePage />} />
           <Route path="test/" element={<Test />} />

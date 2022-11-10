@@ -39,6 +39,7 @@ table > tr > th {
     width: 150px;
     justify-content: center;
     padding: 15px;
+    color: #1b253d;
 }
 
 
@@ -63,7 +64,9 @@ table > tr > td {
 }
 
 table > tr > td:last-of-type {
-    margin-left: -30px;
+    margin-left: 0px;
+    padding-left: 30px;
+    width: 100px;
 }
 
 table > tr > td > button {

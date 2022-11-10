@@ -1,15 +1,16 @@
-import { FilterContainer, Flex, GridItem } from "./Filter.styles"
+import { FilterContainer, Flex, GridItem, HeaderStyle } from "./Filter.styles"
 import { useState, useRef } from "react"
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect } from "react";
 import React from "react";
 import { useSyncExternalStore } from "react";
+import { useNavigate } from "react-router";
 
 
 
 const Filter = (props) => {
-
+    const navigate = useNavigate()
     const inputref = useRef([]);
 
     const [dateRange, setDateRange] = useState([null, null]);
@@ -76,7 +77,10 @@ const Filter = (props) => {
 
     return (
         <FilterContainer>
-            <h1>Consultants</h1>
+            <HeaderStyle>
+                <h1>Consultants</h1>
+                <button onClick={() => navigate(`/create/consultant`)}>Create consultant</button>
+                </HeaderStyle>
             <Flex>
                 <form id='filter'>
                     <input ref={ref => inputref.current.name = ref} type="text" name="name" placeholder="Filter by name" autoComplete="none" onChange={handleChange} />

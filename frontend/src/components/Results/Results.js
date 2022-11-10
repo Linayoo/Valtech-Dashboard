@@ -24,14 +24,18 @@ const Results = (props) => {
             {props.consultants === undefined ? 'Loading...' : props.consultants.map((val, key) => {
                 return (
                     <tr key={key}>
+                        {console.log(val)}
                         <td>{val.display_name}</td>
                         <td>{val.country}</td>
                         <td>{val.city}</td>
-                        <td><img src={val.image_path}/></td>
+                        {/* <td><img src={val.image_path}/></td> */}
+                        <td>{/*{val.manager_display_name}*/}</td>
                         <>{console.log(val.image_path)}</>
                         <td>{val.unavailable.map(e => `${e.date_finished}`)}</td>
                         <td>{(val.unavailable[0] == undefined || new Date() > new Date(`${val.unavailable[0].date_finished}Z`)) ? 'Available' : 'On project'}</td>
-                        <td><button>edit</button><button>delete</button></td>
+                        <td><div>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div></td>
                     </tr>
                 )
             })}

@@ -116,7 +116,7 @@ const MyResponsiveBar = () => {
             <p>Employee project ratio</p>
             <hr/>
             </div>
-    <BarWrap style={{height: 450, width:700}}>
+    <BarWrap>
     <ResponsiveBar
         data={data}
         keys={[
@@ -127,7 +127,7 @@ const MyResponsiveBar = () => {
             'Manager',
         ]}
         indexBy="Project"
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+        margin={{ top: 30, right: 100, bottom: 60, left: 50 }}
         padding={0.3}
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band', round: true }}
@@ -142,15 +142,15 @@ const MyResponsiveBar = () => {
                 padding: 1,
                 stagger: true
             },
-            {
-                // id: 'lines',
-                // type: 'patternLines',
-                background: 'inherit',
-                color: '#eed312',
-                rotation: -45,
-                lineWidth: 6,
-                spacing: 10
-            }
+        //     {
+        //         id: 'lines',
+        //         type: 'patternLines',
+        //         background: 'inherit',
+        //         color: '#eed312',
+        //         rotation: -45,
+        //         lineWidth: 6,
+        //         spacing: 10
+        //     }
         ]}
         fill={[
             {
@@ -171,7 +171,7 @@ const MyResponsiveBar = () => {
             modifiers: [
                 [
                     'darker',
-                    '0.3'
+                    '5.3'
                 ]
             ]
         }}
@@ -206,6 +206,7 @@ const MyResponsiveBar = () => {
                 itemsSpacing: 2,
                 itemWidth: 100,
                 itemHeight: 20,
+                itemTextColor: '#999',
                 itemDirection: 'left-to-right',
                 itemOpacity: 0.85,
                 symbolSize: 20,
