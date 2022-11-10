@@ -7,8 +7,8 @@ import ProfilePage from "./pages/profile/profile";
 import ProjectCreatePage from "./pages/projectCreate/project-create-page";
 import ProjectEditPage from "./pages/projectEdit/project-edit-page";
 import InsightsPage from "./pages/insights/insights-page";
-import LastTest from "./components/test/lastTest";
-import Test from "./components/test/test";
+import LastTest from "./components/test/createConsultant";
+import Test from "./components/test/createProject";
 
 
 function App() {
