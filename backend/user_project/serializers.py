@@ -18,18 +18,15 @@ class UserProjectSerializer(WritableNestedModelSerializer, serializers.ModelSeri
     assignee = ConsultantSerializer(many=True, required=False)
 
 
-# class ProjectPatchSerializer(serializers.ModelSerializer): # if we just want to add item to an array
+# class PatchProjectImageSerializer(serializers.ModelSerializer):
+#     image = serializers.ImageField(required=False)
+#
 #     class Meta:
 #         model = UserProject
 #         fields = '__all__'
-#
-#     def update(self, instance, validated_data):
-#         assignee = validated_data.pop('assignee')
-#
-#         for consultant in assignee:
-#             instance.assignee.add(consultant)
-#
-#         return super().update(instance, validated_data)
+#         depth = 1
+
+
 
 class CreateProjectSerializer(serializers.ModelSerializer):
     # time_frame = TimeFrameSerializer(many=True)

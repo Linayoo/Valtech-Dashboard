@@ -1,5 +1,6 @@
 from rest_framework import filters
 from rest_framework.generics import ListAPIView, GenericAPIView
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 
 from timeframe.models import TimeFrame
@@ -23,7 +24,7 @@ class CreateProject(GenericAPIView):
         new_timeframe = TimeFrame(date_started=timeframe['date_started'], date_finished=timeframe['date_finished'])
         new_timeframe.save()
         project = UserProject(name=request.data['name'], description=request.data['description'],
-                              external_link=request.data['external_link'], image=request.data['image'],
+                              external_link=request.data['external_link'],
                               time_frame=new_timeframe)
         project.save()
         list_of_tools = request.data['tools']
@@ -45,6 +46,7 @@ class CreateProject(GenericAPIView):
 class RetrievePatchDeleteProject(GenericAPIView):
     queryset = UserProject.objects.all()
     lookup_field = 'id'
+    parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -57,13 +59,6 @@ class RetrievePatchDeleteProject(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
-
-    # def patch(self, request, *args, **kwargs):
-    #     instance = self.get_object()
-    #     serializer = ProjectPatchSerializer(instance, data=request.data, partial=True)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(serializer.data)
 
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()

@@ -11,8 +11,7 @@ margin-top: 70px;
 padding: 15px;
 
 h1 {
-    color: #808080d9;
-    font-weight: lighter;
+    color: #1b253d;
     padding: 5px;
     margin-bottom:5px;
 }
@@ -74,5 +73,26 @@ button {
 }
 input {
     padding: 10px;
+}
+`;
+
+export const HeaderStyle = styled.div`
+display: flex;
+align-items: center;
+button {
+    color: #1b253d;
+    border: 1px solid #42018cc2;
+    height: 30px;
+    width: 150px;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin-left:20px;
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #220641;
+    color: white;
 }
 `;

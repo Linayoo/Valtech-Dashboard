@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { CreateProjectContainer } from "./Project-create.styles";
+import { useNavigate } from "react-router";
 
-const Test = () => {
-
+const CreateProject = () => {
+    const navigate = useNavigate()
     const [projectName, setProjectName] = useState("")
     const [projectDescription, setProjectDescription] = useState("")
     const [link, setLink] = useState("")
@@ -49,8 +51,9 @@ const Test = () => {
     }
 
     return (
-        <>
-            <p>Let's create a Project!</p>
+        <CreateProjectContainer>
+            <h1>Let's create a new Project!</h1>
+            <hr/>
             <form id='test' onSubmit={createProject}>
                 <div>
                     Project Name
@@ -81,10 +84,10 @@ const Test = () => {
                     Assignee
                     <input form='test' type='text' onChange={(e) => setProjectAssignee(e.target.value)}></input>
                 </div>
-                <button type='submit' form='test'>SEND IT BABY</button>
+                <button type='submit' form='test' onClick={() => {navigate('/projects')}}>SEND IT BABY</button>
             </form>
-        </>
+        </CreateProjectContainer>
     )
 }
 
-export default Test;
+export default CreateProject;
