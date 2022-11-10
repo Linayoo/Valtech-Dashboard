@@ -95,8 +95,14 @@ function Login() {
         event.preventDefault();
         fetch("http://localhost:8000/token/", postconfig)
             .then(response => response.json())
-            .then((data) => {localStorage.setItem("valtech-auth", JSON.stringify(data.access)); navigate('home/') })
-            .catch(error => console.log(error))
+            .then(data => { 
+                if (data.access) {
+                    localStorage.setItem("valtech-auth", data.access)
+                    navigate('consultants/')
+                } else {
+                alert('Invalid username or password. Please try again!')
+                }
+            })
     }
 
     return(
