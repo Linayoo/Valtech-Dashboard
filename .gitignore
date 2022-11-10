@@ -1,7 +1,7 @@
 .pyc
 __pychache__
 .idea/workspace.xml
-.DS-Store
+.DS_Store
 
 
 # If you are using PyCharm #
