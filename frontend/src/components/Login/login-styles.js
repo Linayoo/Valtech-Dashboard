@@ -71,7 +71,11 @@ padding-left: 15px;
 padding-bottom: 15px;
 margin-top: 20px;
 border-bottom: 0.5px solid white;
-
+color: white;
+/* cursor: pointer; */
+:hover {
+    color: white;
+}
 
 /* &:-webkit-autofill,
   &:-webkit-autofill:focus {
