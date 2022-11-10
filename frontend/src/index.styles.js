@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
 
    body {
       overflow: hidden;
-      width: 100vh;
+      width: 100vw;
       height: 100vh;
       font-family: Open Sans, Helvetica, sans-serif;
    }

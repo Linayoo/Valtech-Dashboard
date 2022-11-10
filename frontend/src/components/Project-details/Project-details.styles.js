@@ -72,6 +72,18 @@ p {
 p:first-child {
     font-weight: bolder;
 }
+
+h4 {
+    font-weight: 400;
+    color: white;
+    background-color: black;
+    border-radius: 16px;
+    text-align: center;
+    height: 30px;
+    padding: 6px;
+    margin-right: 8px;
+}
+
 `;
 
 export const HeaderStyle  = styled.div`
@@ -87,6 +99,5 @@ margin-top: 2%;
 p {
     color: #1b253d;
 }
-
 
 `;
