@@ -1,119 +1,33 @@
 import { ProfileInfo, StringsSkills, ProfileJoined, ProfileUsername, SkillsString, StringsWork, DescriptionString, ProfileDescription, TextDescription, BasicString, SkillsAll, ProfileString, ProfileSkills, WorkExperience, ProfileBasicInformation, ProfileBirthday, ProfileGender, ProfileWork, PrimaryWork, SecondaryWork, ProfileContact, ProfileAddress, ProfileEmail, ProfilePhone, ProfileSite, TabAboutButton, ProfileName, ProfileLocation, TabTimelineButton, ProfileMain,ProfileRightSide, NameLocation, Proffession, Functions, FuncContacts, FuncReportUser, FuncSendMess, FunctionTabs, ProfilePhoto, WorkContact, SkillsBasic, ProfileInfoLeftSide} from "./profile.styles"
 import {CiEdit} from 'react-icons/ci'
-import React, { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 import SideNav from '../../components/SideNav/SideNav';
 
 
 const UserProfile = () => {
 
     // let localToken = JSON.parse(localStorage.getItem("valtech-auth"))
-    const [consultants, setConsultants] = useState()
-    const initialID = useParams().userID
+    const [consultants, setConsultants] = useState([])
 
 
-    // const [first_name, setFirstName] = useState()
-    // const [last_name, setLastName] = useState()
-    // const [username, setUsername] = useState()
-    // const [country, setCountry] = useState()
-    // const [city, setCity] = useState()
-    // const [office_category, setOfficeCategory] = useState()
-    // const [email, setEmail] = useState()
-    // const [summary, setSummary] = useState()
-    // const [primary_language, setPrimaryLanguage] = useState()
-    // const [title, setTitle] = useState()
-    // const [role_category, setRoleCategory] = useState()
-    // const [educations, setEducations] = useState()
-    
-    // const [proffession, setProffession] = useState()
-
-    // const [location, setLocation] = useState()
-    // const [primaryWork, setPrimaryWork] = useState()
-    // const [addressPrimaryWork, setAddressPrimaryWork] = useState()
-    // const [secondaryWork, setSecondaryWork] = useState()
-    // const [addressSecondaryWork, setAddressSecondaryWork] = useState()
-    // const [email, setEmail] = useState()
-    // const [numberPhone, setNumberPhone] = useState()
-    // const [address, setAddress] = useState() 
-    // const [site, setSite] = useState()
-    // const [birthday, setBirtday] = useState()
-    // const [gender, setGender] = useState()
-    // const navigate = useNavigate();
-
-    // const post = "POST"
     const get = "GET"
     const header = new Headers({
-    "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MzQxNDY0LCJpYXQiOjE2Njc5MDk0NjQsImp0aSI6ImQzNzg5NmE2MmU3YzQwNTZhNmE0MTAzYWZiMWY4OTQzIiwidXNlcl9pZCI6Mn0.n3LoA_H9LO8Gzp9oz1e3AVJ5oliFRQWOaWiNoZnIanc`,
-    "content-type": "application/json",
+        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODQ1MDk3OSwiaWF0IjoxNjY4MDE4OTc5LCJqdGkiOiI1ZDIwZTljNDZjYzQ0YjBjYjYyMzkxZmJhOGZhNzlkNyIsInVzZXJfaWQiOjJ9.J2yL1ZvVtx47JGX9v9qYkrZADe6YshjMn9oCrObwXBI","access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4NDUwOTc5LCJpYXQiOjE2NjgwMTg5NzksImp0aSI6IjYzZjg1OGU1ZGMwOTQ1MmJhM2JhZDg1M2M5YzdkZmQ1IiwidXNlcl9pZCI6Mn0.lxYpzor8Na3LYO1F-PijyHNIhPEfeb2mO7GfYJxMZ-4`,
+        "content-type": "application/json",
     })
 
-
-// const body = JSON.stringify({
-//     "first_name": `${first_name}`,
-//     "last_name": `${last_name}`,
-//     "username": `${username}`,
-//     "country": `${country}`,
-//     "city": `${city}`,
-//     "office_category": `${office_category}`,
-//     "email": `${email}`,
-//     "summary": `${summary}`,
-//     "primary_language": `${primary_language}`,
-//     "title": `${title}`,
-//     "role_category": `${role_category}`,
-//     "educations": `${educations}`,
-// })
-
-// const postconfig = {
-//     method: post,
-//     headers: header,
-//     body: body,
-// }
-
-const getconfig = {
+    const getconfig = {
     method: get,
     headers: header,
-}
-
-
-
-useEffect((state) => {
-    if ( initialID === undefined ) {
-
-    fetch("http://localhost:8000/api/consultants/", getconfig)
-        .then(response => response.json())
-        .then(data => setConsultants(data))
-        .catch(error => console.log(error));
-
-    } else {
-
-    fetch(`http://localhost:8000/api/consultants/${initialID}/`, getconfig)
-        .then(response => response.json())
-        .then(data => setConsultants(data))
-        .catch(error => console.log(error));
-
     }
 
-},[])
-
-
-
-
-
-
-
-
-
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     fetch("https://team3luna.propulsion-learn.ch/api/restaurants/new/", postconfig)
-//       .then(response => response.json())
-//       .then((data) => navigate("/userprofile/")) /*after creating new restaurant, navigate back to user page*/
-//       .catch(error => console.log(error))
-//   }
-
-// .then((data) => {localStorage.setItem("valtech-auth", JSON.stringify(data.access));})
-
+useEffect((state) => {
+    fetch("http://localhost:8000/api/me/", getconfig)
+        .then(response => response.json())
+        .then(data => setConsultants(data))
+        .catch(error => console.log(error));
+}, [])
 
 
 
@@ -130,8 +44,8 @@ useEffect((state) => {
                 <ProfileRightSide>
                     <NameLocation>
                         <ProfileName>
-                            <p><span><CiEdit /></span><input type="text" placeholder="Edit Name" value={consultants === undefined ? 'Loading...' : consultants.first_name}/></p>
-                            <p><span><CiEdit /></span><input type="text" placeholder="Edit Surname" value={consultants === undefined ? 'Loading...' : consultants.last_name}/></p>
+                            <p><span><CiEdit /></span><input type="text" placeholder="Edit Name" value={consultants.first_name}/></p>
+                            <p><span><CiEdit /></span><input type="text" placeholder="Edit Surname" value={consultants.last_name}/></p>
                         </ProfileName>
                         {/* <ProfileLocation>
                             <p><span><CiEdit /></span><input type="text" placeholder="Edit Location"/></p>
@@ -141,7 +55,7 @@ useEffect((state) => {
                         <p><span><CiEdit /></span><input type="text" placeholder="Edit Proffession"/></p>
                     </Proffession> */}
                     <ProfileUsername>
-                        <p><span><CiEdit /></span><input type="text" placeholder="Edit Username" value={consultants === undefined ? 'Loading...' : consultants.username}/></p>
+                        <p><span><CiEdit /></span><input type="text" placeholder="Edit Username" value={consultants.username}/></p>
                     </ProfileUsername>
                     <Functions>
                         <FuncSendMess><button>Send Message</button></FuncSendMess>
@@ -180,7 +94,7 @@ useEffect((state) => {
                     </ProfileAddress>
                     <ProfileEmail>
                         <h3><span><CiEdit /></span>Email:</h3>
-                        <p><input type="text" placeholder="Edit Email" value={consultants === undefined ? 'Loading...' : consultants.email}/></p>
+                        <p><input type="text" placeholder="Edit Email" value={consultants.email}/></p>
                     </ProfileEmail>
                     <ProfileSite>
                         <h3><span><CiEdit /></span>Site:</h3>
@@ -218,7 +132,7 @@ useEffect((state) => {
                     </ProfileGender>
                     <ProfileJoined>
                         <h3><span><CiEdit /></span>Joined:</h3>
-                        {/* <p><input type="text" placeholder="Edit Date" value={consultants === undefined ? 'Loading...' : consultants.unavailable.date_started}/></p> */}
+                        <p><input type="text" placeholder="Edit Date"/></p>
                     </ProfileJoined>
                 </ProfileBasicInformation>
             </SkillsBasic>

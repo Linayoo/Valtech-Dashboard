@@ -5,10 +5,10 @@ import styled from "styled-components"
 
 
 export const ProfileMain = styled.div`
-background-color: white;
-width: 100%;
-height: 96.5%;
-margin-top: 3.5%;
+background-color: #8080801e;
+width: 85%;
+height: 100%;
+margin-top: 4%;
 `;
 
 export const ProfileInfo = styled.div`
@@ -214,44 +214,41 @@ margin-left: -20%;
 `;
 
 export const TabAboutButton = styled.button`
-color: black;
+color: white;
 display: flex;
 width: 110px;
 align-items: flex-start;
 justify-content: center;
 font-size: 15px;
 border-radius: 50px;
-background-color: white;
+background-color: #8080801e;
 font-family: Arial, Helvetica, sans-serif;
 /* padding: 20px; */
 border: none;
 height: 40px;
-margin-bottom: -10px; 
+margin-bottom: -5px; 
 cursor: pointer;
 &:hover {
     background-color: #f6f4fbb5;
 }
 
-
-/* width: 80px;
-height: 100px; */
-/* border-bottom: 10px solid white; */
 `;
 
 export const TabTimelineButton = styled.button`
-color: black;
+color: white;
 display: flex;
 width: 110px;
 align-items: flex-start;
 justify-content: center;
 font-size: 15px;
 border-radius: 50px;
-background-color: white;
+background-color: #8080801e;
+;
 font-family: Arial, Helvetica, sans-serif;
 /* padding: 20px; */
 border: none;
 height: 40px;
-margin-bottom: -10px; 
+margin-bottom: -5px; 
 cursor: pointer;
 &:hover {
     background-color: #f6f4fbb5;
@@ -271,11 +268,8 @@ border-bottom: 3px solid black;
 export const WorkContact = styled.div`
 width: 100%;
 height: 35%;
-background-color: white;
 display: flex;
 flex-direction: row;
-/* justify-content: space-evenly; */
-
 `; 
 
 
@@ -474,6 +468,7 @@ flex-direction: row;
 /* justify-content: center;
 align-items: center; */
 margin-left: 15px;
+
 `; 
 
 export const ProfileSkills = styled.div`
