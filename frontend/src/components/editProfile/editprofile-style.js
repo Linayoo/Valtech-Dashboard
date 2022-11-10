@@ -81,9 +81,16 @@ align-items: flex-start;
 justify-content: flex-start;
 font-size: 20px;
 font-weight: 900;
+width: 100%;
 p{
+    display: flex;
+    flex-direction: row;
     width: 100%;
     padding: 5px;
+}
+input {
+    display: flex;
+    flex-direction: row;
 }
 
 

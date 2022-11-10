@@ -1,11 +1,10 @@
-import { ProfileInfo, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./profile.styles"
-import {CiEdit} from 'react-icons/ci'
+import { ProfileInfo, ProfileAll, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./editprofile-style"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-import SideNav from '../../components/SideNav/SideNav';
 
 
-const UserProfile = () => {
+
+const EditUserProfile = () => {
 
     const [consultants, setConsultants] = useState([])
 
@@ -32,6 +31,7 @@ useEffect((state) => {
 
 
 return (
+     
         <ProfileMain>
             <ProfileInfo>
                 <ProfileInfoLeftSide>
@@ -41,8 +41,8 @@ return (
                 <ProfileRightSide>
                     <NameLocation>
                         <ProfileName>
-                            <p>First name: {consultants.first_name}</p>
-                            <p>Last name: {consultants.last_name}</p>
+                            <p>First Name: <input type="text" value="{consultants.first_name}"></input></p>
+                            <p>Last name: <input type="text" value="{consultants.last_name}"></input></p>
                         </ProfileName>
                     </NameLocation>
                     <ProfileUsername>
@@ -62,10 +62,8 @@ return (
                 </EditUserDetails>
             </ButtonProfile>
         </ProfileMain>
-    )
-}
+)}
 
-export default UserProfile
+export default EditUserProfile
 
                 
-

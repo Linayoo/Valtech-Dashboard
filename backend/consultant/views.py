@@ -30,18 +30,19 @@ class CreateConsultantTest(GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         consultant = Consultant(display_name=request.data['display_name'], first_name=request.data['first_name'],
-                              last_name=request.data['last_name'], username=request.data['username'],
+                                last_name=request.data['last_name'], username=request.data['username'],
                                 country=request.data['country'], city=request.data['city'],
                                 office_category=request.data['office_category'], email=request.data['email'],
                                 linked_in_link=request.data['linked_in_link'], summary=request.data['summary'],
-                                # is_subcontractor=request.data['is_subcontractor'], is_disabled=request.data['is_disabled'],
                                 primary_language=request.data['primary_language'], title=request.data['title'],
-                                manager_display_name=request.data['manager_display_name'], role_category=request.data['role_category']
-                              )
+                                manager_display_name=request.data['manager_display_name'],
+                                role_category=request.data['role_category']
+                                )
         consultant.save()
         list_of_skills = request.data['managed_skills']
         consultant.managed_skills.set(list_of_skills)  # accepts list of skills' IDs
-        list_of_add_skills = request.data['addition_skills']  # accepts list of consultants' IDs these two can be used in patch
+        list_of_add_skills = request.data[
+            'addition_skills']  # accepts list of consultants' IDs these two can be used in patch
         consultant.addition_skills.set(list_of_add_skills)
         list_of_educations = request.data['educations']
         consultant.educations.set(list_of_educations)
@@ -99,7 +100,6 @@ class SearchConsultant(ListAPIView):
     serializer_class = ConsultantSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['display_name']
-
 
 # class PatchTimeframe(GenericAPIView):
 #     serializer_class = ConsultantSerializer

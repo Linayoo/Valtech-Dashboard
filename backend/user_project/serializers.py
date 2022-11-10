@@ -18,16 +18,6 @@ class UserProjectSerializer(WritableNestedModelSerializer, serializers.ModelSeri
     assignee = ConsultantSerializer(many=True, required=False)
 
 
-# class PatchProjectImageSerializer(serializers.ModelSerializer):
-#     image = serializers.ImageField(required=False)
-#
-#     class Meta:
-#         model = UserProject
-#         fields = '__all__'
-#         depth = 1
-
-
-
 class CreateProjectSerializer(serializers.ModelSerializer):
     # time_frame = TimeFrameSerializer(many=True)
 
@@ -35,10 +25,3 @@ class CreateProjectSerializer(serializers.ModelSerializer):
         model = UserProject
         fields = '__all__'
         depth = 1
-
-    # def create(self, validated_data):
-    #     timeframe_data = validated_data.pop('time_frame')
-    #     project = UserProject.objects.create(**validated_data)
-    #     for timeframe in timeframe_data:
-    #         TimeFrame.objects.create(**timeframe)
-    #     return project
