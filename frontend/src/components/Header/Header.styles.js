@@ -6,8 +6,10 @@ align-items: center;
 width: 100vw;
 justify-content: flex-end;
 position: absolute;
+margin-top: auto;
 padding: 15px;
 border-bottom: 1px solid #5a575712;
+
 
 
 img {

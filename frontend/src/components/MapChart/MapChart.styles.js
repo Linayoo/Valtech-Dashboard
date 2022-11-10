@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-export const BarWrap  = styled.div`
-height: 350px;
-width: 650px;
+export const MapWrap  = styled.div`
+height: 430px;
+width: 1057px;
 `;
 
 export const Wrap  = styled.div`
@@ -10,11 +10,12 @@ export const Wrap  = styled.div`
 justify-content: center;
 align-items: center;
 flex-direction: column; */
-margin-left: 20px;
-margin-top: 1%;
-height: 390px;
-width: 670px;
-background-color: #ffffffc8;
+margin-left: -55.7%;
+margin-top: 21%;
+margin-bottom: 3%;
+height: 480px;
+width: 1140px;
+background-color: white;
 border-radius: 10px;
 box-shadow: 0 0 15px #9999;
 
@@ -40,7 +41,7 @@ p {
 }
 
 hr {
-    width: 670px;
+    width: 1140px;
     margin-top: 5px;
     border: none;
     height: 2px;

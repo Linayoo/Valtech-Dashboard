@@ -10,6 +10,7 @@ margin-left: 5%;
 margin-top: 70px;
 padding: 15px;
 
+
 h1 {
     /* color: #808080d9; */
     color: #1b253d;
@@ -85,3 +86,5 @@ button:hover {
     color: white;
 }
 `;
+
+

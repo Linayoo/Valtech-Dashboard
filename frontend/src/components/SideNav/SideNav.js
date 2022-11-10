@@ -8,7 +8,8 @@ const SideNav = () => {
         transform: 'scale(1.1)',
         borderLeft: '2px solid #fafafa8f',
         width: '90%',
-        height: '70px'
+        height: '70px',
+        color: "white"
      }  
     
 
@@ -16,7 +17,7 @@ const SideNav = () => {
     const navigate = useNavigate();
 
     const toConsultants = () => {
-        navigate('/home')
+        navigate('/consultants')
     }
 
     const toInsights = () => {
@@ -34,7 +35,7 @@ const SideNav = () => {
     return (
         <NavContainer>
             <h1>valtech_</h1>
-            <button onClick={toConsultants} style={url.pathname === "/home" ? tabStyle:{}} >
+            <button onClick={toConsultants} style={url.pathname === "/consultants" ? tabStyle:{}} >
                 <p><BsPersonPlus size={20}/></p>
             Consultants</button>
             <button onClick={toInsights} style={url.pathname === "/insights" ? tabStyle:{}}>
