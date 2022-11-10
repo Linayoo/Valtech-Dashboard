@@ -5,10 +5,10 @@ import styled from "styled-components"
 
 
 export const ProfileMain = styled.div`
-background-color: white;
-width: 100%;
-height: 96.5%;
-margin-top: 3.5%;
+background-color: #8080801e;
+width: 85%;
+height: 95%;
+margin-top: 3%;
 `;
 
 export const ProfileInfo = styled.div`
@@ -72,7 +72,7 @@ margin-left: -20%;
 `;
 
 export const ProfileName = styled.form`
-width: 30%;
+/* width: 70%; */
 height: 20%;
 color: white;
 display: flex;
@@ -83,14 +83,14 @@ span{
     color: black;
 }
 p{
-    width: 35%;
+    width: 20%;
 }
 
 input{
     background-color: transparent;
     border: none;
     font-size: 20px;
-    width: 70%;
+    width: 100%;
     color: white;
     padding-left: 5px;
 }
@@ -214,44 +214,41 @@ margin-left: -20%;
 `;
 
 export const TabAboutButton = styled.button`
-color: black;
+color: white;
 display: flex;
 width: 110px;
 align-items: flex-start;
 justify-content: center;
 font-size: 15px;
 border-radius: 50px;
-background-color: white;
+background-color: #8080801e;
 font-family: Arial, Helvetica, sans-serif;
 /* padding: 20px; */
 border: none;
 height: 40px;
-margin-bottom: -10px; 
+margin-bottom: -5px; 
 cursor: pointer;
 &:hover {
     background-color: #f6f4fbb5;
 }
 
-
-/* width: 80px;
-height: 100px; */
-/* border-bottom: 10px solid white; */
 `;
 
 export const TabTimelineButton = styled.button`
-color: black;
+color: white;
 display: flex;
 width: 110px;
 align-items: flex-start;
 justify-content: center;
 font-size: 15px;
 border-radius: 50px;
-background-color: white;
+background-color: #8080801e;
+;
 font-family: Arial, Helvetica, sans-serif;
 /* padding: 20px; */
 border: none;
 height: 40px;
-margin-bottom: -10px; 
+margin-bottom: -5px; 
 cursor: pointer;
 &:hover {
     background-color: #f6f4fbb5;
@@ -271,11 +268,8 @@ border-bottom: 3px solid black;
 export const WorkContact = styled.div`
 width: 100%;
 height: 35%;
-background-color: white;
 display: flex;
 flex-direction: row;
-/* justify-content: space-evenly; */
-
 `; 
 
 
@@ -400,8 +394,6 @@ input{
 export const ProfileDescription = styled.div`
 display: flex;
 flex-direction: column;
-/* background-color: blue; */
-/* justify-content: space-evenly; */
 width: 35%;
 margin-top: 5px;
 height: 100%;
@@ -420,25 +412,27 @@ justify-content: center;
 export const TextDescription = styled.form`
 display: flex;
 color: black;
-display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 /* background-color: blue; */
 /* justify-content: space-ar; */
 /* height: 100%; */
+/* width: 100%; */
 /* margin-top: 23px; */
 input {
 /* margin-top: 35px; */
 padding-top: 5%;
-width: 90%;
-height: 100%;
+width: 200px;
+height: 350px;
 background: transparent;
 border: none;
 font-size: 20px;
-width: 90%;
+/* width: 90%; */
 color: black;
 padding-left: 5px;
+flex-wrap: wrap;
+display: flex;
 }
 `;
 
@@ -474,6 +468,7 @@ flex-direction: row;
 /* justify-content: center;
 align-items: center; */
 margin-left: 15px;
+
 `; 
 
 export const ProfileSkills = styled.div`
@@ -524,10 +519,11 @@ justify-content: center;
 input{
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     font-size: 25px;
     width: 90%;
-    padding-left: 5px
+    padding-left: 5px;
+    font-weight: 900;
 }
 
 `; 
@@ -541,7 +537,7 @@ justify-content: center;
 input{
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     font-size: 25px;
     width: 90%;
     padding-left: 5px;
@@ -557,7 +553,7 @@ justify-content: center;
 input{
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     font-size: 25px;
     width: 90%;
     padding-left: 5px;
