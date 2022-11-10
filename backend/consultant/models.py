@@ -22,16 +22,19 @@ class Consultant(models.Model):
         ('fullstack', 'Fullstack Developer')
     ]
 
-    display_name = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    username = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    office_category = models.CharField(max_length=100, choices=OFFICES)
-    email = models.EmailField(unique=False)
+    def upload_to(instance, filename):
+        return 'images/{filename}'.format(filename=filename)
+
+    display_name = models.CharField(max_length=100, default="")
+    first_name = models.CharField(max_length=100, blank=True, null=True)
+    last_name = models.CharField(max_length=100, blank=True, null=True)
+    username = models.CharField(max_length=100, blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    office_category = models.CharField(max_length=100, choices=OFFICES, blank=True, null=True)
+    email = models.EmailField(unique=False, blank=True, null=True)
     linked_in_link = models.URLField(max_length=200, blank=True, null=True)
-    image_path = models.FileField(upload_to='uploads/', blank=True)
+    image_path = models.ImageField(upload_to=upload_to, blank=True, null=True)
     summary = models.TextField(null=True)
     is_subcontractor = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

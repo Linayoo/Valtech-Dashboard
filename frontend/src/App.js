@@ -10,7 +10,8 @@ import ProfilePage from "./pages/profile/profile";
 import ProjectCreatePage from "./pages/projectCreate/project-create-page";
 import ProjectEditPage from "./pages/projectEdit/project-edit-page";
 import InsightsPage from "./pages/insights/insights-page";
-import Test from "./components/test/test";
+import LastTest from "./components/test/createConsultant";
+import Test from "./components/test/createProject";
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
           <Route path="/create/project" element={<ProjectCreatePage/>} />
           <Route path="project/:projectId/edit" element={<ProjectEditPage />} />
           <Route path="profile/" element={<ProfilePage />} />
-          <Route path="test/" element={<Test />} />
+          <Route path="createConsultantTest/" element={<LastTest />} />
+          <Route path="createProjectTest/" element={<Test />} />
         </Routes>
       </main>
     </BrowserRouter>
