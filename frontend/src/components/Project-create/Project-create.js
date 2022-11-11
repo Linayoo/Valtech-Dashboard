@@ -7,8 +7,10 @@ import Tags from "../Project-edit/Consultant-tag";
 import AddTag from "../Project-edit/Consultant-add-tag";
 
 const CreateProject = () => {
+    let localToken = localStorage.getItem("valtech-auth")
     const navigate = useNavigate()
     const inputref = useRef([])
+
     const [projectName, setProjectName] = useState("")
     const [projectDescription, setProjectDescription] = useState("")
     const [link, setLink] = useState("")
@@ -17,7 +19,6 @@ const CreateProject = () => {
     const [endDate, setEndDate] = useState("")
     const [sendtools, setSendtools] = useState("")
     const [sendconsultants, setSendconsultants] = useState("")
-
 
     const [allcons, setAllcons] = useState()
     const [consultants, setConsultants] = useState([])
@@ -29,7 +30,7 @@ const CreateProject = () => {
     const post = "POST"
     const get = "GET"
     const headers = new Headers({
-        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MjQ5MzMwLCJpYXQiOjE2Njc4MTczMzAsImp0aSI6ImFiMDk5Yzg3MjRkMTRmY2NiYThmZGQ1Y2JkZjU5OWQ2IiwidXNlcl9pZCI6MX0.2E0ZLI8aE0DWzogP_ORPWWFLfTIE44p57eDzQX5WYZc`,
+        "Authorization": `Bearer ${localToken}`,
         'content-type': 'application/json'
     })
 

@@ -11,6 +11,7 @@ import ToolAddTag from "./Tool-add-tag"
 
 const EditProjects = () => {
 
+    let localToken = localStorage.getItem("valtech-auth")
     const inputref = useRef([])
     const navigate = useNavigate()
     const initialID = useParams().projectId
@@ -36,7 +37,7 @@ const EditProjects = () => {
     const get = "GET"
     const patch = "PATCH";
     const header = new Headers({
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MzY0NzM1LCJpYXQiOjE2Njc5MzI3MzUsImp0aSI6ImVjYTk5ZTYxMTg1ZTQ2OTRhNDg0N2VkODg5YWFkOTliIiwidXNlcl9pZCI6Mn0.0rsTH6W_ehRitYh5ezU_HHzPpG6EfSlQIdFAfbUKyag`,
+        "Authorization": `Bearer ${localToken}`,
         "content-type": "application/json"
     })
     const body = JSON.stringify({
