@@ -4,12 +4,13 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect } from "react";
 import React from "react";
-import { useSyncExternalStore } from "react";
 import { useNavigate } from "react-router";
 
 
 
 const Filter = (props) => {
+    
+    let localToken = localStorage.getItem("valtech-auth")
     const navigate = useNavigate()
     const inputref = useRef([]);
 
@@ -21,7 +22,7 @@ const Filter = (props) => {
 
     const get = "GET"
     const header = new Headers({
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MzY0NzM1LCJpYXQiOjE2Njc5MzI3MzUsImp0aSI6ImVjYTk5ZTYxMTg1ZTQ2OTRhNDg0N2VkODg5YWFkOTliIiwidXNlcl9pZCI6Mn0.0rsTH6W_ehRitYh5ezU_HHzPpG6EfSlQIdFAfbUKyag`,
+        "Authorization": `Bearer ${localToken}`,
         "content-type": "application/json",
     });
 
