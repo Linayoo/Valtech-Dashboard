@@ -35,30 +35,31 @@ return (
         <ProfileMain>
             <ProfileInfo>
                 <ProfileInfoLeftSide>
-                    <ProfilePhoto photo={consultants.image}>
+                    <ProfilePhoto>
+                        <img src={consultants.image} alt="photo"></img>
                     </ProfilePhoto>
                 </ProfileInfoLeftSide>
                 <ProfileRightSide>
                     <NameLocation>
                         <ProfileName>
-                            <p>First Name: <input type="text" value="{consultants.first_name}"></input></p>
-                            <p>Last name: <input type="text" value="{consultants.last_name}"></input></p>
+                            <p>First Name: <input type="text" placeholder={consultants.first_name}></input></p>
+                            <p>Last name: <input type="text" placeholder={consultants.last_name}></input></p>
                         </ProfileName>
                     </NameLocation>
                     <ProfileUsername>
-                            <p>Userame: <input type="text" value="{consultants.username}"></input></p>
+                            <p>Userame: <input type="text" placeholder={consultants.username}></input></p>
                     </ProfileUsername>
                     <ProfileEmail>
-                        <p>Email: <input type="text" value="{consultants.email}"></input></p>
+                        <p>Email: <input type="text" placeholder={consultants.email}></input></p>
                     </ProfileEmail>
                     <ProfileJoined>
-                        <p>Joined: <input type="text" value="{consultants.date_joined}"></input></p>
+                        <p>Joined: <input type="text" placeholder={consultants.date_joined}></input></p>
                     </ProfileJoined>
                 </ProfileRightSide>
             </ProfileInfo>
             <ButtonProfile>
                 <EditUserDetails>       
-                  <p>Edit User Details</p>
+                  <p>Save</p>
                 </EditUserDetails>
             </ButtonProfile>
         </ProfileMain>

@@ -1,4 +1,4 @@
-import { ProfileInfo, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./profile.styles"
+import { ProfileInfo, ChangePhotoButton, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./profile.styles"
 import {CiEdit} from 'react-icons/ci'
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
@@ -35,26 +35,30 @@ return (
         <ProfileMain>
             <ProfileInfo>
                 <ProfileInfoLeftSide>
-                    <ProfilePhoto photo={consultants.image}>
+                    <ProfilePhoto>
+                    <img src={consultants.image} alt="error"></img>
                     </ProfilePhoto>
                 </ProfileInfoLeftSide>
                 <ProfileRightSide>
                     <NameLocation>
                         <ProfileName>
-                            <p>First name: {consultants.first_name}</p>
-                            <p>Last name: {consultants.last_name}</p>
+                            <p>First name: <span>{consultants.first_name}</span></p>
+                            <p>Last name: <span>{consultants.last_name}</span></p>
                         </ProfileName>
                     </NameLocation>
                     <ProfileUsername>
-                        <p>Username: {consultants.username}</p>
+                        <p>Username: <span>{consultants.username}</span></p>
                     </ProfileUsername>
                     <ProfileEmail>
-                        <h3>Email: {consultants.email}</h3>
+                        <p>Email: <span>{consultants.email}</span></p>
                     </ProfileEmail>
                     <ProfileJoined>
-                        <h3>Joined: {consultants.date_joined}</h3>
+                        <p>Joined: <span>{consultants.date_joined}</span></p>
                     </ProfileJoined>
                 </ProfileRightSide>
+                <ChangePhotoButton>
+                        <button>Upload Photo</button>
+                </ChangePhotoButton>
             </ProfileInfo>
             <ButtonProfile>
                 <EditUserDetails>       
