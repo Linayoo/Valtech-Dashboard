@@ -12,7 +12,7 @@ from user_project.serializers import UserProjectSerializer
 class GetAllProjects(ListAPIView):
     queryset = UserProject.objects.all()
     serializer_class = UserProjectSerializer
-
+    # parser_classes = (MultiPartParser, FormParser)
 
 # POST create a new project (api/projects/new/)
 class CreateProject(GenericAPIView):
@@ -46,7 +46,7 @@ class CreateProject(GenericAPIView):
 class RetrievePatchDeleteProject(GenericAPIView):
     queryset = UserProject.objects.all()
     lookup_field = 'id'
-    parser_classes = (MultiPartParser, FormParser)
+    # parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, *args, **kwargs):
         instance = self.get_object()
