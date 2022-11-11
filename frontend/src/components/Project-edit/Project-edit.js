@@ -17,6 +17,7 @@ const EditProjects = () => {
     const initialID = useParams().projectId
 
     const [allcons, setAllcons] = useState()
+    const [image, setImage] = useState("")
     const [consultants, setConsultants] = useState([])
     const [consresults, setConsresults] = useState()
     const [alltools, setAlltools] = useState()
@@ -40,6 +41,9 @@ const EditProjects = () => {
         "Authorization": `Bearer ${localToken}`,
         "content-type": "application/json"
     })
+    const imgHeaders = new Headers({
+        "Authorization": `Bearer ${localToken}`,
+    })
     const body = JSON.stringify({
         "name": formData.name,
         "description": formData.description,
@@ -48,6 +52,9 @@ const EditProjects = () => {
         "assignee": consultants,
         "tools": tools,
     })
+
+    const imgData = new FormData()
+    imgData.append("image", image)
 
     const timeframe_body = JSON.stringify({
         "date_started" : `${startdate}`,
@@ -61,6 +68,11 @@ const EditProjects = () => {
         method: patch,
         headers: header,
         body: body
+    }
+    const imgUploadConfig = {
+        method: patch,
+        headers: imgHeaders,
+        body: imgData
     }
     const patchtimeframe = {
         method: patch,
@@ -103,8 +115,12 @@ const EditProjects = () => {
         event.preventDefault();
         fetch(`http://localhost:8000/api/projects/${initialID}/`, patchconfig)
             .then(response => response.json())
+            .then(data => console.log(data))
+            // .then(fetch(`http://localhost:8000/api/projects/${initialID}/`), imgUploadConfig)
+            // .then(response => response.json())
             .then(fetch(`http://localhost:8000/api/timeframes/${timeframeid}/`, patchtimeframe))
-            .then((data) => navigate(`/project/${initialID}/`))
+            .then(data => console.log(data))
+            // .then((data) => navigate(`/project/${initialID}/`))
             .catch(error => console.log(error))
     }
 
@@ -185,6 +201,11 @@ const EditProjects = () => {
         setTools(newArray)
     }
 
+    const handleImgUpload = e => {
+        const imageUrl = e.target.files;
+        console.log(e.target.files)
+        setImage(imageUrl[0]);
+    }
 
     return (
         <EditProjectContainer>
@@ -194,7 +215,7 @@ const EditProjects = () => {
                 <label htmlFor="">
                     Image
                     <img src={formData.image} />
-                    <input type="file" name="image" onChange={handleChange} />
+                    <input value={imgData.image} id='select' multiple type="file" name="image/" onChange={handleImgUpload} />
                 </label>
                 <label htmlFor="name">
                     Name
