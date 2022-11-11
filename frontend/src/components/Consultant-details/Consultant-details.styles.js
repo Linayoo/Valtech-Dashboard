@@ -1,23 +1,14 @@
 import styled from "styled-components"
 
 export const ConsultantDetailsWrapper  = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
 margin-top: 110px;
-margin-left: 80px;
+margin-left: 5%;
 width: 100vw;
 height: 100vh;
 
-div > p:last-child {
+div > p:first-child {
     color: #1b253d;
 }
-
-
-/* div > p:first-child {
-    color: #1b253d;
-} */
-
 
 div > button {
     color: #1b253d;
@@ -50,15 +41,13 @@ hr {
     height: 2px;
     background-color: #8080803e;
     width: 570px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     
 }
 
 
 div:not(:first-child) {
     display: flex;
-    justify-content: flex-start;
-    width: 100%;
 }
 
 p {
@@ -100,4 +89,10 @@ p {
     color: #1b253d;
 }
 
+`;
+
+export const FlexColumn  = styled.div`
+display: flex;
+flex-direction: column;
+width: 300px;
 `;

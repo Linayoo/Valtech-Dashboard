@@ -11,6 +11,7 @@ align-items: center;
 border-radius: 0 5px 5px 0;
 box-shadow: 0px 0px 25px -2px #555;
 /* position: fixed; */
+height: 100vh;
 
 @media only screen and (min-width: 1500px) {
     width: 15%;
@@ -76,12 +77,17 @@ button:focus {
 
 
 div {
+    position: sticky;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 300px;
-    margin-top: 100%;
+    margin-top: 150px;
     width: 100%;
+}
+
+div > button {
+    font-size: 20px;
 }
 
     

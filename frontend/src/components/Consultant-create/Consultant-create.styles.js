@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const CreateConsultantContainer  = styled.div`
 display: flex;
 flex-direction: column;
+align-items: flex-start;
 background-color: #8080800;
 width: 100vw;
 height: 100vh;
@@ -23,7 +24,7 @@ hr {
     background-color: grey;
 }
 
-form > button {
+button {
     color: #1b253d;
     border: 1px solid #42018cc2;
     padding: 10px 0;
@@ -31,7 +32,7 @@ form > button {
     font-weight: bolder;
     border-radius: 5px;
     font-size: 15px;
-    margin-top: 3%;
+    margin-top: 10%;
     margin-left: 0%;
 }
 
@@ -43,10 +44,7 @@ button:hover {
 
 form {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 50px;
-    height: 300px;
+    margin-top: 30px;
 }
 
 label, input {
@@ -60,8 +58,13 @@ div {
     font-weight: bolder;
 }
 
+form > div {
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+}
 
-input {
+input, select {
    display: flex;
    border-top: none;
    border-left: none;
@@ -70,8 +73,8 @@ input {
    background-color: transparent;
    width: 300px;
    height: 25px;
-   margin-top: 10px;
-   margin-bottom: 20px;
+   margin-top:0px;
+   margin-bottom: 30px;
    color: #646464b0;
    font-size: 18px;
 }

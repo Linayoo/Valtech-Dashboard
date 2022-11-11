@@ -11,7 +11,7 @@ class UserProjectSerializer(WritableNestedModelSerializer, serializers.ModelSeri
     class Meta:
         model = UserProject
         fields = '__all__'
-        depth = 1
+        # depth = 1
 
     tools = SkillSerializer(many=True, required=False)
     time_frame = TimeFrameSerializer(required=False)

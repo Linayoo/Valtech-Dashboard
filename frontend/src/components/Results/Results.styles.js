@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 export const ResultsContainer = styled.div`
 position: sticky;
-margin-top: 0%;
+margin-top: -2%;
 margin-left: 2%;
 width: 100%;
 color: grey;
 
 p {
-    margin-left: 40%;
+    margin-left: 5%;
     margin-bottom: -0%;
     font-style: italic;
 }

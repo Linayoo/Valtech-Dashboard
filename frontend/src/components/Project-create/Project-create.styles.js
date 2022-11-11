@@ -82,4 +82,14 @@ input:focus, select:focus {
     box-shadow: 0 1px 0 0 #837b7b8e;
 }
 
+.datepicker {
+    height: 50px;
+    margin-right: 30px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
 `;

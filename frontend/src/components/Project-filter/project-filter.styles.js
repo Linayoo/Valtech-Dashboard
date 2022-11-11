@@ -30,7 +30,7 @@ form {
 
 input, select {
     height: 35px;
-    color: #808080b1;
+    color: #1b253d;
     border: #342e2e;
     font-size: 15px;
     border-radius: 3px;
@@ -38,6 +38,10 @@ input, select {
  } 
 
 input::placeholder{
+    color: #808080b1;
+}
+
+select::placeholder{
     color: #808080b1;
 }
 
