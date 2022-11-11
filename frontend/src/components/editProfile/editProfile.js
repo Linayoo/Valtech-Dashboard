@@ -46,13 +46,13 @@ return (
                         </ProfileName>
                     </NameLocation>
                     <ProfileUsername>
-                        <p>Username: {consultants.username}</p>
+                            <p>Userame: <input type="text" value="{consultants.username}"></input></p>
                     </ProfileUsername>
                     <ProfileEmail>
-                        <h3>Email: {consultants.email}</h3>
+                        <p>Email: <input type="text" value="{consultants.email}"></input></p>
                     </ProfileEmail>
                     <ProfileJoined>
-                        <h3>Joined: {consultants.date_joined}</h3>
+                        <p>Joined: <input type="text" value="{consultants.date_joined}"></input></p>
                     </ProfileJoined>
                 </ProfileRightSide>
             </ProfileInfo>

@@ -8,7 +8,7 @@ export const ProfileMain = styled.div`
 background-color: #8080801e;
 width: 85%;
 height: 95%;
-margin-top: 3%;
+margin-top: 4%;
 `;
 
 export const ProfileInfo = styled.div`
