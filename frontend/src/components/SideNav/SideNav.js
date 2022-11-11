@@ -50,7 +50,7 @@ const SideNav = () => {
             <div>
             <button onClick={() => navigate('/')}>
                 <p><BsBoxArrowLeft size={20}/></p>
-            sign out </button>
+            Sign out </button>
             </div>
         </NavContainer>
     )
