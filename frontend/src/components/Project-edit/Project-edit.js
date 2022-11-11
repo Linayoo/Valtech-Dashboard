@@ -23,6 +23,7 @@ const EditProjects = () => {
     const [toolsresults, setToolsresults] = useState()
     const [startdate, setStartdate] = useState()
     const [enddate, setEnddate] = useState()
+    const [timeframeid, setTimeframeid] = useState()
     const [formData, setFormData] = useState(
         {
             projectObj: [],
@@ -30,25 +31,26 @@ const EditProjects = () => {
             description: "",
             link: "",
             image: "",
-            start_date: "",
-            end_date: "",
         }
     )
-
     const get = "GET"
     const patch = "PATCH";
     const header = new Headers({
         "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MzY0NzM1LCJpYXQiOjE2Njc5MzI3MzUsImp0aSI6ImVjYTk5ZTYxMTg1ZTQ2OTRhNDg0N2VkODg5YWFkOTliIiwidXNlcl9pZCI6Mn0.0rsTH6W_ehRitYh5ezU_HHzPpG6EfSlQIdFAfbUKyag`,
-        "content-type": "application/json",
+        "content-type": "application/json"
     })
     const body = JSON.stringify({
         "name": formData.name,
         "description": formData.description,
         "link": formData.link,
         "image": formData.image,
-        "date": formData.date,
         "assignee": consultants,
         "tools": tools,
+    })
+
+    const timeframe_body = JSON.stringify({
+        "date_started" : `${startdate}`,
+        "date_finished" : `${enddate}`
     })
     const getconfig = {
         method: get,
@@ -58,6 +60,11 @@ const EditProjects = () => {
         method: patch,
         headers: header,
         body: body
+    }
+    const patchtimeframe = {
+        method: patch,
+        headers: header,
+        body: timeframe_body
     }
 
     useEffect((state) => {
@@ -76,6 +83,7 @@ const EditProjects = () => {
                 setTools(data.tools);
                 setStartdate(data.time_frame.date_started);
                 setEnddate(data.time_frame.date_finished);
+                setTimeframeid(JSON.stringify(data.time_frame.id));
             })
             .catch(error => console.log(error));
 
@@ -94,9 +102,12 @@ const EditProjects = () => {
         event.preventDefault();
         fetch(`http://localhost:8000/api/projects/${initialID}/`, patchconfig)
             .then(response => response.json())
-            .then((data) => { navigate(`/project/${initialID}/`) })
+            .then(fetch(`http://localhost:8000/api/timeframes/${timeframeid}/`, patchtimeframe))
+            .then((data) => navigate(`/project/${initialID}/`))
             .catch(error => console.log(error))
     }
+
+   
 
     const handleChange = (event) => {
         setFormData(prevFormData => {
@@ -199,10 +210,10 @@ const EditProjects = () => {
                 <label htmlFor="">
                     Start - end
                     <div className="dates">
-                        <input value={startdate === undefined ? '' : startdate} type="date" name="start_date" onChange={e => setStartdate(e.target.value)}
+                        <input value={startdate === undefined ? '' : startdate} type="date" name="start_date" onChange={(e) => {setStartdate(e.target.value); console.log(startdate)}}
                         className="datepicker" />
                         <input value={enddate === undefined ? '' : enddate} type="date" name="end_date" onChange={e => setEnddate(e.target.value)} 
-                        className="datepicker"/>
+                        className="datepicker"/> 
                     </div>
                 </label>
                 <label htmlFor="">

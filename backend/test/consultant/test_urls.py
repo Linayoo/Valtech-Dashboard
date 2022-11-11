@@ -1,7 +1,8 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 
-from consultant.views import GetAllConsultants, CreateConsultant, RetrievePatchDeleteConsultant, SearchConsultant
+from consultant.views import GetAllConsultants, RetrievePatchDeleteConsultant, SearchConsultant, \
+    CreateConsultantTest
 
 
 class TestConsultantUrls(SimpleTestCase):
@@ -12,7 +13,7 @@ class TestConsultantUrls(SimpleTestCase):
 
     def test_create_consultants_is_resolved(self):
         url = reverse('create_consultants')
-        self.assertEqual(resolve(url).func.view_class, CreateConsultant)
+        self.assertEqual(resolve(url).func.view_class, CreateConsultantTest)
 
     def test_get_patch_delete_consultants_is_resolved(self):
         random_number = '1'  # <int:id> from url

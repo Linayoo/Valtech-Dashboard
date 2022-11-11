@@ -46,7 +46,7 @@ class CreateProject(GenericAPIView):
 class RetrievePatchDeleteProject(GenericAPIView):
     queryset = UserProject.objects.all()
     lookup_field = 'id'
-    parser_classes = (MultiPartParser, FormParser)
+    # parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, *args, **kwargs):
         instance = self.get_object()
