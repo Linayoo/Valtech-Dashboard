@@ -12,7 +12,7 @@ from user_project.serializers import UserProjectSerializer
 class GetAllProjects(ListAPIView):
     queryset = UserProject.objects.all()
     serializer_class = UserProjectSerializer
-
+    # parser_classes = (MultiPartParser, FormParser)
 
 # POST create a new project (api/projects/new/)
 class CreateProject(GenericAPIView):

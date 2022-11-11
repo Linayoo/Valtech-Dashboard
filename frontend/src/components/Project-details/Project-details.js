@@ -5,7 +5,7 @@ import ProjectConsultants from "../Project-consultants/Project-consultants"
 import { useNavigate } from "react-router"
 
 
-const ProjectDetails = (props) => {
+const ProjectDetails = () => {
     
     let localToken = localStorage.getItem("valtech-auth")
     const navigate = useNavigate()
@@ -22,10 +22,10 @@ const ProjectDetails = (props) => {
         method: get,
         headers: header
     }
-    useEffect((state) => {
+    useEffect(() => {
         fetch(`http://localhost:8000/api/projects/${initialID}/`, getconfig)
           .then(response => response.json())
-          .then(data =>  {setProject(data)})
+          .then(data =>  setProject(data))
           .catch(error => console.log(error));
 
     },[])
@@ -40,7 +40,7 @@ const ProjectDetails = (props) => {
             <hr></hr>
             <div>
                 <p>Image</p>
-                {/* <img src={projects.image}/> */}
+                <img src={project?.image}/>
             </div>
             <div>
                 <p>Name</p>

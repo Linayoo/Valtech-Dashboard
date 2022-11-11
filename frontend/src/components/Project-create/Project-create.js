@@ -14,11 +14,11 @@ const CreateProject = () => {
     const [projectName, setProjectName] = useState("")
     const [projectDescription, setProjectDescription] = useState("")
     const [link, setLink] = useState("")
-    const [image, setImage] = useState(null)
     const [startdate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
     const [sendtools, setSendtools] = useState("")
     const [sendconsultants, setSendconsultants] = useState("")
+    const [image, setImage] = useState("")
 
     const [allcons, setAllcons] = useState()
     const [consultants, setConsultants] = useState([])
@@ -28,10 +28,14 @@ const CreateProject = () => {
     const [toolsresults, setToolsresults] = useState()
 
     const post = "POST"
+    const patch = "PATCH"
     const get = "GET"
     const headers = new Headers({
         "Authorization": `Bearer ${localToken}`,
         'content-type': 'application/json'
+    })
+    const imgHeaders = new Headers({
+        "Authorization": `Bearer ${localToken}`,
     })
 
     const parseStringToList = (inputString) => { return inputString.split(",").map(x => parseInt(x)) }
@@ -40,7 +44,6 @@ const CreateProject = () => {
         "name": `${projectName}`,
         "description": `${projectDescription}`,
         "external_link": `${link}`,
-        "image": `${image}`,
         "tools": parseStringToList(sendtools),
         "time_frame": {
             "date_started": `${startdate}`,
@@ -49,11 +52,21 @@ const CreateProject = () => {
         "assignee": parseStringToList(sendconsultants),
     })
 
+    const imgData = new FormData()
+    imgData.append("image", image)
+
     const projectConfig = {
         method: post,
         headers: headers,
         body: project,
     }
+
+    const imgUploadConfig = {
+        method: patch,
+        headers: imgHeaders,
+        body: imgData
+    }
+
     const getconfig = {
         method: get,
         headers: headers
@@ -76,6 +89,8 @@ const CreateProject = () => {
         event.preventDefault();
         console.log(projectConfig.body)
         fetch(`http://localhost:8000/api/projects/new/`, projectConfig)
+            .then(response => response.json())
+            .then((data) => fetch(`http://localhost:8000/api/projects/${data.id}/`, imgUploadConfig))
             .then(response => response.json())
             .then((data) => console.log(data))
             .catch(error => console.log(error));
@@ -159,6 +174,12 @@ const CreateProject = () => {
         setSendtools(magic)
     }
 
+    const handleImgUpload = e => {
+        const imageUrl = e.target.files;
+        console.log(e.target.files)
+        setImage(imageUrl[0]);
+    }
+
 
 
     return (
@@ -181,7 +202,7 @@ const CreateProject = () => {
                 </div>
                 <div>
                     Image
-                    <input value={image} id='select' multiple type='file' name='image' accept='image/' onChange={setImage}></input>
+                    <input value={imgData.image} id='select' multiple type='file' name='image' accept='image/' onChange={handleImgUpload}></input>
                 </div>
                 <div>
                     Timeframe
