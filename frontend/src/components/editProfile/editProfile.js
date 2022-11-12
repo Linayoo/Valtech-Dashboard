@@ -59,6 +59,7 @@ const handleSubmit = (event) => {
         .catch(error => console.log(error))
 }
 
+
 const handleChange = (event) => {
     setConsultants(prevConsultants => {
         return {
