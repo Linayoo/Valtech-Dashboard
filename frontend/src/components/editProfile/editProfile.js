@@ -1,4 +1,4 @@
-import { ProfileInfo, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./editprofile-style"
+import { ProfileInfo, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain, ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide } from "./editprofile-style"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const EditUserProfile = () => {
             last_name: "",
             email: "",
             date_joined: "",
-            
+
         }
     )
 
@@ -33,8 +33,8 @@ const EditUserProfile = () => {
     })
 
     const getconfig = {
-    method: get,
-    headers: header,
+        method: get,
+        headers: header,
     }
 
     const patchconfig = {
@@ -43,68 +43,71 @@ const EditUserProfile = () => {
         body: body
     }
 
-useEffect((state) => {
-    fetch("http://localhost:8000/api/me/", getconfig)
-        .then(response => response.json())
-        .then(data => setConsultants(data))
-        .catch(error => console.log(error));
-}, [])
+    useEffect((state) => {
+        fetch("http://localhost:8000/api/me/", getconfig)
+            .then(response => response.json())
+            .then(data => setConsultants(data))
+            .catch(error => console.log(error));
+    }, [])
 
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch(`http://localhost:8000/api/me/`, patchconfig)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error))
-}
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        fetch(`http://localhost:8000/api/me/`, patchconfig)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error))
+    }
 
 
-const handleChange = (event) => {
-    setConsultants(prevConsultants => {
-        return {
-            ...prevConsultants,
-            [event.target.first_name]: event.target.value
-        }
-    })
-}
+    const handleChange = (event) => {
+        setConsultants(prevConsultants => {
+            return {
+                ...prevConsultants,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
 
 
-return (
-     
+    return (
+
         <ProfileMain>
-            <ProfileInfo onSubmit={handleSubmit}>
-                <ProfileInfoLeftSide>
-                    <ProfilePhoto>
-                        <img src={consultants.image} alt="photo"></img>
-                    </ProfilePhoto>
-                </ProfileInfoLeftSide>
-                <ProfileRightSide>
-                    <NameLocation>
-                        <ProfileName>
-                            <p>First name: <input type="text" value={consultants.first_name} name="first_name" onChange={handleChange}></input></p>
-                            <p>Last name: <input type="text" placeholder={consultants.last_name} name="last_name" onChange={handleChange}></input></p>
-                        </ProfileName>
-                    </NameLocation>
-                    <ProfileUsername>
-                            <p>Username: <input type="text" placeholder={consultants.username} name="username" onChange={handleChange}></input></p>
-                    </ProfileUsername>
-                    <ProfileEmail>
-                        <p>Email: <input type="text" placeholder={consultants.email} name="email" onChange={handleChange}></input></p>
-                    </ProfileEmail>
-                    <ProfileJoined>
-                        <p>Joined: <input type="text" placeholder={consultants.date_joined} name="date_joined" onChange={handleChange}></input></p>
-                    </ProfileJoined>
-                </ProfileRightSide>
-            </ProfileInfo>
-            <ButtonProfile>
-                <EditUserDetails>       
-                  <p type="submit">Save</p>
-                </EditUserDetails>
-            </ButtonProfile>
+            <form form='user' onSubmit={handleSubmit}>
+                <ProfileInfo>
+                    <ProfileInfoLeftSide>
+                        <ProfilePhoto>
+                            <img src={consultants.image} alt="photo"></img>
+                        </ProfilePhoto>
+                    </ProfileInfoLeftSide>
+                    <ProfileRightSide>
+                        <NameLocation>
+                            <ProfileName>
+                                <p>First name: <input type="text" value={consultants.first_name} name="first_name" onChange={handleChange}></input></p>
+                                <p>Last name: <input type="text" value={consultants.last_name} name="last_name" onChange={handleChange}></input></p>
+                            </ProfileName>
+                        </NameLocation>
+                        <ProfileUsername>
+                            <p>Username: <input type="text" value={consultants.username} name="username" onChange={handleChange}></input></p>
+                        </ProfileUsername>
+                        <ProfileEmail>
+                            <p>Email: <input type="text" value={consultants.email} name="email" onChange={handleChange}></input></p>
+                        </ProfileEmail>
+                        <ProfileJoined>
+                            <p>Joined: <input type="text" value={consultants.date_joined} name="date_joined" onChange={handleChange}></input></p>
+                            
+                        </ProfileJoined>
+                    </ProfileRightSide>
+                </ProfileInfo>
+                <ButtonProfile>
+                    <EditUserDetails>
+                        <p type='submit'>SAVE</p>
+                    </EditUserDetails>
+                </ButtonProfile>
+            </form>
         </ProfileMain>
-)}
+    )
+}
 
 export default EditUserProfile
 
-                
