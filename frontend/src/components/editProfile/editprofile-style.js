@@ -1,12 +1,28 @@
 import styled from "styled-components"
 
 
+
+
+
 export const ProfileMain = styled.div`
 background-color: #8080801e;
 width: 85%;
 height: 95%;
 margin-top: 4%;
 font-family: Arial;
+input{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: Arial;
+    font-size: 20px;
+    padding-left: 5px;
+    font-weight: 900;
+    outline: none;
+    ::placeholder{
+        color: white;
+    }
+}
 `;
 
 export const ProfileInfo = styled.div`
@@ -18,7 +34,7 @@ flex-direction: row;
 `;
 
 export const ProfileInfoLeftSide = styled.div`
-width: 40%;
+width: 20%;
 height: 100%;
 display: flex;
 align-items: center;
@@ -26,7 +42,7 @@ flex-direction: row;
 `;
 
 export const ProfilePhoto = styled.div`
-width: 40%;
+width: 100%;
 height: 95%;
 display: flex;
 align-items: center;
@@ -38,23 +54,20 @@ img{
 `;
 
 export const ProfileRightSide = styled.div`
-width: 60%;
+width: 80%;
 height: 100%;
 display: flex;
-/* justify-content: center; */
 flex-direction: column;
-/* margin-top: 1%; */
 justify-content: space-evenly;
-font-size: 20px;
 `;
 
 export const NameLocation = styled.div`
-width: 60%;
+width: 100%;
 height: 20%;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-margin-left: -32%;
+/* margin-left: -32%; */
 font-size: 15px;
 `;
 
@@ -67,119 +80,86 @@ align-items: flex-start;
 justify-content: flex-start;
 font-size: 20px;
 font-weight: 900;
+width: 100%;
 p{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     padding: 5px;
-    font-size: 20px;
-
 }
-span{
-    padding-left: 5px;
+input {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+
 }
 `;
-
 
 export const ProfileUsername = styled.div`
 color: white;
 display: flex;
 flex-direction: row;
-margin-left: -32%;
+/* margin-left: -32%; */
 font-weight: 900;
 font-size: 20px;
-width: 60%;
 p{
     font-size: 20px;
     padding: 5px;
 }
-span{
+input{
     padding-left: 5px;
-
 }
 `;
+
 
 export const ProfileEmail = styled.form`
 color: white;
 display: flex;
 flex-direction: row;
-width: 60%;
-/* height: 5%; */
-margin-left: -32%;
+width: 100%;
+/* margin-left: -32%; */
 font-size: 20px;
 font-weight: 900;
 
 p{
     width: 100%;
-    padding: 5px;
-}
-span{
     padding-left: 5px;
-
 }
+
 `;
 
 export const ProfileJoined = styled.div`
-width: 60%;
+width: 100%;
 /* height: 40%; */
 display: flex;
 flex-direction: row;
-margin-left: -32%;
+/* margin-left: -32%;*/
 font-size: 20px;
 color: white;
 font-weight: 900;
 p{
     width: 100%;
-    padding: 5px;
-}
-span{
     padding-left: 5px;
-
 }
 `; 
-
-export const ChangePhotoButton = styled.div`
-    width: 200px;
-    height: 200px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    font-size: 500px;
-button {
-    color: #1b253d;
-    border: 1px solid #42018cc2;
-    height: 50px;
-    width: 180px;
-    font-weight: bolder;
-    border-radius: 5px;
-    margin-right:50px;
-    margin-top: 20px;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-button:hover {
-    background-color: #220641;
-    color: white;
-}
-`
 
 export const ButtonProfile = styled.div`
 color: black;
 display: flex;
 justify-content: center;
 margin-top: 5%;
-
 `
 export const EditUserDetails = styled.button`
-color: #1b253d;
+    color: #1b253d;
     border: 1px solid #42018cc2;
     height: 50px;
-    width: 300px;
+    width: 150px;
     font-weight: bolder;
     border-radius: 5px;
     margin-left:20px;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 30px;
+    font-size: 40px;
 
 
 :hover {
@@ -187,4 +167,5 @@ color: #1b253d;
     color: white;
 }
 `
+
 

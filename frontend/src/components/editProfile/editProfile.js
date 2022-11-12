@@ -1,11 +1,10 @@
-import { ProfileInfo, ChangePhotoButton, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./profile.styles"
-import {CiEdit} from 'react-icons/ci'
+import { ProfileInfo, ProfileAll, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./editprofile-style"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-import SideNav from '../../components/SideNav/SideNav';
 
 
-const UserProfile = () => {
+
+const EditUserProfile = () => {
 
     const [consultants, setConsultants] = useState([])
 
@@ -32,44 +31,40 @@ useEffect((state) => {
 
 
 return (
+     
         <ProfileMain>
             <ProfileInfo>
                 <ProfileInfoLeftSide>
                     <ProfilePhoto>
-                    <img src={consultants.image} alt="error"></img>
+                        <img src={consultants.image} alt="photo"></img>
                     </ProfilePhoto>
                 </ProfileInfoLeftSide>
                 <ProfileRightSide>
                     <NameLocation>
                         <ProfileName>
-                            <p>First name: <span>{consultants.first_name}</span></p>
-                            <p>Last name: <span>{consultants.last_name}</span></p>
+                            <p>First Name: <input type="text" placeholder={consultants.first_name}></input></p>
+                            <p>Last name: <input type="text" placeholder={consultants.last_name}></input></p>
                         </ProfileName>
                     </NameLocation>
                     <ProfileUsername>
-                        <p>Username: <span>{consultants.username}</span></p>
+                            <p>Userame: <input type="text" placeholder={consultants.username}></input></p>
                     </ProfileUsername>
                     <ProfileEmail>
-                        <p>Email: <span>{consultants.email}</span></p>
+                        <p>Email: <input type="text" placeholder={consultants.email}></input></p>
                     </ProfileEmail>
                     <ProfileJoined>
-                        <p>Joined: <span>{consultants.date_joined}</span></p>
+                        <p>Joined: <input type="text" placeholder={consultants.date_joined}></input></p>
                     </ProfileJoined>
                 </ProfileRightSide>
-                <ChangePhotoButton>
-                        <button>Upload Photo</button>
-                </ChangePhotoButton>
             </ProfileInfo>
             <ButtonProfile>
                 <EditUserDetails>       
-                  <p>Edit User Details</p>
+                  <p>Save</p>
                 </EditUserDetails>
             </ButtonProfile>
         </ProfileMain>
-    )
-}
+)}
 
-export default UserProfile
+export default EditUserProfile
 
                 
-

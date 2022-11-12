@@ -1,10 +1,9 @@
-
+import EditUserProfile from "../../components/editProfile/editProfile";
 import Header from "../../components/Header/Header";
 import SideNav from "../../components/SideNav/SideNav";
-import UserProfile from "../../components/User_Profile/profile-page";
-import { ProfileContainer } from "./profile-styles";
+import { ProfileContainer } from "./editUserDetails-style";
 
-const ProfilePage = () => {
+const EditUserDetails = () => {
     
 
 
@@ -13,9 +12,9 @@ const ProfilePage = () => {
         <ProfileContainer>
             <Header/>
             <SideNav/>
-            <UserProfile/>
+            <EditUserProfile/>
         </ProfileContainer>
     )
 }
 
-export default ProfilePage
+export default EditUserDetails
