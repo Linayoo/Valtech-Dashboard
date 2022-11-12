@@ -17,11 +17,14 @@ const EditProjects = () => {
     const initialID = useParams().projectId
 
     const [allcons, setAllcons] = useState()
+    const [image, setImage] = useState("")
     const [consultants, setConsultants] = useState([])
+    const [sendconsultants, setSendconsultants] = useState("")
     const [consresults, setConsresults] = useState()
     const [alltools, setAlltools] = useState()
     const [tools, setTools] = useState([])
     const [toolsresults, setToolsresults] = useState()
+    const [sendtools, setSendtools] = useState("")
     const [startdate, setStartdate] = useState()
     const [enddate, setEnddate] = useState()
     const [timeframeid, setTimeframeid] = useState()
@@ -40,14 +43,53 @@ const EditProjects = () => {
         "Authorization": `Bearer ${localToken}`,
         "content-type": "application/json"
     })
-    const body = JSON.stringify({
-        "name": formData.name,
-        "description": formData.description,
-        "link": formData.link,
-        "image": formData.image,
-        "assignee": consultants,
-        "tools": tools,
+    const authheader = new Headers({
+        "Authorization": `Bearer ${localToken}`
     })
+        const parseStringToList = (inputString) => { return inputString.split(",").map(x => parseInt(x)) } ///
+    
+        const body = () => {
+            if (sendconsultants === "") {
+                let fetchbody = JSON.stringify({
+                    "name": formData.name,
+                    "description": formData.description,
+                    "link": formData.link,
+                    "image": formData.image,
+                    "tools": parseStringToList(sendtools),
+                })
+                return fetchbody
+            } else if (sendtools === "") {
+                let fetchbody = JSON.stringify({
+                    "name": formData.name,
+                    "description": formData.description,
+                    "link": formData.link,
+                    "image": formData.image,
+                    "assignee": parseStringToList(sendconsultants),
+                })
+                return fetchbody
+            } else if (sendtools === "" && sendconsultants === "") {
+                let fetchbody = JSON.stringify({
+                    "name": formData.name,
+                    "description": formData.description,
+                    "link": formData.link,
+                    "image": formData.image,
+                })
+                return fetchbody
+            } else {
+                let fetchbody = JSON.stringify({
+                    "name": formData.name,
+                    "description": formData.description,
+                    "link": formData.link,
+                    "image": formData.image,
+                    "assignee": parseStringToList(sendconsultants),
+                    "tools": parseStringToList(sendtools),
+                })
+                return fetchbody
+            }
+        }
+        
+    const imgData = new FormData()
+    imgData.append("image", image)
 
     const timeframe_body = JSON.stringify({
         "date_started" : `${startdate}`,
@@ -60,7 +102,12 @@ const EditProjects = () => {
     const patchconfig = {
         method: patch,
         headers: header,
-        body: body
+        body: body()
+    }
+    const patchimage = {
+        method: patch,
+        headers: authheader,
+        body: imgData
     }
     const patchtimeframe = {
         method: patch,
@@ -101,11 +148,13 @@ const EditProjects = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:8000/api/projects/${initialID}/`, patchconfig)
-            .then(response => response.json())
-            .then(fetch(`http://localhost:8000/api/timeframes/${timeframeid}/`, patchtimeframe))
-            .then((data) => navigate(`/project/${initialID}/`))
+        fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchconfig)
             .catch(error => console.log(error))
+            .then(image != "" ? fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchimage) : console.log('no img') )
+            .catch(error => console.log(error))
+            .then(fetch(`http://localhost:8000/api/timeframes/${timeframeid}/`, patchtimeframe))
+            .catch(error => console.log(error))
+            .then(() => navigate(`/project/${initialID}/`))
     }
 
    
@@ -158,6 +207,10 @@ const EditProjects = () => {
         let newArray = [...consultants]
         newArray.push(JSON.parse(event.target.id))
         setConsultants(newArray)
+        let magic = ""
+        newArray.forEach(e => magic = `${magic}${e.id},`)
+        magic = magic.slice(0, -1)
+        setSendconsultants(magic)
         inputref.current.name.value = ""
         handleUserFilter()
     }
@@ -167,6 +220,10 @@ const EditProjects = () => {
         let newArray = [...consultants]
         newArray.splice(event.target.id, 1);
         setConsultants(newArray)
+        let magic = ""
+        newArray.forEach(e => magic = `${magic}${e.id},`)
+        magic = magic.slice(0, -1)
+        setSendconsultants(magic)
     }
 
     const handleAddTool = (event) => {
@@ -174,6 +231,10 @@ const EditProjects = () => {
         let newArray = [...tools]
         newArray.push(JSON.parse(event.target.id))
         setTools(newArray)
+        let magic = ""
+        newArray.forEach(e => magic = `${magic}${e.id},`)
+        magic = magic.slice(0, -1)
+        setSendtools(magic)
         inputref.current.tools.value = ""
         handleToolFilter()
     }
@@ -183,18 +244,34 @@ const EditProjects = () => {
         let newArray = [...tools]
         newArray.splice(event.target.id, 1);
         setTools(newArray)
+        let magic = ""
+        newArray.forEach(e => magic = `${magic}${e.id},`)
+        magic = magic.slice(0, -1)
+        setSendtools(magic)
     }
 
+    const handleImgUpload = e => {
+        const imageUrl = e.target.files;
+        setImage(imageUrl[0]);
+    }
+
+    const handleImgDelete = (event) => {
+        event.preventDefault()
+        setImage("");
+        fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchimage)
+        .then(setFormData(prevFormData => {return {...prevFormData, image: null}}))
+        .catch(error => console.log(error))
+    }
 
     return (
-        <EditProjectContainer>
+        <EditProjectContainer >
             <h1>Edit Project</h1>
             <hr />
             <form onSubmit={handleSubmit}>
                 <label htmlFor="">
                     Image
-                    <img src={formData.image} />
-                    <input type="file" name="image" onChange={handleChange} />
+                    {formData.image === null ? <></> : <button className="submitty" onClick={handleImgDelete}>Remove</button>}
+                    <input value={imgData.image} id='select' multiple type="file" name="image/" onChange={handleImgUpload} />
                 </label>
                 <label htmlFor="name">
                     Name
@@ -211,7 +288,7 @@ const EditProjects = () => {
                 <label htmlFor="">
                     Start - end
                     <div className="dates">
-                        <input value={startdate === undefined ? '' : startdate} type="date" name="start_date" onChange={(e) => {setStartdate(e.target.value); console.log(startdate)}}
+                        <input value={startdate === undefined ? '' : startdate} type="date" name="start_date" onChange={e => setStartdate(e.target.value)}
                         className="datepicker" />
                         <input value={enddate === undefined ? '' : enddate} type="date" name="end_date" onChange={e => setEnddate(e.target.value)} 
                         className="datepicker"/> 

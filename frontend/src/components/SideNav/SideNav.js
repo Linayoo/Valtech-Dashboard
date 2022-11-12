@@ -32,6 +32,11 @@ const SideNav = () => {
         navigate('/profile')
     }
 
+    const logOut = () => {
+        localStorage.removeItem('valtech-auth');
+        navigate('/');
+    }
+
     return (
         <NavContainer>
             <h1>valtech_</h1>
@@ -48,7 +53,7 @@ const SideNav = () => {
                 <p><BsFilePerson size={20}/></p>
             Profile</button>
             <div>
-            <button onClick={() => navigate('/')}>
+            <button onClick={logOut}>
                 <p><BsBoxArrowLeft size={20}/></p>
             Sign out </button>
             </div>

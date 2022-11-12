@@ -5,7 +5,7 @@ import ProjectConsultants from "../Project-consultants/Project-consultants"
 import { useNavigate } from "react-router"
 
 
-const ProjectDetails = (props) => {
+const ProjectDetails = () => {
     
     let localToken = localStorage.getItem("valtech-auth")
     const navigate = useNavigate()
@@ -22,16 +22,16 @@ const ProjectDetails = (props) => {
         method: get,
         headers: header
     }
-    useEffect((state) => {
+    useEffect(() => {
         fetch(`http://localhost:8000/api/projects/${initialID}/`, getconfig)
           .then(response => response.json())
-          .then(data =>  {setProject(data)})
+          .then(data =>  setProject(data))
           .catch(error => console.log(error));
 
     },[])
 
     return (
-        <ProjectDetailsWrapper>
+        <ProjectDetailsWrapper background={`http://localhost:8000${project?.image}`}>
             <div>
             <HeaderStyle>
             <h1>Project details</h1>
@@ -39,8 +39,7 @@ const ProjectDetails = (props) => {
             </HeaderStyle>
             <hr></hr>
             <div>
-                <p>Image</p>
-                {/* <img src={projects.image}/> */}
+                <p className="hero"></p>
             </div>
             <div>
                 <p>Name</p>
@@ -59,7 +58,7 @@ const ProjectDetails = (props) => {
                 <p>{project === undefined ? 'Not provided' : `${project.time_frame.date_started} - ${project.time_frame.date_finished}`}</p>
             </div>
             <div>
-                <p>Amount of consultants <br/> working on project</p>
+                <p>Consultants working on project</p>
                 <p>{project === undefined ? 'Not provided' : project.assignee.length}</p>
             </div>
             <div>

@@ -8,11 +8,33 @@ margin-top: 110px;
 margin-left: 80px;
 width: 100vw;
 height: 100vh;
+position: relative;
+
+.hero {
+    background: linear-gradient(
+    135deg,
+
+    rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%
+    
+  ),url(${props => props.background});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    top: 0px; 
+    left: 0px;
+    width: 100px;
+    height: 80vh;
+    width: 80vw;
+}
 
 div > p:last-child {
     color: #1b253d;
 }
 
+/* rgba(0,0,0, 0),
+    rgba(255,255,255, 100)*/
 
 /* div > p:first-child {
     color: #1b253d;
@@ -99,5 +121,4 @@ margin-top: 2%;
 p {
     color: #1b253d;
 }
-
 `;

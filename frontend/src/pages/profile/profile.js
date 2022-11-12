@@ -7,6 +7,8 @@ import { ProfileContainer } from "./profile-styles";
 const ProfilePage = () => {
     
 
+
+
     return (
         <ProfileContainer>
             <Header/>

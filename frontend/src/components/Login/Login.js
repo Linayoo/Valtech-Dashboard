@@ -20,7 +20,7 @@ function Login() {
         method: post,
         headers: header,
         body: body
-    }       
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
         fetch("http://localhost:8000/token/", postconfig)
@@ -36,11 +36,11 @@ function Login() {
             })
             .catch(error => console.log(error))
     }
-  
+
     const handleUsernameChange = (e) => {
         setUsername(e.target.value)
     };
-        
+
     const handlePasswordChange = (e) => {
         setPassword(e.target.value)
     };

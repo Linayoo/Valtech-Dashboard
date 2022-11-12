@@ -5,13 +5,14 @@ from rest_framework.response import Response
 
 from timeframe.models import TimeFrame
 from user_project.models import UserProject
-from user_project.serializers import UserProjectSerializer
+from user_project.serializers import UserProjectSerializer, CreateProjectSerializer
 
 
 # GET all the projects (api/projects/)
 class GetAllProjects(ListAPIView):
     queryset = UserProject.objects.all()
     serializer_class = UserProjectSerializer
+    # parser_classes = (MultiPartParser, FormParser)
 
 
 # POST create a new project (api/projects/new/)
@@ -46,18 +47,12 @@ class CreateProject(GenericAPIView):
 class RetrievePatchDeleteProject(GenericAPIView):
     queryset = UserProject.objects.all()
     lookup_field = 'id'
+
     # parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = UserProjectSerializer(instance)
-        return Response(serializer.data)
-
-    def patch(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = UserProjectSerializer(instance, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
         return Response(serializer.data)
 
     def delete(self, request, *args, **kwargs):
@@ -72,3 +67,14 @@ class SearchProject(ListAPIView):
     serializer_class = UserProjectSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
+
+
+class PatchProject(GenericAPIView):
+    queryset = UserProject.objects.all()
+    lookup_field = 'id'
+    def patch(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = CreateProjectSerializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
