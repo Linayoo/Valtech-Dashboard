@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
 export const ConsultantDetailsWrapper  = styled.div`
-margin-top: 110px;
+margin-top: 90px;
 margin-left: 5%;
 width: 100vw;
 height: 100vh;
 
-div > p:first-child {
+div > p:last-child {
     color: #1b253d;
 }
 
@@ -31,7 +31,6 @@ div > button:hover {
 
 h1 {
     color: #1b253d;
-  
     margin-bottom: 10px;
 }
 
@@ -42,7 +41,6 @@ hr {
     background-color: #8080803e;
     width: 570px;
     margin-bottom: 30px;
-    
 }
 
 
@@ -55,10 +53,10 @@ p {
     color: grey;
     width: 400px;
     padding: 10px 0;
-
+    margin-top: -10px;
 }
 
-p:first-child {
+p:last-child {
     font-weight: bolder;
 }
 
@@ -80,19 +78,19 @@ display: flex;
 
 `;
 
-export const ConsultantStyle  = styled.div`
-display: flex;
-flex-direction: column;
-margin-top: 2%;
 
-p {
-    color: #1b253d;
-}
-
-`;
 
 export const FlexColumn  = styled.div`
 display: flex;
 flex-direction: column;
-width: 300px;
+width: 250px;
+
+:nth-child(2) {
+    width: 450px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
 `;

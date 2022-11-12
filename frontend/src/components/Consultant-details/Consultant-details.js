@@ -1,15 +1,41 @@
 import { ConsultantDetailsWrapper, HeaderStyle, ConsultantStyle, FlexColumn } from "./Consultant-details.styles"
-import { useNavigate } from "react-router"
+import { useNavigate, useParams } from "react-router"
+import { useState, useEffect } from "react"
 
 
-const ConsultantDetails = () => {
+
+const ConsultantDetails = (props) => {
     const navigate = useNavigate()
+    let localToken = localStorage.getItem("valtech-auth")
+    const initialID = useParams().consultantId
+
+
+    const [consultant, setConsultant] = useState()
+
+    const get = "GET"
+    const header = new Headers({
+        "Authorization": `Bearer ${localToken}`,
+        "content-type": "application/json",
+    })    
+    const getconfig = {
+        method: get,
+        headers: header
+    }
+    useEffect((state) => {
+        fetch(`http://localhost:8000/api/consultants/${initialID}/`, getconfig)
+          .then(response => response.json())
+          .then(data =>  {console.log(data); setConsultant(data)})
+          .catch(error => console.log(error));
+
+    },[])
+
+
     return (
         <ConsultantDetailsWrapper>
             <div>
             <HeaderStyle>
             <h1>Consultant details</h1>
-            <button onClick={() => navigate(`/consultant/edit`)}>Edit details</button>
+            <button onClick={() => navigate(`consultant/${initialID}/edit`)}>Edit details</button>
             </HeaderStyle>
             <hr/>
             </div>
@@ -20,32 +46,32 @@ const ConsultantDetails = () => {
                     <FlexColumn>
                         <div>
                                 <p>Image</p>
-                                <img src=""/>
+                                <img src={consultant && consultant.image_path}/>
                         </div>
                         <div>
                             <p>Display Name </p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.display_name}</p>
                         </div>
                         <div>
                             <p>First Name </p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided": consultant.first_name }</p>
                         </div>
                         <div>
                             <p>Last Name </p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.last_name}</p>
                         </div>
 
                         <div>
                             <p>Username </p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.username}</p>
                         </div>
                         <div>
                             <p>Title</p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.title }</p>
                         </div>
                         <div>
                             <p>Category </p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.role_category}</p>
                         </div>
                     </FlexColumn>
 
@@ -55,32 +81,32 @@ const ConsultantDetails = () => {
                     
                         <div>
                             <p>Country </p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.country }</p>
                         </div>
                         <div>
                             <p>City </p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.city}</p>
                         </div>
                         <div>
                             <p>Office </p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.office_category}</p>
                         </div>
                         <div>
                             <p>Manager</p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.manager_display_name}</p>
                         </div>
                     
                         <div>
                             <p>LinkedIn</p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.linked_in_link }</p>
                         </div>
                         <div>
                             <p>Email</p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.email}</p>
                         </div>
                         <div>
                             <p>Summary</p>
-                            <p></p>
+                            <p>{consultant === undefined ? "not provided" : consultant.summary}</p>
                         </div>
                     </FlexColumn>
 
@@ -89,31 +115,31 @@ const ConsultantDetails = () => {
                     <FlexColumn>
                        <div>
                             <p>Primary Language</p>
-                    
+                            <p>{consultant === undefined ? "not provided" : consultant.primary_language}</p>
                         </div>
                         <div>
                             <p>Language Skills</p>
-                            
+                            <p>{consultant === undefined ?  "not provided" : consultant.language_skills.map(element => <li>{element.title}</li>) }</p>
                         </div>
                         <div>
                             <p>Skills</p>
-                        
+                            <p>{consultant === undefined ? "not provided" : consultant.managed_skills.map(element => <li>{element.title}</li>) }</p>
                         </div>
                         <div>
                             <p>Additional Skills</p>
-                        
+                            <p>{consultant === undefined ? "not provided" : consultant.addition_skills.map(element => <li>{element.title}</li>) } </p>
                         </div>
                         <div>
                             <p>Educations</p>
-                            
+                            <p>{consultant === undefined ?  "not provided" : consultant.educations.map(element => <li>{element.title}</li>)}</p>
                         </div>
                         <div>
                             <p>Certificate</p>
-                        
+                            <p>{consultant === undefined ?  "not provided" : consultant.certificates.map(element => <li>{element.title}</li>)}</p>
                         </div>
                         <div>
                             <p>Unavailable</p>
-
+                            <p>{consultant === undefined ? "not provided" : consultant.unavailable.map(element => <li>{element.title}</li>)}</p>
                         </div>
                     </FlexColumn>
                 </div>
