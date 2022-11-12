@@ -12,6 +12,13 @@ const ProjectDetails = () => {
     const initialID = useParams().projectId
 
     const [project, setProject] = useState()
+    const [name, setName] = useState()
+    const [description, setDescription] = useState()
+    const [link, setLink] = useState()
+    const [start, setStart] = useState()
+    const [end, setEnd] = useState()
+    const [assignee, setAssignee] = useState()
+    const [tools, setTools] = useState()
 
     const get = "GET"
     const header = new Headers({
@@ -25,7 +32,16 @@ const ProjectDetails = () => {
     useEffect(() => {
         fetch(`http://localhost:8000/api/projects/${initialID}/`, getconfig)
           .then(response => response.json())
-          .then(data =>  setProject(data))
+          .then(data => {
+            setProject(data) 
+            setName(data.name);
+            setDescription(data.description);
+            setLink(data.external_link);
+            setStart(data.time_frame.date_started);
+            setEnd(data.time_frame.date_finished);
+            setAssignee(data.assignee);
+            setTools(data.tools);
+          })
           .catch(error => console.log(error));
 
     },[])
@@ -37,33 +53,34 @@ const ProjectDetails = () => {
             <h1>Project details</h1>
             <button onClick={() => navigate(`/project/${initialID}/edit`)}>Edit details</button>
             </HeaderStyle>
-            <hr></hr>
+            <hr>{console.log(project)}</hr>
             <div>
                 <p className="hero"></p>
             </div>
             <div>
                 <p>Name</p>
-                <p>{project === undefined ? 'Not provided' : project.name}</p>
+                <p>{name === undefined ? 'Not provided' : name}</p>
             </div>
             <div>
                 <p>Description </p>
-                <p>{project === undefined ? 'Not provided' : project.description}</p>
+                <p>{description === (null || "") ? 'Not provided' : description}</p>
             </div>
             <div>
                 <p>External link</p>
-                <p>{project === undefined ? 'Not provided' : project.external_link}</p>
+                <p>{link ===  (null || "") ? 'Not provided' : link}</p>
             </div>
             <div>
                 <p>Project duration</p>
-                <p>{project === undefined ? 'Not provided' : `${project.time_frame.date_started} - ${project.time_frame.date_finished}`}</p>
+                <p>{start === (undefined || null) ? 'Not provided' : start} - {end === (undefined || null) ? 'Not provided' : end}</p>
+                
             </div>
             <div>
                 <p>Consultants working on project</p>
-                <p>{project === undefined ? 'Not provided' : project.assignee.length}</p>
+                <p>{assignee === undefined ? '0' : assignee.length}</p>
             </div>
             <div>
                 <p>Tools used</p>
-                {project === undefined ? 'Not provided' : project.tools.map(element => <h4>{element.title}</h4>)}
+                {tools === undefined ? '' : tools.map(element => <h4>{element.title}</h4>)}
             </div>
             <ConsultantStyle>
             <p>Consultants currently assigned to project:</p>

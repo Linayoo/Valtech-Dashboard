@@ -27,12 +27,13 @@ const Results = (props) => {
                     {props.consultants === undefined ? 'Loading...' : props.consultants.map((val, key) => {
                         return (
                             <tr key={key}>
+                                <>{console.log(val.unavailable)}</>
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)}>{val.display_name}</td>
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)} >{val.country}</td>
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)}>{val.city}</td>
                                 {/* <td><img src={val.image_path}/></td> */}
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)}>{/*{val.manager_display_name}*/}</td>
-                                <td onClick={(event) => navigateToConsultantDetails(event, val)}>{val.unavailable.map(e => `${e.date_finished}`)}</td>
+                                <td onClick={(event) => navigateToConsultantDetails(event, val)}>{val.unavailable.length === 0 ? 'Instantly' : val.unavailable.map(e => `${e.date_finished}`)}</td>
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)}>{(val.unavailable[0] == undefined || new Date() > new Date(`${val.unavailable[0].date_finished}Z`)) ? 'Available' : 'On project'}</td>
                                 <td><div>
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
