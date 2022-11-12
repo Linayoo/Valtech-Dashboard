@@ -31,7 +31,7 @@ const ProjectDetails = () => {
     },[])
 
     return (
-        <ProjectDetailsWrapper>
+        <ProjectDetailsWrapper background={`http://localhost:8000${project?.image}`}>
             <div>
             <HeaderStyle>
             <h1>Project details</h1>
@@ -39,8 +39,7 @@ const ProjectDetails = () => {
             </HeaderStyle>
             <hr></hr>
             <div>
-                <p>Image</p>
-                <img src={project?.image}/>
+                <p className="hero"></p>
             </div>
             <div>
                 <p>Name</p>
@@ -59,7 +58,7 @@ const ProjectDetails = () => {
                 <p>{project === undefined ? 'Not provided' : `${project.time_frame.date_started} - ${project.time_frame.date_finished}`}</p>
             </div>
             <div>
-                <p>Amount of consultants <br/> working on project</p>
+                <p>Consultants working on project</p>
                 <p>{project === undefined ? 'Not provided' : project.assignee.length}</p>
             </div>
             <div>
