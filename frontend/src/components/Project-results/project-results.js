@@ -33,7 +33,6 @@ const ProjectResults = (props) => {
                         <th>On project</th>
                         <th>Status</th>
                     </tr>
-
                     {props.projects === undefined ? 'Loading...' : props.projects.map((val, key) => {
                         return (
                             <tr key={key}>
