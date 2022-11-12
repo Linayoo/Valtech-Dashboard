@@ -18,7 +18,7 @@ flex-direction: row;
 `;
 
 export const ProfileInfoLeftSide = styled.div`
-width: 40%;
+width: 25%;
 height: 100%;
 display: flex;
 align-items: center;
@@ -26,7 +26,7 @@ flex-direction: row;
 `;
 
 export const ProfilePhoto = styled.div`
-width: 40%;
+width: 100%;
 height: 95%;
 display: flex;
 align-items: center;
@@ -38,28 +38,41 @@ img{
 `;
 
 export const ProfileRightSide = styled.div`
-width: 60%;
+width: 75%;
 height: 100%;
 display: flex;
 /* justify-content: center; */
-flex-direction: column;
+flex-direction: row;
 /* margin-top: 1%; */
-justify-content: space-evenly;
-font-size: 20px;
+justify-content: space-between;
+/* font-size: 20px;  */
 `;
 
+export const FieldsProfile = styled.div`
+width: 50%;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+align-items: flex-start;
+height: 100%;
+padding: 5px;
+`
+
+
+
 export const NameLocation = styled.div`
-width: 60%;
+width: 100%;
 height: 20%;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-margin-left: -32%;
 font-size: 15px;
+padding-left: 5%;
 `;
 
 export const ProfileName = styled.form`
 height: 30%;
+width: 100%;
 color: white;
 display: flex;
 flex-direction: column;
@@ -67,6 +80,7 @@ align-items: flex-start;
 justify-content: flex-start;
 font-size: 20px;
 font-weight: 900;
+
 p{
     padding: 5px;
     font-size: 20px;
@@ -82,13 +96,15 @@ export const ProfileUsername = styled.div`
 color: white;
 display: flex;
 flex-direction: row;
-margin-left: -32%;
 font-weight: 900;
 font-size: 20px;
-width: 60%;
+width: 100%;
+padding-left: 5%;
+
 p{
     font-size: 20px;
     padding: 5px;
+    padding-top: 15px;
 }
 span{
     padding-left: 5px;
@@ -100,11 +116,11 @@ export const ProfileEmail = styled.form`
 color: white;
 display: flex;
 flex-direction: row;
-width: 60%;
-/* height: 5%; */
-margin-left: -32%;
+width: 100%;
 font-size: 20px;
 font-weight: 900;
+padding-left: 5%;
+
 
 p{
     width: 100%;
@@ -117,14 +133,15 @@ span{
 `;
 
 export const ProfileJoined = styled.div`
-width: 60%;
+width: 100%;
 /* height: 40%; */
 display: flex;
 flex-direction: row;
-margin-left: -32%;
 font-size: 20px;
 color: white;
 font-weight: 900;
+padding-left: 5%;
+
 p{
     width: 100%;
     padding: 5px;

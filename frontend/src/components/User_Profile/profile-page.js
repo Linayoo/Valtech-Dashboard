@@ -1,17 +1,19 @@
-import { ProfileInfo, ChangePhotoButton, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./profile.styles"
-import {CiEdit} from 'react-icons/ci'
+import { ProfileInfo, FieldsProfile, ChangePhotoButton, ProfileJoined, ButtonProfile, EditUserDetails, ProfileUsername, ProfileEmail, ProfileName, ProfileMain,ProfileRightSide, NameLocation, ProfilePhoto, ProfileInfoLeftSide} from "./profile.styles"
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router"
 import SideNav from '../../components/SideNav/SideNav';
 
 
 const UserProfile = () => {
 
+    let localToken = localStorage.getItem("valtech-auth")
+    const navigate = useNavigate()
+
     const [consultants, setConsultants] = useState([])
 
     const get = "GET"
     const header = new Headers({
-        "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MzY0NzM1LCJpYXQiOjE2Njc5MzI3MzUsImp0aSI6ImVjYTk5ZTYxMTg1ZTQ2OTRhNDg0N2VkODg5YWFkOTliIiwidXNlcl9pZCI6Mn0.0rsTH6W_ehRitYh5ezU_HHzPpG6EfSlQIdFAfbUKyag`,
+        "Authorization": `Bearer ${localToken}`,
         "content-type": "application/json",
     })
 
@@ -40,6 +42,7 @@ return (
                     </ProfilePhoto>
                 </ProfileInfoLeftSide>
                 <ProfileRightSide>
+                    <FieldsProfile>
                     <NameLocation>
                         <ProfileName>
                             <p>First name: <span>{consultants.first_name}</span></p>
@@ -55,14 +58,16 @@ return (
                     <ProfileJoined>
                         <p>Joined: <span>{consultants.date_joined}</span></p>
                     </ProfileJoined>
-                </ProfileRightSide>
-                <ChangePhotoButton>
+                    </FieldsProfile>
+                    <ChangePhotoButton>
                         <button>Upload Photo</button>
-                </ChangePhotoButton>
+                    </ChangePhotoButton>
+                </ProfileRightSide>
+                
             </ProfileInfo>
             <ButtonProfile>
                 <EditUserDetails>       
-                  <p>Edit User Details</p>
+                  <p onClick={() => navigate(`/profile/edit`)}>Edit User Details</p>
                 </EditUserDetails>
             </ButtonProfile>
         </ProfileMain>

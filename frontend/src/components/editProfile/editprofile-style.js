@@ -34,7 +34,7 @@ flex-direction: row;
 `;
 
 export const ProfileInfoLeftSide = styled.div`
-width: 20%;
+width: 25%;
 height: 100%;
 display: flex;
 align-items: center;
@@ -54,7 +54,7 @@ img{
 `;
 
 export const ProfileRightSide = styled.div`
-width: 80%;
+width: 75%;
 height: 100%;
 display: flex;
 flex-direction: column;
@@ -67,8 +67,9 @@ height: 20%;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-/* margin-left: -32%; */
-font-size: 15px;
+padding-left: 3%;
+font-size: 20px;
+
 `;
 
 export const ProfileName = styled.form`
@@ -102,6 +103,8 @@ flex-direction: row;
 /* margin-left: -32%; */
 font-weight: 900;
 font-size: 20px;
+padding-left: 3%;
+
 p{
     font-size: 20px;
     padding: 5px;
@@ -116,10 +119,11 @@ export const ProfileEmail = styled.form`
 color: white;
 display: flex;
 flex-direction: row;
-width: 100%;
+width: 60%;
 /* margin-left: -32%; */
 font-size: 20px;
 font-weight: 900;
+padding-left: 3%;
 
 p{
     width: 100%;
@@ -137,6 +141,8 @@ flex-direction: row;
 font-size: 20px;
 color: white;
 font-weight: 900;
+padding-left: 3%;
+
 p{
     width: 100%;
     padding-left: 5px;
