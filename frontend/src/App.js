@@ -23,8 +23,8 @@ function App() {
           <Route path="insights/" element={<InsightsPage/>} />
           <Route path="consultants/" element={<HomePage />} />
           <Route path="/create/consultant" element={<ConsultantCreatePage/>} />
-          <Route path="consultant/details" element={<ConsultantDetailsPage />} />
-          <Route path="/consultant/edit" element={<ConsultantEditPage />} />
+          <Route path="consultant/:consultantId" element={<ConsultantDetailsPage />} />
+          <Route path="consultant/:consultantId/edit" element={<ConsultantEditPage />} />
           <Route path="projects/" element={<ProjectsPage />} />
           <Route path="project/:projectId" element={<ProjectDetailsPage />} />
           <Route path="/create/project" element={<ProjectCreatePage/>} />
