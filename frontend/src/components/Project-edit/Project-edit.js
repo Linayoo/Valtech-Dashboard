@@ -54,7 +54,6 @@ const EditProjects = () => {
                     "name": formData.name,
                     "description": formData.description,
                     "link": formData.link,
-                    "image": formData.image,
                     "tools": parseStringToList(sendtools),
                 })
                 return fetchbody
@@ -63,7 +62,6 @@ const EditProjects = () => {
                     "name": formData.name,
                     "description": formData.description,
                     "link": formData.link,
-                    "image": formData.image,
                     "assignee": parseStringToList(sendconsultants),
                 })
                 return fetchbody
@@ -72,7 +70,6 @@ const EditProjects = () => {
                     "name": formData.name,
                     "description": formData.description,
                     "link": formData.link,
-                    "image": formData.image,
                 })
                 return fetchbody
             } else {
@@ -80,7 +77,6 @@ const EditProjects = () => {
                     "name": formData.name,
                     "description": formData.description,
                     "link": formData.link,
-                    "image": formData.image,
                     "assignee": parseStringToList(sendconsultants),
                     "tools": parseStringToList(sendtools),
                 })

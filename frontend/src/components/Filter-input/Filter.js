@@ -61,21 +61,38 @@ const Filter = (props) => {
         }
 
         const datefilter = (element) => {
-            console.log(element.unavailable)
             if (element.unavailable.length === 0) {
-                return false
-            } else {     
-                element.unavailable.array.forEach(element => {
-                    let start = element.date_started
-                    let end = element.date_finished
-                    start = new Date(`${start}Z`)
-                    end = new Date(`${end}Z`)
-                    if ((start >= query.dates[0]) && (end <= query.dates[1])) {
-                        return true
-                    } else {
-                        return false
+                return true
+            } else {  
+                let result = true
+                element.unavailable.forEach(e => {
+                    let userStart = e.date_started
+                    let userEnd = e.date_finished
+                    let filterStart = query.dates[0]
+                    let filterEnd = query.dates[1]
+                    userStart = new Date(`${userStart}Z`)
+                    userEnd = new Date(`${userEnd}Z`)
+                    if (userStart < filterStart && (userEnd > filterStart && userEnd < filterEnd)) {
+                        result = false // consultant starts a project earlier and finishes it during the filtered period
+                    } else if (userStart === filterStart && userEnd > filterEnd) {
+                        result = false // consultant starts a project the same time as filter start and finishes it after filter end
+                    } else if (userStart === filterStart && userEnd < filterEnd) {
+                        result = false // consultant starts a project the same time as filter start and finishes it before filter end
+                    } else if (userStart > filterStart && userEnd < filterEnd) {
+                        result = false // consultant starts project after filter start and finished it before filter end
+                    } else if (userStart > filterStart && userStart === filterEnd) {
+                        result = false // consultant starts a project after the filter start and finishes it the same day as filter end
+                    } else if (userStart === filterStart && userEnd === filterEnd) {
+                        result = false // consultant starts a project the same day as filter start and finishes it the same day as filter end
+                    } else if (userStart < filterStart && userEnd > filterEnd) {
+                        result = false // consultant starts a project before filter start and finishes it after filter end
+                    } else if (userStart < filterStart && userEnd === filterEnd) {
+                        result = false // consultant starts a project before filter start and finishes it the same day as filter end
+                    } else if ((userStart > filterStart && userStart < filterEnd) && userEnd > filterEnd) {
+                        result = false // consultant starts a project after filter start and finishes it after filter end
                     }
-                });
+                })
+                return result
             }
         }
 

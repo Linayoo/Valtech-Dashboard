@@ -27,7 +27,6 @@ const Results = (props) => {
                     {props.consultants === undefined ? 'Loading...' : props.consultants.map((val, key) => {
                         return (
                             <tr key={key}>
-                                <>{console.log(val.unavailable)}</>
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)}>{val.display_name}</td>
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)} >{val.country}</td>
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)}>{val.city}</td>
