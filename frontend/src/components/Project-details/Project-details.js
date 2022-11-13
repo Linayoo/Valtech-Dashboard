@@ -38,7 +38,10 @@ const ProjectDetails = () => {
 
     const handleDelete = () => {
         fetch(`http://localhost:8000/api/projects/${initialID}/`, deleteConfig)
-          .then(response => response.json())
+          .then(response => {
+              response.json();
+              navigate(`../../projects/`);
+            })
           .catch(error => console.log(error))
     }
 
