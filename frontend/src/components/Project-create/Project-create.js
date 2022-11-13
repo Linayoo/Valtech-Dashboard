@@ -91,7 +91,10 @@ const CreateProject = () => {
         fetch(`http://localhost:8000/api/projects/new/`, projectConfig)
             .then(response => response.json())
             .then((data) => fetch(`http://localhost:8000/api/projects/${data.id}/`, imgUploadConfig))
-            .then(response => response.json())
+            .then(response => {
+                response.json();
+                navigate(`../projects/`)
+            })
             .then((data) => console.log(data))
             .catch(error => console.log(error));
     }
@@ -185,7 +188,7 @@ const CreateProject = () => {
     return (
         <CreateProjectContainer>
             <h1>Let's create a new Project!</h1>
-            <button type='submit' form='test'>SEND IT BABY</button>
+            <button type='submit' form='test'>Submit</button>
             <hr />
             <form id='test' onSubmit={createProject}>
                 <div>
