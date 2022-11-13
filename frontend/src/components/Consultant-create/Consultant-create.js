@@ -50,20 +50,15 @@ const CreateConsultant = () => {
         "first_name": `${firstname}`,
         "last_name": `${lastname}`,
         "title": `${title}`,
-        "username": `${username}`,
         "country": `${country}`,
         "city": `${city}`,
         "office_category": `${officeCat}`,
         "email": `${email}`,
         "linked_in_link": `${linkedIn}`,
-        "summary": `${summary}`,
         "primary_language": `${prmLang}`,
-        "educations": parseStringToList(education),
-        "unavailable": parseStringToList(unavailable),
         "language_skills": parseStringToList(langSkill),
         "managed_skills": parseStringToList(skill),
         "addition_skills": parseStringToList(addSkill),
-        "certificates": parseStringToList(certificate),
         "manager_display_name": `${manager}`,
         "role_category": `${role}`,
 
@@ -117,10 +112,6 @@ const CreateConsultant = () => {
                         <input type="text" name="last_name" onChange={e => setLastname(e.target.value)}></input>
                     </label>
                     <label>
-                        <p>Username *</p>
-                        <input type="text" name="username" onChange={e => setUsername(e.target.value)}></input>
-                    </label>
-                    <label>
                         <p>Title</p>
                         <input type="text" name="title" onChange={e => setTitle(e.target.value)}></input>
                     </label>
@@ -170,10 +161,6 @@ const CreateConsultant = () => {
                         <input type="email" name="email" onChange={e => setEmail(e.target.value)}></input>
                     </label>
                     <label>
-                        <p>Summary</p>
-                        <input type="text" name="summary" onChange={e => setSummary(e.target.value)}></input>
-                    </label>
-                    <label>
                         <p>Primary Language</p>
                         <input type="text" name="primary_language" onChange={e => setPrmLang(e.target.value)}></input>
                     </label>
@@ -191,19 +178,6 @@ const CreateConsultant = () => {
                         <p>Additional Skills</p>
                         <input type="text" name="addition_skills" onChange={e => setAddSkill(e.target.value)}></input>
                     </label>
-                    <label>
-                        <p>Educations</p>
-                        <input type="text" name="education" onChange={e => setEducation(e.target.value)}></input>
-                    </label>
-                    <label>
-                        <p>Certificate</p>
-                        <input type="text" name="certificates" onChange={e => setCertificate(e.target.value)}></input>
-                    </label>
-                    <label>
-                        <p>Unavailable</p>
-                        <input type="text" name="unavailable" onChange={e => setUnavailable(e.target.value)}></input>
-                    </label>
-                    
                     <div>
                         <label>
                             <p>Image</p>

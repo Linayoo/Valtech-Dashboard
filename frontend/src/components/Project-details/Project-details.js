@@ -14,6 +14,8 @@ const ProjectDetails = () => {
     const [project, setProject] = useState()
 
     const get = "GET"
+    const deleteMethod = "DELETE"
+
     const header = new Headers({
         "Authorization": `Bearer ${localToken}`,
         "content-type": "application/json",
@@ -22,6 +24,17 @@ const ProjectDetails = () => {
         method: get,
         headers: header
     }
+    const deleteConfig = {
+        method: deleteMethod,
+        headers: header
+    }
+
+    const handleDelete = () => {
+        fetch(`http://localhost:8000/api/projects/${initialID}/`, deleteConfig)
+          .then(response => response.json())
+          .catch(error => console.log(error))
+    }
+
     useEffect(() => {
         fetch(`http://localhost:8000/api/projects/${initialID}/`, getconfig)
           .then(response => response.json())
@@ -36,6 +49,7 @@ const ProjectDetails = () => {
             <HeaderStyle>
             <h1>Project details</h1>
             <button onClick={() => navigate(`/project/${initialID}/edit`)}>Edit details</button>
+            <button className="deleteButton" onClick={handleDelete}>Delete project</button>
             </HeaderStyle>
             <hr></hr>
             <div>

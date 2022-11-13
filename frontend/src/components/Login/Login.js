@@ -29,7 +29,7 @@ function Login() {
                 if (data.access) {
                     localStorage.setItem("valtech-auth", data.access);
                     console.log(localStorage.getItem("valtech-auth"));
-                    navigate('consultants/');
+                    navigate('insights/');
                 } else {
                     alert('Invalid username or password. Please try again!')
                 }

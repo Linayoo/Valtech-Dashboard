@@ -54,6 +54,10 @@ div > button {
     font-size: 15px;
 }
 
+div > button.deleteButton {
+    width: 120px;
+}
+
 div > button:hover {
     background-color: #220641;
     color: white;
