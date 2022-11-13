@@ -45,11 +45,34 @@ const ProjectFilter = (props) => {
             dates: inputref.current.date.value,
         }
 
+        const datefilter = (element) => {
+            if (element.time_frame === null || element.time_frame.date_started === null || element.time_frame.date_finished === null ) {
+                return false
+            } else {     
+                let start = element.time_frame.date_started
+                let end = element.time_frame.date_finished
+                start = new Date(`${start}Z`)
+                end = new Date(`${end}Z`)
+                if ((start >= query.dates[0]) && (end <= query.dates[1])) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+
         let updatedList = [...projects];
         updatedList = updatedList.filter(element =>
             element.name.toLowerCase().indexOf(query.name.toLowerCase()) !== -1 &&
             (element.tools.some(element => element['id'] === parseInt(query.skills)) || query.skills === '0')
         )
+
+        if (query.dates != undefined) {
+            if (query.dates[0] && query.dates[1] != null) {
+                updatedList = updatedList.filter(datefilter)
+            }
+        }
+
         props.setTomapout(updatedList);
     };
 
@@ -88,7 +111,6 @@ const ProjectFilter = (props) => {
                     </form>
                 </Flex>
             </ProjectFilterContainer>
-
         </div>
     )
 }

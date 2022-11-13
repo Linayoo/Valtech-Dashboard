@@ -60,13 +60,40 @@ const Filter = (props) => {
             dates: inputref.current.date.value,
         }
 
+        const datefilter = (element) => {
+            console.log(element.unavailable)
+            if (element.unavailable.length === 0) {
+                return false
+            } else {     
+                element.unavailable.array.forEach(element => {
+                    let start = element.date_started
+                    let end = element.date_finished
+                    start = new Date(`${start}Z`)
+                    end = new Date(`${end}Z`)
+                    if ((start >= query.dates[0]) && (end <= query.dates[1])) {
+                        return true
+                    } else {
+                        return false
+                    }
+                });
+            }
+        }
+
         let updatedList = [...consultants];
         updatedList = updatedList.filter(element =>
             element.display_name.toLowerCase().indexOf(query.name.toLowerCase()) !== -1 &&
             element.city.toLowerCase().indexOf(query.city.toLowerCase()) !== -1 &&
             element.country.toLowerCase().indexOf(query.country.toLowerCase()) !== -1 &&
             (element.managed_skills.some(element => element['id'] === parseInt(query.skills)) || query.skills === '0') &&
-            (element.language_skills.some(element => element['id'] === parseInt(query.languages)) || query.languages === '0'))
+            (element.language_skills.some(element => element['id'] === parseInt(query.languages)) || query.languages === '0')
+        )
+                  
+        if (query.dates != undefined) {
+            if (query.dates[0] && query.dates[1] != null) {
+                updatedList = updatedList.filter(datefilter)
+            }
+        }
+
         props.setTomapout(updatedList);
     };
 
@@ -119,18 +146,3 @@ const Filter = (props) => {
 }
 
 export default Filter
-
-
-/*
-
-<DatePicker
-                selectsRange={true}
-                startDate={startDate}
-                endDate={endDate}
-                onChange={(update) => {
-                    setDateRange(update);
-                }}
-                isClearable={true}
-                />
-
-*/
