@@ -27,12 +27,24 @@ input{
 
 
 export const ChangePhotoButton = styled.div`
-    width: 200px;
-    height: 200px;
+    width: 130px;
+    height: 30px;
     justify-content: flex-start;
-    align-items: flex-start;
-    font-size: 500px;
-button {
+    /* align-items: flex-start; */
+    font-size: 50px;
+    color: white;
+    padding-right: 300px;
+    display: flex;
+    font-size: 20px;
+    p{
+    padding-top: 10%;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    width: 130px;
+    height: 30px;
+    }
+/* button {
     color: #1b253d;
     border: 1px solid #42018cc2;
     height: 50px;
@@ -45,11 +57,18 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 button:hover {
     background-color: #220641;
     color: white;
+}
+input[type="file"] {
+    display: none;
+}
+
+label{
+    cursor: pointer;
 }
 `;
 
