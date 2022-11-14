@@ -70,7 +70,7 @@ const ProjectDetails = () => {
             <button onClick={() => navigate(`/project/${initialID}/edit`)}>Edit details</button>
             <button className="deleteButton" onClick={handleDelete}>Delete project</button>
             </HeaderStyle>
-            <hr>{console.log(project)}</hr>
+            <hr></hr>
             <div>
                 <p className="hero"></p>
             </div>
