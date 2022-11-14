@@ -28,7 +28,7 @@ const ConsultantDetails = (props) => {
     }
 
     const handleDelete = () => {
-        fetch(`http://localhost:8000/api/consultants/${initialID}/`, deleteConfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/${initialID}/`, deleteConfig)
           .then(response => {
               response.json();
               navigate(`../../consultants/`)
@@ -37,7 +37,7 @@ const ConsultantDetails = (props) => {
     }
     
     useEffect((state) => {
-        fetch(`http://localhost:8000/api/consultants/${initialID}/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/${initialID}/`, getconfig)
           .then(response => response.json())
           .then(data =>  {console.log(data); setConsultant(data)})
           .catch(error => console.log(error));

@@ -23,7 +23,7 @@ function Login() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:8000/token/", postconfig)
+        fetch("https://valtech-dashboard.propulsion-learn.ch/backend/api/token/", postconfig)
             .then(response => response.json())
             .then((data) => {
                 if (data.access) {

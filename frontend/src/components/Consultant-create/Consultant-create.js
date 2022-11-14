@@ -82,9 +82,9 @@ const CreateConsultant = () => {
     const createConsultant = (event) => {
         event.preventDefault();
         console.log(config.body)
-        fetch(`http://localhost:8000/api/consultants/new/`, config)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/new/`, config)
         .then(response => response.json())
-        .then((data) => fetch(`http://localhost:8000/api/consultants/${data.id}/`, imageUploadConfig))
+        .then((data) => fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/${data.id}/`, imageUploadConfig))
         .then(response => response.json())
         .then((data) => console.log(data))
         .catch(error => console.log(error));
