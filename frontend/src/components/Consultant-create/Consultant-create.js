@@ -103,13 +103,13 @@ const CreateConsultant = () => {
                 <div>
                     <label>
                         <p>Display Name *</p>
-                        <input type="text" name="display_name" onChange={e => setDisplayName(e.target.value)}></input>
+                        <input type="text" name="display_name" onChange={e => setDisplayName(e.target.value)} required></input>
                     </label>
                     <label>
                         <p>First Name *</p>
-                        <input type="text" name="first_name" onChange={e => setFirstname(e.target.value)}></input>
+                        <input type="text" name="first_name" onChange={e => setFirstname(e.target.value)} required></input>
                         <p>Last Name *</p>
-                        <input type="text" name="last_name" onChange={e => setLastname(e.target.value)}></input>
+                        <input type="text" name="last_name" onChange={e => setLastname(e.target.value)} required></input>
                     </label>
                     <label>
                         <p>Title</p>
@@ -117,7 +117,7 @@ const CreateConsultant = () => {
                     </label>
                     <label>
                         <p>Category *</p>
-                        <select name="role_category" onChange={e => setRole(e.target.value)}>
+                        <select name="role_category" onChange={e => setRole(e.target.value)} required>
                             <option value="">Select a value ...</option>
                             <option value="frontend">Frontend Developer</option>
                             <option value="backend">Backend Developer</option>
@@ -128,18 +128,18 @@ const CreateConsultant = () => {
                 
                     <label>
                         <p>Country *</p>
-                        <input name="country" onChange={e => setCountry(e.target.value)}>
+                        <input name="country" onChange={e => setCountry(e.target.value)} required>
                         </input>
                     </label>
                     </div>
                     <div>
                     <label>
                         <p>City *</p>
-                        <input type="text" name="city" onChange={e => setCity(e.target.value)}></input>
+                        <input type="text" name="city" onChange={e => setCity(e.target.value)} required></input>
                     </label>
                     <label>
                         <p>Office *</p>
-                        <select name="office_category" onChange={e => setOfficeCat(e.target.value)}>
+                        <select name="office_category" onChange={e => setOfficeCat(e.target.value)} required>
                             <option value="">Select a value ...</option>
                             <option value="Bern">Bern</option>
                             <option value="Zurich">Zurich</option>
