@@ -1,6 +1,6 @@
 from rest_framework import filters
 from rest_framework.generics import ListAPIView, GenericAPIView
-from rest_framework.parsers import MultiPartParser, FormParser
+# from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 
 from timeframe.models import TimeFrame
@@ -72,6 +72,7 @@ class SearchProject(ListAPIView):
 class PatchProject(GenericAPIView):
     queryset = UserProject.objects.all()
     lookup_field = 'id'
+
     def patch(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = CreateProjectSerializer(instance, data=request.data, partial=True)

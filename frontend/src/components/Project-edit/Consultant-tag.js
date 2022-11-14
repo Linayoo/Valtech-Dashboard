@@ -50,7 +50,7 @@ const Tags = (props) => {
             <div className="tagContainer">
                 <div className="leftHalf"></div>
                 <div className="tagText">{props.consultant.display_name}</div>
-                <button className="rightHalf" id={props.id} onClick={props.remove}></button>
+                <button className="rightHalf" id={props.id} name={JSON.stringify(props.consultant)} onClick={props.remove}></button>
             </div>
         </Consultant>
     )

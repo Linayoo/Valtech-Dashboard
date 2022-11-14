@@ -16,10 +16,7 @@ class ConsultantSerializer(serializers.ModelSerializer):
         depth = 1
 
 
-# class PatchConsultantSerializer(serializers.ModelSerializer):
-#     image_path = serializers.ImageField(required=False)
-#
-#     class Meta:
-#         model = Consultant
-#         fields = '__all__'
-#         depth = 1
+class PatchConsultantTimeFrameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Consultant
+        fields = '__all__'

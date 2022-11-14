@@ -4,7 +4,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 
 from consultant.models import Consultant
-from consultant.serializers import ConsultantSerializer
+from consultant.serializers import ConsultantSerializer, PatchConsultantTimeFrameSerializer
 
 
 # GET all the consultants (api/consultants/)
@@ -101,6 +101,7 @@ class SearchConsultant(ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['display_name']
 
+
 # class PatchTimeframe(GenericAPIView):
 #     serializer_class = ConsultantSerializer
 #     queryset = Consultant.objects.all()
@@ -115,3 +116,14 @@ class SearchConsultant(ListAPIView):
 #         else:
 #             #consultant.unavailable.add(timeframe)
 #         return Response()
+
+class PatchConsTimeframe(GenericAPIView):
+    queryset = Consultant.objects.all()
+    lookup_field = 'id'
+
+    def patch(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = PatchConsultantTimeFrameSerializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
