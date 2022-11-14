@@ -2,6 +2,10 @@ import { CreateConsultantContainer, } from "./Consultant-create.styles";
 import React, { useState } from "react";
 
 const CreateConsultant = () => {
+
+    let localToken = localStorage.getItem("valtech-auth")
+
+
     const [displayName, setDisplayName] = useState("")
     const [firstname, setFirstname] = useState("")
     const [lastname, setLastname] = useState("")
@@ -34,12 +38,12 @@ const CreateConsultant = () => {
     const patch = "PATCH"
 
     const headers = new Headers({
-        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MjQ5MzMwLCJpYXQiOjE2Njc4MTczMzAsImp0aSI6ImFiMDk5Yzg3MjRkMTRmY2NiYThmZGQ1Y2JkZjU5OWQ2IiwidXNlcl9pZCI6MX0.2E0ZLI8aE0DWzogP_ORPWWFLfTIE44p57eDzQX5WYZc`,
+        "Authorization": `Bearer ${localToken}`,
         'content-type': 'application/json'
     })
 
     const fileUploadHeaders = new Headers({
-        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MjQ5MzMwLCJpYXQiOjE2Njc4MTczMzAsImp0aSI6ImFiMDk5Yzg3MjRkMTRmY2NiYThmZGQ1Y2JkZjU5OWQ2IiwidXNlcl9pZCI6MX0.2E0ZLI8aE0DWzogP_ORPWWFLfTIE44p57eDzQX5WYZc`,
+        "Authorization": `Bearer ${localToken}`,
         // "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
     })
 
