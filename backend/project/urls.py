@@ -6,18 +6,18 @@ from rest_framework_simplejwt import views
 from project import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/consultants/', include('consultant.urls')),
-    path('api/projects/', include('user_project.urls')),
-    path('api/timeframes/', include('timeframe.urls')),
-    path('api/languages/', include('language.urls')),
-    path('api/skills/', include('skill.urls')),
-    path('api/me/', include('user.urls')),
+    path('backend/admin/', admin.site.urls),
+    path('backend/api/consultants/', include('consultant.urls')),
+    path('backend/api/projects/', include('user_project.urls')),
+    path('backend/api/timeframes/', include('timeframe.urls')),
+    path('backend/api/languages/', include('language.urls')),
+    path('backend/api/skills/', include('skill.urls')),
+    path('backend/api/me/', include('user.urls')),
 
     # JWT
-    path('token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('token/verify/', views.TokenVerifyView.as_view(), name='token_verify'),
+    path('backend/token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('backend/token/refresh/', views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('backend/token/verify/', views.TokenVerifyView.as_view(), name='token_verify'),
 ]
 
 if settings.DEBUG:
