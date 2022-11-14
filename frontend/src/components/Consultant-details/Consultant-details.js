@@ -13,6 +13,7 @@ const ConsultantDetails = (props) => {
     const [consultant, setConsultant] = useState()
 
     const get = "GET"
+    const deleteMethod = "DELETE"
     const header = new Headers({
         "Authorization": `Bearer ${localToken}`,
         "content-type": "application/json",
@@ -21,6 +22,20 @@ const ConsultantDetails = (props) => {
         method: get,
         headers: header
     }
+    const deleteConfig = {
+        method: deleteMethod,
+        headers: header
+    }
+
+    const handleDelete = () => {
+        fetch(`http://localhost:8000/api/consultants/${initialID}/`, deleteConfig)
+          .then(response => {
+              response.json();
+              navigate(`../../consultants/`)
+            })
+          .catch(error => console.log(error))
+    }
+    
     useEffect((state) => {
         fetch(`http://localhost:8000/api/consultants/${initialID}/`, getconfig)
           .then(response => response.json())
@@ -37,6 +52,7 @@ const ConsultantDetails = (props) => {
             <HeaderStyle>
             <h1>Consultant details</h1>
             <button onClick={() => navigate(`consultant/${initialID}/edit`)}>Edit details</button>
+            <button className="deleteButton" onClick={handleDelete}>Delete consultant</button>
             </HeaderStyle>
             <hr/>
             </div>

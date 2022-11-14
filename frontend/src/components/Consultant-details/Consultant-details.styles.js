@@ -28,6 +28,10 @@ div > button:hover {
     color: white;
 }
 
+div > button.deleteButton {
+    width: 150px;
+}
+
 
 h1 {
     color: #1b253d;

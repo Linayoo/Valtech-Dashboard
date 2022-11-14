@@ -19,12 +19,10 @@ const EditProjects = () => {
     const [allcons, setAllcons] = useState()
     const [image, setImage] = useState("")
     const [consultants, setConsultants] = useState([])
-    const [sendconsultants, setSendconsultants] = useState("")
     const [consresults, setConsresults] = useState()
     const [alltools, setAlltools] = useState()
     const [tools, setTools] = useState([])
     const [toolsresults, setToolsresults] = useState()
-    const [sendtools, setSendtools] = useState("")
     const [startdate, setStartdate] = useState()
     const [enddate, setEnddate] = useState()
     const [timeframeid, setTimeframeid] = useState()
@@ -46,48 +44,40 @@ const EditProjects = () => {
     const authheader = new Headers({
         "Authorization": `Bearer ${localToken}`
     })
-        const parseStringToList = (inputString) => { return inputString.split(",").map(x => parseInt(x)) } ///
+
+        const parseStringToList = (inputString) => { return inputString.split(",").map(x => parseInt(x)) }
     
-        const body = () => {
-            if (sendconsultants === "") {
-                let fetchbody = JSON.stringify({
-                    "name": formData.name,
-                    "description": formData.description,
-                    "link": formData.link,
-                    "image": formData.image,
-                    "tools": parseStringToList(sendtools),
-                })
-                return fetchbody
-            } else if (sendtools === "") {
-                let fetchbody = JSON.stringify({
-                    "name": formData.name,
-                    "description": formData.description,
-                    "link": formData.link,
-                    "image": formData.image,
-                    "assignee": parseStringToList(sendconsultants),
-                })
-                return fetchbody
-            } else if (sendtools === "" && sendconsultants === "") {
-                let fetchbody = JSON.stringify({
-                    "name": formData.name,
-                    "description": formData.description,
-                    "link": formData.link,
-                    "image": formData.image,
-                })
-                return fetchbody
-            } else {
-                let fetchbody = JSON.stringify({
-                    "name": formData.name,
-                    "description": formData.description,
-                    "link": formData.link,
-                    "image": formData.image,
-                    "assignee": parseStringToList(sendconsultants),
-                    "tools": parseStringToList(sendtools),
-                })
-                return fetchbody
+        const body = () => {    
+            let newconsArray = [...consultants]
+            let consmagic = ""
+            newconsArray.forEach(e => consmagic = `${consmagic}${e.id},`)
+            consmagic = consmagic.slice(0, -1)
+            consmagic = parseStringToList(consmagic)
+
+            let newtoolsArray = [...tools]
+            let toolsmagic = ""
+            newtoolsArray.forEach(e => toolsmagic = `${toolsmagic}${e.id},`)
+            toolsmagic = toolsmagic.slice(0, -1)
+            toolsmagic = parseStringToList(toolsmagic)
+
+            if (consmagic.includes(NaN)) {
+                consmagic = []
             }
+
+            if (toolsmagic.includes(NaN)) {
+                toolsmagic = []
+            }
+
+            let fetchbody = JSON.stringify({
+                "name": formData.name,
+                "description": formData.description,
+                "link": formData.link,
+                "assignee": consmagic,
+                "tools": toolsmagic,
+            })         
+            return fetchbody
         }
-        
+  
     const imgData = new FormData()
     imgData.append("image", image)
 
@@ -131,7 +121,7 @@ const EditProjects = () => {
                 setTools(data.tools);
                 setStartdate(data.time_frame.date_started);
                 setEnddate(data.time_frame.date_finished);
-                setTimeframeid(JSON.stringify(data.time_frame.id));
+                setTimeframeid(data.time_frame.id);
             })
             .catch(error => console.log(error));
 
@@ -156,8 +146,6 @@ const EditProjects = () => {
             .catch(error => console.log(error))
             .then(() => navigate(`/project/${initialID}/`))
     }
-
-   
 
     const handleChange = (event) => {
         setFormData(prevFormData => {
@@ -207,12 +195,23 @@ const EditProjects = () => {
         let newArray = [...consultants]
         newArray.push(JSON.parse(event.target.id))
         setConsultants(newArray)
-        let magic = ""
-        newArray.forEach(e => magic = `${magic}${e.id},`)
-        magic = magic.slice(0, -1)
-        setSendconsultants(magic)
         inputref.current.name.value = ""
         handleUserFilter()
+        let ID = JSON.parse(event.target.id).id
+        let toSend = []
+        fetch(`http://localhost:8000/api/consultants/${ID}/`, getconfig)
+            .then(res => res.json())
+            .then(data => toSend = data.unavailable)
+            .then(toSend.includes(timeframeid) ? console.log('already has') : toSend.push(timeframeid))
+            .then(fetch(`http://localhost:8000/api/consultants/patchtf/${ID}/`, {
+                method: patch,
+                headers: header,
+                body: JSON.stringify({
+                    "unavailable" : JSON.parse(JSON.stringify(toSend)),
+                })
+              })).then(res => res.json())
+                 .then(data => console.log(data))
+                 .catch(err => console.log(err))    
     }
 
     const handleDeleteConsultant = (event) => {
@@ -220,10 +219,22 @@ const EditProjects = () => {
         let newArray = [...consultants]
         newArray.splice(event.target.id, 1);
         setConsultants(newArray)
-        let magic = ""
-        newArray.forEach(e => magic = `${magic}${e.id},`)
-        magic = magic.slice(0, -1)
-        setSendconsultants(magic)
+        let ID = (JSON.parse(event.target.name)).id
+        console.log(ID)
+        let toSend = []
+        fetch(`http://localhost:8000/api/consultants/${ID}/`, getconfig)
+            .then(res => res.json())
+            .then(data => toSend = data.unavailable)
+            .then(toSend.includes(timeframeid) ? toSend = toSend.filter(item => item != timeframeid) : console.log('already deleted'))
+            .then(fetch(`http://localhost:8000/api/consultants/patchtf/${ID}/`, {
+                method: patch,
+                headers: header,
+                body: JSON.stringify({
+                    "unavailable" : JSON.parse(JSON.stringify(toSend)),
+                })
+              })).then(res => res.json())
+                 .then(data => console.log(data))
+                 .catch(err => console.log(err))    
     }
 
     const handleAddTool = (event) => {
@@ -231,10 +242,6 @@ const EditProjects = () => {
         let newArray = [...tools]
         newArray.push(JSON.parse(event.target.id))
         setTools(newArray)
-        let magic = ""
-        newArray.forEach(e => magic = `${magic}${e.id},`)
-        magic = magic.slice(0, -1)
-        setSendtools(magic)
         inputref.current.tools.value = ""
         handleToolFilter()
     }
@@ -244,10 +251,6 @@ const EditProjects = () => {
         let newArray = [...tools]
         newArray.splice(event.target.id, 1);
         setTools(newArray)
-        let magic = ""
-        newArray.forEach(e => magic = `${magic}${e.id},`)
-        magic = magic.slice(0, -1)
-        setSendtools(magic)
     }
 
     const handleImgUpload = e => {

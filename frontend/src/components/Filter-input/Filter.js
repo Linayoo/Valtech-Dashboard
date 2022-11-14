@@ -60,13 +60,57 @@ const Filter = (props) => {
             dates: inputref.current.date.value,
         }
 
+        const datefilter = (element) => {
+            if (element.unavailable.length === 0) {
+                return true
+            } else {  
+                let result = true
+                element.unavailable.forEach(e => {
+                    let userStart = e.date_started
+                    let userEnd = e.date_finished
+                    let filterStart = query.dates[0]
+                    let filterEnd = query.dates[1]
+                    userStart = new Date(`${userStart}Z`)
+                    userEnd = new Date(`${userEnd}Z`)
+                    if (userStart < filterStart && (userEnd > filterStart && userEnd < filterEnd)) {
+                        result = false // consultant starts a project earlier and finishes it during the filtered period
+                    } else if (userStart === filterStart && userEnd > filterEnd) {
+                        result = false // consultant starts a project the same time as filter start and finishes it after filter end
+                    } else if (userStart === filterStart && userEnd < filterEnd) {
+                        result = false // consultant starts a project the same time as filter start and finishes it before filter end
+                    } else if (userStart > filterStart && userEnd < filterEnd) {
+                        result = false // consultant starts project after filter start and finished it before filter end
+                    } else if (userStart > filterStart && userStart === filterEnd) {
+                        result = false // consultant starts a project after the filter start and finishes it the same day as filter end
+                    } else if (userStart === filterStart && userEnd === filterEnd) {
+                        result = false // consultant starts a project the same day as filter start and finishes it the same day as filter end
+                    } else if (userStart < filterStart && userEnd > filterEnd) {
+                        result = false // consultant starts a project before filter start and finishes it after filter end
+                    } else if (userStart < filterStart && userEnd === filterEnd) {
+                        result = false // consultant starts a project before filter start and finishes it the same day as filter end
+                    } else if ((userStart > filterStart && userStart < filterEnd) && userEnd > filterEnd) {
+                        result = false // consultant starts a project after filter start and finishes it after filter end
+                    }
+                })
+                return result
+            }
+        }
+
         let updatedList = [...consultants];
         updatedList = updatedList.filter(element =>
             element.display_name.toLowerCase().indexOf(query.name.toLowerCase()) !== -1 &&
             element.city.toLowerCase().indexOf(query.city.toLowerCase()) !== -1 &&
             element.country.toLowerCase().indexOf(query.country.toLowerCase()) !== -1 &&
             (element.managed_skills.some(element => element['id'] === parseInt(query.skills)) || query.skills === '0') &&
-            (element.language_skills.some(element => element['id'] === parseInt(query.languages)) || query.languages === '0'))
+            (element.language_skills.some(element => element['id'] === parseInt(query.languages)) || query.languages === '0')
+        )
+                  
+        if (query.dates != undefined) {
+            if (query.dates[0] && query.dates[1] != null) {
+                updatedList = updatedList.filter(datefilter)
+            }
+        }
+
         props.setTomapout(updatedList);
     };
 
@@ -119,18 +163,3 @@ const Filter = (props) => {
 }
 
 export default Filter
-
-
-/*
-
-<DatePicker
-                selectsRange={true}
-                startDate={startDate}
-                endDate={endDate}
-                onChange={(update) => {
-                    setDateRange(update);
-                }}
-                isClearable={true}
-                />
-
-*/
