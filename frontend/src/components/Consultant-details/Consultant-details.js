@@ -29,7 +29,10 @@ const ConsultantDetails = (props) => {
 
     const handleDelete = () => {
         fetch(`http://localhost:8000/api/consultants/${initialID}/`, deleteConfig)
-          .then(response => response.json())
+          .then(response => {
+              response.json();
+              navigate(`../../consultants/`)
+            })
           .catch(error => console.log(error))
     }
     

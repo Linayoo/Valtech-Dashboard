@@ -38,7 +38,10 @@ const ProjectDetails = () => {
 
     const handleDelete = () => {
         fetch(`http://localhost:8000/api/projects/${initialID}/`, deleteConfig)
-          .then(response => response.json())
+          .then(response => {
+              response.json();
+              navigate(`../../projects/`);
+            })
           .catch(error => console.log(error))
     }
 
@@ -67,7 +70,7 @@ const ProjectDetails = () => {
             <button onClick={() => navigate(`/project/${initialID}/edit`)}>Edit details</button>
             <button className="deleteButton" onClick={handleDelete}>Delete project</button>
             </HeaderStyle>
-            <hr>{console.log(project)}</hr>
+            <hr></hr>
             <div>
                 <p className="hero"></p>
             </div>
