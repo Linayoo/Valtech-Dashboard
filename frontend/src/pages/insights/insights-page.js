@@ -7,6 +7,7 @@ import MyResponsiveChoropleth from "../../components/MapChart/MapChart"
 import Widget from "../../components/Widgets/Widget"
 import { BsFillPersonFill } from "react-icons/bs";
 import { useState, useEffect } from "react"
+import { ProjectConsultantsContainer } from "../../components/Project-consultants/Project-consultants.styles"
 
 
 const InsightsPage = () => {
@@ -27,6 +28,7 @@ const InsightsPage = () => {
         method: get,
         headers: header
     }
+
     useEffect((state) => {
         fetch(`http://localhost:8000/api/consultants/`, getconfig)
             .then(response => response.json())
@@ -37,12 +39,12 @@ const InsightsPage = () => {
             .then(response => response.json())
             .then(data => setSkills(data))
             .catch(error => console.log(error));
-        
+
         fetch(`http://localhost:8000/api/languages/`, getconfig)
             .then(response => response.json())
             .then(data => setLanguages(data))
             .catch(error => console.log(error));
-        
+
         fetch(`http://localhost:8000/api/projects/`, getconfig)
             .then(response => response.json())
             .then(data => setProjects(data))
@@ -54,28 +56,53 @@ const InsightsPage = () => {
             .catch(error => console.log(error));
     }, []);
 
+    const projectfilter = () => {
+        let arr = []
+        projects.forEach((e) => {
+            if (new Date() > new Date(`${e.time_frame.date_started}Z`) && new Date() < new Date(`${e.time_frame.date_finished}Z`)) {
+                arr.push(e)
+            }
+        })
+        return arr.length
+    }
 
-    return (    
+    const employeefilter = () => {
+        let arr = []
+        consultants.forEach((e) => {
+            e.unavailable.forEach((f) => {
+                if (f === undefined) {
+                    arr.push(0)
+                } else if (new Date() > new Date(`${f.time_frame.date_finished}Z`) && new Date() > new Date(`${f.time_frame.date_started}Z`)) {
+                    arr.push(0)
+                } else {
+                    arr.push(1)
+                }
+            })
+        })
+        console.log(arr)
+    }
+
+    return (
         <InsightsContainer>
             <HeaderStyle>
-                 <Header/>
+                <Header />
             </HeaderStyle>
-         <SideNavStyle>
-            <SideNav/> 
+            <SideNavStyle>
+                <SideNav />
             </SideNavStyle>
-                <MainFlexWrap>
-                    <WidgetFlexWrap>
-                        <Widget name="TOTAL EMPLOYEES" num={consultants?.length} icon={<BsFillPersonFill width={22} height={22} color={'#000'}/>}/>
-                        <Widget name="OPEN PROJECTS" num="7"/>
-                        <Widget name="UNASSIGNED EMPLOYEE'S" num="3"/>
-                        <Widget name="FINISHED PROJECTS" num="123"/>
-                    </WidgetFlexWrap>    
-                    <ChartsFlexWrap>
-                        <MyResponsivePie/>
-                        <MyResponsiveBar/>
-                        <MyResponsiveChoropleth/>
-                    </ChartsFlexWrap>
-                </MainFlexWrap>
+            <MainFlexWrap>
+                <WidgetFlexWrap>
+                    <Widget name="TOTAL EMPLOYEES" num={consultants?.length} icon={<BsFillPersonFill width={22} height={22} color={'#000'} />} />
+                    <Widget name="OPEN PROJECTS" num={projects === undefined ? "Loading..." : projectfilter()} />
+                    <Widget name="UNASSIGNED EMPLOYEE'S" num={ 3/*consultants === undefined ? "Loading..." : employeefilter()*/} />
+                    <Widget name="FINISHED PROJECTS" num="123" />
+                </WidgetFlexWrap>
+                <ChartsFlexWrap>
+                    <MyResponsivePie />
+                    <MyResponsiveBar />
+                    <MyResponsiveChoropleth />
+                </ChartsFlexWrap>
+            </MainFlexWrap>
         </InsightsContainer>
     )
 }
