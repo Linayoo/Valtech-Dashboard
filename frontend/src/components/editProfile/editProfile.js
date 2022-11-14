@@ -109,10 +109,10 @@ const EditUserProfile = () => {
                         </ProfileJoined>
                         </FieldsProfile>
                         <ChangePhotoButton>
-                        {/* <button value={consultants.img} id='select' multiple type='file' name='image' accept='image/' onChange={handleChange}>Upload Photo</button> */}
-                        {/*<input id="select" multiple type='file' name='image' accept='image/' onChange={e => handleImgSubmit(e)}></input>*/}
-                        <input id='select' multiple type="file" name="image/" onChange={handleImgUpload} />
-
+                        <label for="save">   
+                        <input id="save" multiple type="file" name="image/" onChange={handleImgUpload} />
+                        <p>Image Upload</p>
+                        </label> 
                         </ChangePhotoButton>
                     </ProfileRightSide>
                 </ProfileInfo>
