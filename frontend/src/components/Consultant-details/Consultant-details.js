@@ -46,6 +46,7 @@ const ConsultantDetails = (props) => {
 
 
     return (
+        <div>
         <ConsultantDetailsWrapper>
             <div>
             <HeaderStyle>
@@ -135,32 +136,32 @@ const ConsultantDetails = (props) => {
                         </div>
                         <div>
                             <p>Language Skills</p>
-                            <p>{consultant === undefined ?  "not provided" : consultant.language_skills.map(element => <li>{element.title}</li>) }</p>
+                            <p>{consultant === undefined ?  "not provided" : consultant.language_skills.map(element => <h5>-{element.title}</h5>) }</p>
                         </div>
                         <div>
                             <p>Skills</p>
-                            <p>{consultant === undefined ? "not provided" : consultant.managed_skills.map(element => <li>{element.title}</li>) }</p>
+                            <p>{consultant === undefined ? "not provided" : consultant.managed_skills.map(element => <h5>- {element.title}</h5>) }</p>
                         </div>
                         <div>
                             <p>Additional Skills</p>
-                            <p>{consultant === undefined ? "not provided" : consultant.addition_skills.map(element => <li>{element.title}</li>) } </p>
+                            <p>{consultant === undefined ? "not provided" : consultant.addition_skills.map(element => <h5>- {element.title}</h5>) } </p>
                         </div>
                         <div>
                             <p>Educations</p>
-                            <p>{consultant === undefined ?  "not provided" : consultant.educations.map(element => <li>{element.title}</li>)}</p>
+                            <p>{consultant === undefined ?  "not provided" : consultant.educations.map(element => <h5> - {element.title}</h5>)}</p>
                         </div>
                         <div>
                             <p>Certificate</p>
-                            <p>{consultant === undefined ?  "not provided" : consultant.certificates.map(element => <li>{element.title}</li>)}</p>
+                            <p>{consultant === undefined ?  "not provided" : consultant.certificates.map(element => <h5>- {element.title}</h5>)}</p>
                         </div>
                         <div>
                             <p>Unavailable</p>
-                            <p>{consultant === undefined ? "not provided" : consultant.unavailable.map(element => <li>{element.title}</li>)}</p>
+                            <p>{consultant === undefined ? "not provided" : consultant.unavailable.map(element => <h5> -{element.title}</h5>)}</p>
                         </div>
                     </FlexColumn>
                 </div>
-            
         </ConsultantDetailsWrapper>
+     </div>
     )
 }
 

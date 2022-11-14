@@ -7,7 +7,7 @@ margin-top: 0%;
 margin-left: 6%;
 width: 100%;
 color: grey;
-height: 500px;
+height: 400px;
 
 p {
     margin-left: 1%;
@@ -17,21 +17,23 @@ p {
 
 table {
     width: 100%;
+    height: 410px;
 }
 
 table > tr:first-of-type{
    background-color: #f3e9e94;
+   display: flex;
+   margin-top: 20px;
+   margin-bottom: 15px;
 }
 
-table > tr{
+table > div > tr{
     display: flex;
-
     align-items: center;
     height: 50px;
     margin: 5px;
     border-radius: 15px;
-    width: 1100px;
-    flex-wrap: wrap;
+    /* width: 1100px; */
 }
 
 
@@ -40,6 +42,8 @@ table > tr > th {
     width: 160px;
     justify-content: center;
     color: #1b253d;
+    position: sticky;
+    top: 0;
 }
 
 
@@ -53,7 +57,7 @@ table > tr > th > button{
     margin-right: 10px;
 }
 
-table > tr > td {
+table > div > tr > td {
     display: flex;
     align-items: center;
     width: 150px;
@@ -63,39 +67,41 @@ table > tr > td {
     padding: 15px;
 }
 
-table > tr > td:nth-of-type(1), th:nth-of-type(1) {
+
+
+table > div > tr > td:nth-of-type(1), th:nth-of-type(1) {
     width: 220px;
 }
 
-table > tr > td:nth-of-type(2), th:nth-of-type(2) {
-    width: 350px;
+table > div > tr > td:nth-of-type(2), th:nth-of-type(2) {
+    width: 250px;
 }
 
-table > tr > td:nth-of-type(3), th:nth-of-type(3) {
+table > div > tr > td:nth-of-type(3), th:nth-of-type(3) {
     width: 160px;
 }
 
-table > tr > td:nth-of-type(4), th:nth-of-type(4) {
+table > div > tr > td:nth-of-type(4), th:nth-of-type(4) {
     width: 130px;
 }
 
-table > tr > td:nth-of-type(5), th:nth-of-type(5) {
+table > div > tr > td:nth-of-type(5), th:nth-of-type(5) {
     width: 130px;
 }
 
-table > tr > td:nth-of-type(6) {
+table > div > tr > td:nth-of-type(6) {
     width: 100px;
 }
 
 
-table > tr > td:nth-of-type(1), td:nth-of-type(2), td:nth-of-type(3) {
+table > div > tr > td:nth-of-type(1), td:nth-of-type(2), td:nth-of-type(3) {
     display: flex;
     align-items: center;
     justify-content: flex-start;
    
 }
 
-table > tr > th:nth-of-type(1), th:nth-of-type(2), th:nth-of-type(3) {
+table > tr > div > th:nth-of-type(1), th:nth-of-type(2), th:nth-of-type(3) {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -109,6 +115,8 @@ table > tr > th {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-left: 7px;
+
 }
 
 
@@ -139,7 +147,7 @@ table >  tr > td:nth-of-type(8) > button:last-of-type {
     color: black;
 }
 
-table >  tr > td:nth-of-type(7), td:nth-of-type(8), td:nth-of-type(9){
+table > div > tr > td:nth-of-type(7), td:nth-of-type(8), td:nth-of-type(9){
     width: 40px;
 }
 
@@ -151,6 +159,7 @@ tr {
 }
 tr:hover td{
   cursor:pointer;
+  color: #1b253d;
   transform: scale(1.2);
   border-top: 1px solid #80808071;
   border-bottom: 1px solid #80808071;
@@ -166,6 +175,7 @@ tr:last-child:hover td {
 div {
     position: relative;
     z-index: 4;
+    height: 390px;
     button {
         width: 30px;
         height: 30px;
@@ -185,4 +195,28 @@ div {
 
 export const OverFlow= styled.div`
 overflow-y: auto;
+height: 510px;
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #ffffff95;
+  box-shadow: inset 0 0 5px #9ea3ac49; 
+  border-radius: 10px;
+  border: 1px solid #a9abb05f;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1b253d;  
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1b253da1; 
+}
 `;

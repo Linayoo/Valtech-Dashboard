@@ -4,12 +4,12 @@ import styled from "styled-components";
 export const ResultsContainer = styled.div`
 position: sticky;
 margin-top: -2%;
-margin-left: 2%;
+margin-left: 4%;
 width: 100%;
 color: grey;
 
 p {
-    margin-left: 5%;
+    margin-left: 2.5%;
     margin-bottom: -0%;
     font-style: italic;
 }
@@ -22,25 +22,42 @@ table > tr:first-of-type{
    background-color: #f3e9e94;
 }
 
+table > tr > th:nth-child(1) {
+  margin-left: -21px;
+}
+
+table > tr > th:nth-child(2) {
+  margin-left: 21px;
+}
+
 table > tr{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    height: 50px;
+    padding: 15px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+table > div > tr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 50px;
     padding: 15px;
     margin: 5px;
     border-radius: 5px;
 }
 
-
 table > tr > th {
     display: flex;
     width: 150px;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 15px;
     color: #1b253d;
 }
+
 
 
 table > tr > th > button{
@@ -53,7 +70,12 @@ table > tr > th > button{
     margin-right: 10px;
 }
 
-table > tr > td {
+table > div > tr > td:first-of-type {
+    width: 160px;
+}
+
+
+table > div > tr > td {
     display: flex;
     align-items: center;
     width: 150px;
@@ -63,10 +85,10 @@ table > tr > td {
     padding: 15px;
 }
 
-table > tr > td:last-of-type {
+table > div > tr > td:last-of-type {
     margin-left: 0px;
-    padding-left: 30px;
-    width: 100px;
+    padding-left: 0px;
+    width: 150px;
 }
 
 table > tr > td > button {
@@ -96,6 +118,8 @@ tr {
 }
 tr:hover td{
   cursor:pointer;
+  color: #1b253d;
+  /* font-weight: bold; */
   transform: scale(1.2);
   border-top: 1px solid #80808071;
   border-bottom: 1px solid #80808071;
@@ -107,8 +131,37 @@ tr:first-child:hover td {
 tr:last-child:hover td {
   border-bottom: none;
 }
+
+div {
+    position: relative;
+    z-index: 4;
+    height: 390px;
+}
 `;
 
 export const OverFlow= styled.div`
 overflow-y: auto;
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #ffffff95;
+  box-shadow: inset 0 0 5px #9ea3ac49; 
+  border-radius: 10px;
+  border: 1px solid #a9abb05f;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1b253d;  
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1b253da1; 
+}
 `;
