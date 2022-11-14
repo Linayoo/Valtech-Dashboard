@@ -187,17 +187,15 @@ const CreateProject = () => {
 
     return (
         <CreateProjectContainer>
-            <h1>Let's create a new Project!</h1>
-            <button type='submit' form='test'>Submit</button>
-            <hr />
+            <h1>Create new project</h1>
             <form id='test' onSubmit={createProject}>
                 <div>
-                    Project Name
-                    <input form='test' type='text' name='name' onChange={(e) => setProjectName(e.target.value)}></input>
+                    Project Name *
+                    <input form='test' type='text' name='name' onChange={(e) => setProjectName(e.target.value)} required></input>
                 </div>
                 <div>
-                    Description
-                    <input form='test' type='text' onChange={(e) => setProjectDescription(e.target.value)}></input>
+                    Description *
+                    <input form='test' type='text' onChange={(e) => setProjectDescription(e.target.value)} required></input>
                 </div>
                 <div>
                     External Link
@@ -208,13 +206,13 @@ const CreateProject = () => {
                     <input value={imgData.image} id='select' multiple type='file' name='image' accept='image/' onChange={handleImgUpload}></input>
                 </div>
                 <div>
-                    Timeframe
+                    Timeframe *
                 </div>
                 <div className="row">
                     <input value={startdate === undefined ? '' : startdate} type="date" name="start_date" onChange={(e) => { setStartDate(e.target.value) }}
-                        className="datepicker" />
+                        className="datepicker" required />
                     <input value={endDate === undefined ? '' : endDate} type="date" name="end_date" onChange={e => setEndDate(e.target.value)}
-                        className="datepicker" />
+                        className="datepicker" required />
                 </div>
                 <div>
                     Tools
@@ -235,6 +233,9 @@ const CreateProject = () => {
                 </div>
                 <div className="row">
                     {consultants === undefined ? "" : consultants.map((element, index) => <Tags id={index} consultant={element} remove={handleDeleteConsultant} />)}
+                </div>
+                <div>
+                    <button type='submit' form='test'>SUBMIT</button>
                 </div>
 
             </form>

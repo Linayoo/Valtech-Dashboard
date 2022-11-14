@@ -23,7 +23,7 @@ hr {
     background-color: grey;
 }
 
-form > button {
+button {
     color: #1b253d;
     border: 1px solid #42018cc2;
     padding: 10px 0;
