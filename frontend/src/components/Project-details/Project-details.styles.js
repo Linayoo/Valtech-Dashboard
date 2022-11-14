@@ -6,7 +6,6 @@ flex-direction: column;
 justify-content: flex-start;
 margin-top: 110px;
 margin-left: 80px;
-width: 100vw;
 height: 100vh;
 position: relative;
 

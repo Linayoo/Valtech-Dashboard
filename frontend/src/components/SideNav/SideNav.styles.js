@@ -14,7 +14,7 @@ box-shadow: 0px 0px 25px -2px #555;
 height: 100vh;
 
 @media only screen and (min-width: 1500px) {
-    width: 15%;
+    width: 260px;
 }
 
 h1 {
