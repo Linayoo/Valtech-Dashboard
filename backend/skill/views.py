@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.generics import ListAPIView
 
-# Create your views here.
+from skill.models import Skill
+from skill.serializers import SkillSerializer
+
+
+class AllSkills(ListAPIView):
+    queryset = Skill.objects.all()
+    serializer_class = SkillSerializer

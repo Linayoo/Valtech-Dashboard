@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
+class Certificate(models.Model):
+    title = models.CharField(max_length=100)
+    institution = models.CharField(max_length=100, blank=True)
+    date_finished = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return f'ID {self.id} : {self.title}'

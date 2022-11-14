@@ -2,21 +2,31 @@ import styled from "styled-components"
 
 export const NavContainer  = styled.div`
 width: 215px;
-height: 100vh;
-/* background-color: #6228dfd8; */
-/* background: linear-gradient(0deg, #4d0cb5cb 0%, #4518a8d2 58%, #7148b8e5 100%); */
-background: linear-gradient(to top, #7c47e6, #8e54e9);
+/* margin-top: -80px; */
+background: linear-gradient(to top, #42018c, #220641); 
+/* background-color: black; */
 display: flex;
 flex-direction: column;
 align-items: center;
 border-radius: 0 5px 5px 0;
 box-shadow: 0px 0px 25px -2px #555;
+/* position: fixed; */
+height: 100vh;
+
+@media only screen and (min-width: 1500px) {
+    width: 260px;
+}
 
 h1 {
     padding-top: 50px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    color: #ffffffdf;
+    font-family: Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    @media only screen and (min-width: 1500px) {
+    font-size: 45px;
+}
+
 }
 
 button {
@@ -31,13 +41,20 @@ button {
     font-size: 15px;
     margin-top: 3px;
     margin-bottom: 3px;
+    @media only screen and (min-width: 1500px) {
+    font-size: 20px;
+}
 }
 
 button > p {
-    margin-right:20px;
+    margin-right:18px;
     margin-left: 15px;
     color: #ffffffa8;
     
+    @media only screen and (min-width: 1500px) {
+    margin-left: 40px;
+    margin-right: 25px;
+}
 }
 
 button:first-of-type {
@@ -45,17 +62,32 @@ button:first-of-type {
 }
 
 button:hover {
-    background-color: #6228df64;
+    background-color:#42018c ;
     transform: scale(1.1);
     width: 90%;
 }
 
 button:focus {
-    background-color: #6228df8f;
+    background-color: #170d22a7;
     transform: scale(1.1);
     border-left: 2px solid #fafafa8f ;
     width: 90%;
     height: 70px;
+}
+
+
+div {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    margin-top: 150px;
+    width: 100%;
+}
+
+div > button {
+    font-size: 20px;
 }
 
     

@@ -6,4 +6,4 @@ class User(AbstractUser):
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
-        return f'ID {self.id} : {self.username}'
+        return f'ID {self.id}: {self.first_name} {self.last_name}'
