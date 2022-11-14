@@ -37,7 +37,7 @@ const ProjectDetails = () => {
     }
 
     const handleDelete = () => {
-        fetch(`http://localhost:8000/api/projects/${initialID}/`, deleteConfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/${initialID}/`, deleteConfig)
           .then(response => {
               response.json();
               navigate(`../../projects/`);
@@ -46,7 +46,7 @@ const ProjectDetails = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/projects/${initialID}/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/${initialID}/`, getconfig)
           .then(response => response.json())
           .then(data => {
             setProject(data) 

@@ -62,9 +62,9 @@ const Test = () => {
     const createProject = (event) => {
         event.preventDefault();
         console.log(projectConfig.body)
-        fetch(`http://localhost:8000/api/projects/new/`, projectConfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/new/`, projectConfig)
             .then(response => response.json())
-            .then((data) => fetch(`http://localhost:8000/api/projects/${data.id}/`, fileUploadConfig))
+            .then((data) => fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/${data.id}/`, fileUploadConfig))
             .then(response => response.json())
             .then((data) => console.log(data))
             .catch(error => console.log(error));

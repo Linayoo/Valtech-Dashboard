@@ -74,7 +74,7 @@ const CreateProject = () => {
 
 
     useEffect((state) => {
-        fetch(`http://localhost:8000/api/consultants/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/`, getconfig)
             .then(response => response.json())
             .then(data => setAllcons(data))
             .catch(error => console.log(error));
@@ -88,9 +88,9 @@ const CreateProject = () => {
     const createProject = (event) => {
         event.preventDefault();
         console.log(projectConfig.body)
-        fetch(`http://localhost:8000/api/projects/new/`, projectConfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/new/`, projectConfig)
             .then(response => response.json())
-            .then((data) => fetch(`http://localhost:8000/api/projects/${data.id}/`, imgUploadConfig))
+            .then((data) => fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/${data.id}/`, imgUploadConfig))
             .then(response => {
                 response.json();
                 navigate(`../projects/`)

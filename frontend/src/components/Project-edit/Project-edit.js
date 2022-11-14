@@ -106,7 +106,7 @@ const EditProjects = () => {
     }
 
     useEffect((state) => {
-        fetch(`http://localhost:8000/api/projects/${initialID}/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/${initialID}/`, getconfig)
             .then(response => response.json())
             .then((data) => {
                 setFormData({
@@ -125,12 +125,12 @@ const EditProjects = () => {
             })
             .catch(error => console.log(error));
 
-        fetch(`http://localhost:8000/api/consultants/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/`, getconfig)
             .then(response => response.json())
             .then(data => setAllcons(data))
             .catch(error => console.log(error));
 
-        fetch(`http://localhost:8000/api/skills/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/skills/`, getconfig)
             .then(response => response.json())
             .then(data => setAlltools(data))
             .catch(error => console.log(error));
@@ -138,9 +138,9 @@ const EditProjects = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/patch/${initialID}/`, patchconfig)
             .catch(error => console.log(error))
-            .then(fetch(`http://localhost:8000/api/timeframes/${timeframeid}/`, patchtimeframe))
+            .then(fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/timeframes/${timeframeid}/`, patchtimeframe))
             .catch(error => console.log(error))
             .then(() => navigate(`/project/${initialID}/`))
     }
@@ -149,7 +149,7 @@ const EditProjects = () => {
         e.preventDefault()
         const imageData = new FormData()
         imageData.append("image", e.target.files[0])
-        (fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, {
+        (fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/patch/${initialID}/`, {
                 method: patch,
                 headers: authheader,
                 body: imageData
@@ -162,7 +162,7 @@ const EditProjects = () => {
     const handleImgDelete = (event) => {
         event.preventDefault()
         setImage("");
-        fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchimage)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/patch/${initialID}/`, patchimage)
         .then(setFormData(prevFormData => {return {...prevFormData, image: null}}))
         .catch(error => console.log(error))
     }
@@ -219,11 +219,11 @@ const EditProjects = () => {
         handleUserFilter()
         let ID = JSON.parse(event.target.id).id
         let toSend = []
-        fetch(`http://localhost:8000/api/consultants/${ID}/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/${ID}/`, getconfig)
             .then(res => res.json())
             .then(data => toSend = data.unavailable)
             .then(toSend.includes(timeframeid) ? console.log('already has') : toSend.push(timeframeid))
-            .then(fetch(`http://localhost:8000/api/consultants/patchtf/${ID}/`, {
+            .then(fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/patchtf/${ID}/`, {
                 method: patch,
                 headers: header,
                 body: JSON.stringify({
@@ -242,11 +242,11 @@ const EditProjects = () => {
         let ID = (JSON.parse(event.target.name)).id
         console.log(ID)
         let toSend = []
-        fetch(`http://localhost:8000/api/consultants/${ID}/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/${ID}/`, getconfig)
             .then(res => res.json())
             .then(data => toSend = data.unavailable)
             .then(toSend.includes(timeframeid) ? toSend = toSend.filter(item => item != timeframeid) : console.log('already deleted'))
-            .then(fetch(`http://localhost:8000/api/consultants/patchtf/${ID}/`, {
+            .then(fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/patchtf/${ID}/`, {
                 method: patch,
                 headers: header,
                 body: JSON.stringify({

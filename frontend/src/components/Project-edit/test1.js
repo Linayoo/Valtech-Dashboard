@@ -52,7 +52,7 @@ const ProfileEditCard = () => {
     
 
     useEffect((state) => {
-        fetch("https://motion.propulsion-home.ch/backend/api/users/me/", getconfig)
+        fetch("https://valtech-dashboard.propulsion-learn.ch/backend/api/users/me/", getconfig)
             .then(response => response.json())
             .then((data) => {
                 setUserObj(data);
@@ -71,7 +71,7 @@ const ProfileEditCard = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("https://motion.propulsion-home.ch/backend/api/users/me/", patchconfig)
+        fetch("https://valtech-dashboard.propulsion-learn.ch/backend/api/users/me/", patchconfig)
             .then(response => response.json())
             .then((data) => { navigate("/profile/") })
             .catch(error => console.log(error))

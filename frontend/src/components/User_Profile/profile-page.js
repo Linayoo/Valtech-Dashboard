@@ -23,7 +23,7 @@ const UserProfile = () => {
     }
 
 useEffect((state) => {
-    fetch("http://localhost:8000/api/me/", getconfig)
+    fetch("https://valtech-dashboard.propulsion-learn.ch/backend/api/me/", getconfig)
         .then(response => response.json())
         .then(data => setConsultants(data))
         .catch(error => console.log(error));
