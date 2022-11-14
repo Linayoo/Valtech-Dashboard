@@ -43,7 +43,7 @@ const EditUserProfile = () => {
     }
 
     useEffect((state) => {
-        fetch("http://localhost:8000/api/me/", getconfig)
+        fetch("https://valtech-dashboard.propulsion-learn.ch/backend/api/me/", getconfig)
             .then(response => response.json())
             .then(data => setConsultants(data))
             .catch(error => console.log(error));
@@ -51,7 +51,7 @@ const EditUserProfile = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:8000/api/me/`, patchconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/me/`, patchconfig)
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.log(error))
@@ -61,7 +61,7 @@ const EditUserProfile = () => {
         e.preventDefault()
         const imageData = new FormData()
         imageData.append("image", e.target.files[0])
-        (fetch(`http://localhost:8000/api/me/`, {
+        (fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/me/`, {
                 method: patch,
                 headers: fileUploadHeaders,
                 body: imageData

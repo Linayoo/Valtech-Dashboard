@@ -32,17 +32,17 @@ const Filter = (props) => {
     };
 
     useEffect((state) => {
-        fetch(`http://localhost:8000/api/consultants/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/`, getconfig)
             .then(response => response.json())
             .then(data => {setConsultants(data); props.setTomapout(data)})
             .catch(error => console.log(error));
 
-        fetch(`http://localhost:8000/api/skills/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/skills/`, getconfig)
             .then(response => response.json())
             .then(data => setSkills(data))
             .catch(error => console.log(error));
         
-        fetch(`http://localhost:8000/api/languages/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/languages/`, getconfig)
             .then(response => response.json())
             .then(data => setLanguages(data))
             .catch(error => console.log(error));
