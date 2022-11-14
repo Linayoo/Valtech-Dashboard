@@ -59,11 +59,7 @@ return (
                         <p>Joined: <span>{consultants.date_joined}</span></p>
                     </ProfileJoined>
                     </FieldsProfile>
-                    <ChangePhotoButton>
-                        <button>Upload Photo</button>
-                    </ChangePhotoButton>
                 </ProfileRightSide>
-                
             </ProfileInfo>
             <ButtonProfile>
                 <EditUserDetails>       
