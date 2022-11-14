@@ -41,11 +41,8 @@ export const ProfileRightSide = styled.div`
 width: 75%;
 height: 100%;
 display: flex;
-/* justify-content: center; */
 flex-direction: row;
-/* margin-top: 1%; */
 justify-content: space-between;
-/* font-size: 20px;  */
 `;
 
 export const FieldsProfile = styled.div`
@@ -56,7 +53,7 @@ justify-content: space-evenly;
 align-items: flex-start;
 height: 100%;
 padding: 5px;
-`
+`;
 
 
 
@@ -66,7 +63,7 @@ height: 20%;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-font-size: 15px;
+font-size: 20px;
 padding-left: 5%;
 `;
 
@@ -152,32 +149,32 @@ span{
 }
 `; 
 
-export const ChangePhotoButton = styled.div`
-    width: 200px;
-    height: 200px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    font-size: 500px;
-button {
-    color: #1b253d;
-    border: 1px solid #42018cc2;
-    height: 50px;
-    width: 180px;
-    font-weight: bolder;
-    border-radius: 5px;
-    margin-right:50px;
-    margin-top: 20px;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+// export const ChangePhotoButton = styled.div`
+//     width: 200px;
+//     height: 200px;
+//     justify-content: flex-start;
+//     align-items: flex-start;
+//     font-size: 500px;
+// button {
+//     color: #1b253d;
+//     border: 1px solid #42018cc2;
+//     height: 50px;
+//     width: 180px;
+//     font-weight: bolder;
+//     border-radius: 5px;
+//     margin-right:50px;
+//     margin-top: 20px;
+//     font-size: 15px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
 
-button:hover {
-    background-color: #220641;
-    color: white;
-}
-`
+// button:hover {
+//     background-color: #220641;
+//     color: white;
+// }
+// `
 
 export const ButtonProfile = styled.div`
 color: black;

@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 
 
-export const ProfileMain = styled.div`
+export const ProfileMain = styled.form`
 background-color: #8080801e;
 width: 85%;
 height: 95%;
@@ -23,6 +23,46 @@ input{
         color: white;
     }
 }
+`;
+
+
+export const ChangePhotoButton = styled.div`
+    width: 200px;
+    height: 200px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 500px;
+button {
+    color: #1b253d;
+    border: 1px solid #42018cc2;
+    height: 50px;
+    width: 180px;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin-right:50px;
+    margin-top: 20px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #220641;
+    color: white;
+}
+`;
+
+
+export const FieldsProfile = styled.div`
+width: 50%;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+align-items: flex-start;
+height: 100%;
+padding: 5px;
+
 `;
 
 export const ProfileInfo = styled.div`
@@ -57,8 +97,8 @@ export const ProfileRightSide = styled.div`
 width: 75%;
 height: 100%;
 display: flex;
-flex-direction: column;
-justify-content: space-evenly;
+flex-direction: row;
+justify-content: space-between;
 `;
 
 export const NameLocation = styled.div`
@@ -67,7 +107,7 @@ height: 20%;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-padding-left: 3%;
+padding-left: 5%;
 font-size: 20px;
 
 `;
@@ -103,11 +143,13 @@ flex-direction: row;
 /* margin-left: -32%; */
 font-weight: 900;
 font-size: 20px;
-padding-left: 3%;
-
+padding-left: 5%;
+width:100%;
 p{
     font-size: 20px;
     padding: 5px;
+    padding-top: 15px;
+
 }
 input{
     padding-left: 5px;
@@ -119,15 +161,17 @@ export const ProfileEmail = styled.form`
 color: white;
 display: flex;
 flex-direction: row;
-width: 60%;
+width: 100%;
 /* margin-left: -32%; */
 font-size: 20px;
 font-weight: 900;
-padding-left: 3%;
+padding-left: 5%;
 
 p{
     width: 100%;
     padding-left: 5px;
+    padding-top: 5px;
+
 }
 
 `;
@@ -141,11 +185,16 @@ flex-direction: row;
 font-size: 20px;
 color: white;
 font-weight: 900;
-padding-left: 3%;
+padding-left: 5%;
 
 p{
     width: 100%;
+    padding: 5px;
+    padding-top: 10px;
+}
+span{
     padding-left: 5px;
+
 }
 `; 
 
