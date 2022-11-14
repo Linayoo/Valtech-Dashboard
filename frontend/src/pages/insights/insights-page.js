@@ -12,8 +12,8 @@ const InsightsPage = () => {
     return (    
         <InsightsContainer>
             <HeaderStyle>
-         <Header/>
-         </HeaderStyle>
+                 <Header/>
+            </HeaderStyle>
          <SideNavStyle>
             <SideNav/> 
             </SideNavStyle>

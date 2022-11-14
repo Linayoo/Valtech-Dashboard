@@ -32,6 +32,7 @@ input, select {
     height: 35px;
     color: #1b253d;
     border: #342e2e;
+    font-weight: bolder;
     font-size: 15px;
     border-radius: 3px;
     padding-left: 20px;
@@ -49,6 +50,7 @@ input:focus, select:focus {
     outline: none;
     border-bottom: 1px solid #837b7b8e;
     box-shadow: 0 1px 0 0 #837b7b8e;
+    background-color: #80808013;
 }
 `;
 

@@ -49,7 +49,7 @@ div:not(:first-child) {
 }
 
 p {
-    font-size: 20px;
+    font-size: 17px;
     color: grey;
     width: 400px;
     padding: 10px 0;
@@ -57,7 +57,8 @@ p {
 }
 
 p:last-child {
-    font-weight: bolder;
+    font-weight: 600;
+    font-style: inherit;
 }
 
 h4 {
@@ -86,7 +87,7 @@ flex-direction: column;
 width: 250px;
 
 :nth-child(2) {
-    width: 450px;
+    width: 400px;
 }
 
 div {
