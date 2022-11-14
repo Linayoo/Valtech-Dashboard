@@ -140,11 +140,31 @@ const EditProjects = () => {
         event.preventDefault();
         fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchconfig)
             .catch(error => console.log(error))
-            .then(image != "" ? fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchimage) : console.log('no img') )
-            .catch(error => console.log(error))
             .then(fetch(`http://localhost:8000/api/timeframes/${timeframeid}/`, patchtimeframe))
             .catch(error => console.log(error))
             .then(() => navigate(`/project/${initialID}/`))
+    }
+
+    const handleImgUpload = (e) => {
+        e.preventDefault()
+        const imageData = new FormData()
+        imageData.append("image", e.target.files[0])
+        (fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, {
+                method: patch,
+                headers: authheader,
+                body: imageData
+              }))
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+    }
+
+    const handleImgDelete = (event) => {
+        event.preventDefault()
+        setImage("");
+        fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchimage)
+        .then(setFormData(prevFormData => {return {...prevFormData, image: null}}))
+        .catch(error => console.log(error))
     }
 
     const handleChange = (event) => {
@@ -251,19 +271,6 @@ const EditProjects = () => {
         let newArray = [...tools]
         newArray.splice(event.target.id, 1);
         setTools(newArray)
-    }
-
-    const handleImgUpload = e => {
-        const imageUrl = e.target.files;
-        setImage(imageUrl[0]);
-    }
-
-    const handleImgDelete = (event) => {
-        event.preventDefault()
-        setImage("");
-        fetch(`http://localhost:8000/api/projects/patch/${initialID}/`, patchimage)
-        .then(setFormData(prevFormData => {return {...prevFormData, image: null}}))
-        .catch(error => console.log(error))
     }
 
     return (

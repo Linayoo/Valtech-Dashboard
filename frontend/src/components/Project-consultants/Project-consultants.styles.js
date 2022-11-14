@@ -13,8 +13,6 @@ p {
     font-style: italic;
 }
 
-
-
 table > tr:first-of-type{
    background-color: #f3e9e94;
 }
@@ -63,20 +61,6 @@ table > tr > th:nth-of-type(2) {
    width: 190px;
 } 
 
-table > tr > td:last-of-type {
-    margin-left: -30px;
-}
-
-table > tr > td > button {
-    background: none;
-    border:none;
-    margin-right: 8px;
-    border-radius: 10px;
-    padding: 5px 10px;
-    width: 60px;
-    color: white;
-}
-
 table > tr > td > button:hover {
     opacity: 0.7;
 }
@@ -104,10 +88,6 @@ tr:first-child:hover td {
 }
 tr:last-child:hover td {
   border-bottom: none;
-}
-
-table > tr > td:last-of-type {
-    padding-left: 70px;
 }
 `;
 
