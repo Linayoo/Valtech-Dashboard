@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const EditProjectContainer  = styled.div`
+export const EditProjectContainer = styled.div`
 display: flex;
 flex-direction: column;
 background-color: #8080800;
@@ -88,9 +88,10 @@ input:focus, select:focus {
 
 .submitty {
     color: #1b253d;
+    margin-top: 5px;
     border: 1px solid #42018cc2;
-    height: 30px;
-    width: 120px;
+    height: 25px;
+    width: 100px;
     font-weight: bolder;
     border-radius: 5px;
     font-size: 15px;
@@ -102,6 +103,18 @@ button:hover {
 
 .margin{
     margin-bottom: 100px;
+}
+
+.submit-button {
+    color: #1b253d;
+    border: 1px solid #42018cc2;
+    height: 30px;
+    width: 140px;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
 }
 
 `;
