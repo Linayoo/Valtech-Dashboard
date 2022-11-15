@@ -4,11 +4,13 @@ import { useEffect } from "react"
 import { useRef } from "react"
 import ToolAddTag from "../Project-edit/Tool-add-tag";
 import ToolTag from "../Project-edit/Tool-tag";
+import { useNavigate } from "react-router"
 
 const CreateConsultant = () => {
 
     let localToken = localStorage.getItem("valtech-auth")
     const inputref = useRef([])
+    const navigate = useNavigate()
 
     const [displayName, setDisplayName] = useState("")
     const [firstname, setFirstname] = useState("")
@@ -84,6 +86,7 @@ const CreateConsultant = () => {
             "addition_skills": parseStringToList(addSkill),
             "manager_display_name": `${manager}`,
             "role_category": `${role}`,
+            "username": `${firstname}${lastname}`,
 
         })
         return fetchbody
@@ -124,7 +127,7 @@ const CreateConsultant = () => {
             .then(response => response.json())
             .then((data) => fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/${data.id}/`, imageUploadConfig))
             .then(response => response.json())
-            .then((data) => console.log(data))
+            .then(() => navigate(`/consultants/`))
             .catch(error => console.log(error));
     }
 
