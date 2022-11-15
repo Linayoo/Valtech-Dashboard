@@ -93,6 +93,10 @@ const ProjectFilter = (props) => {
                 <Flex>
                     <form>
                         <input ref={ref => inputref.current.name = ref} type="text" name="name" placeholder="Filter by name" autoComplete="none" onChange={handleFilter} />
+                        <select ref={ref => inputref.current.skills = ref} name="skills" onChange={handleFilter}>
+                            <option value='0'>Select a skill</option>
+                            {skills === undefined ? <option>Loading...</option> : skills.map(element => <option value={element.id}>{element.title}</option>)}
+                        </select>
                         <GridItem>
                             <DatePicker
                                 ref={ref => inputref.current.date = ref}
@@ -106,10 +110,6 @@ const ProjectFilter = (props) => {
                                 className={"placeholder"}
                             />
                         </GridItem>
-                        <select ref={ref => inputref.current.skills = ref} name="skills" onChange={handleFilter}>
-                            <option value='0'>Select a skill</option>
-                            {skills === undefined ? <option>Loading...</option> : skills.map(element => <option value={element.id}>{element.title}</option>)}
-                        </select>
                     </form>
                 </Flex>
             </ProjectFilterContainer>
