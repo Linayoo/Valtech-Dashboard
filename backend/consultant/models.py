@@ -19,7 +19,7 @@ class Consultant(models.Model):
         ('frontend', 'Frontend Developer'),
         ('backend', 'Backend Developer'),
         ('devops', 'DevOps Developer'),
-        ('fullstack', 'Fullstack Developer')
+        ('fullstack', 'Fullstack Developer'),
         ('manager', 'Manager')
     ]
 
