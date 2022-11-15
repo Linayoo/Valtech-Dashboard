@@ -27,10 +27,13 @@ useEffect((state) => {
         .then(data => {console.log(data); setCurrentUser(data)})
         .catch(error => console.log(error));
 }, [])
+
+const hour = new Date().getHours();
+
     return (
         <HeaderContainer>
-            {/* <img src={currentUser.image}/> */}
-            <p>{`${currentUser.first_name} ${currentUser.last_name}`} </p>
+            <img src={currentUser.image}/>
+            <p>Good {hour<12 && "Morning," || hour<18 && "Afternoon," || "Evening,"} {currentUser.first_name} </p>
             <BsChevronDown size={22} color={"#1b253d"} />
             <button ><BsBell size={22} color={"#5a5757"}/></button>
         </HeaderContainer>

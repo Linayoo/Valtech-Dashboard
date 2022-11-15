@@ -53,7 +53,7 @@ function Login() {
             </LogoString>
             <LoginForm id='log' onSubmit={handleSubmit}>
                 <input form="log" type="text" name="email" placeholder="Email" onChange={handleUsernameChange}></input>
-                <input form="log" type="text" name="password" placeholder="Password" onChange={handlePasswordChange}></input>
+                <input form="log" type="password" name="password" placeholder="Password" onChange={handlePasswordChange}></input>
             </LoginForm> 
             <LoginRemember>
                 <input type="checkbox"></input>
