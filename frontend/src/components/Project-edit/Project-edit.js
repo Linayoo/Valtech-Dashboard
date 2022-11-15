@@ -31,7 +31,7 @@ const EditProjects = () => {
             projectObj: [],
             name: "",
             description: "",
-            link: "",
+            external_link: "",
             image: "",
         }
     )
@@ -71,7 +71,7 @@ const EditProjects = () => {
             let fetchbody = JSON.stringify({
                 "name": formData.name,
                 "description": formData.description,
-                "external_link": formData.link,
+                "external_link": formData.external_link,
                 "assignee": consmagic,
                 "tools": toolsmagic,
             })         
@@ -114,7 +114,7 @@ const EditProjects = () => {
                     projectObj: data,
                     name: data.name,
                     description: data.description,
-                    link: data.external_link,
+                    external_link: data.external_link,
                     image: data.image,
                 });
                 setConsultants(data.assignee);
@@ -293,7 +293,7 @@ const EditProjects = () => {
                 </label>
                 <label htmlFor="">
                     External link
-                    <input value={formData.link} type="textarea" name="link" onChange={handleChange} />
+                    <input value={formData.external_link} type="textarea" name="external_link" onChange={handleChange} />
                 </label>
                 <label htmlFor="">
                     Start - end
@@ -322,7 +322,7 @@ const EditProjects = () => {
                         {tools === undefined ? <></> : tools.map((element, index) => <ToolTag id={index} tool={element} remove={handleDeleteTool} />)}
                     </div>
                 </label>
-                <button className="submitty margin" type="submit">Save changes</button>
+                <button className="submit-button" type="submit">Save changes</button>
             </form>
         </EditProjectContainer>
 

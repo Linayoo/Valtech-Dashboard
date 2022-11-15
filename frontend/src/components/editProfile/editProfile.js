@@ -61,7 +61,7 @@ const EditUserProfile = () => {
         e.preventDefault()
         const imageData = new FormData()
         imageData.append("image", e.target.files[0])
-        (fetch(`me/`, {
+        (fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/me/`, {
                 method: patch,
                 headers: fileUploadHeaders,
                 body: imageData

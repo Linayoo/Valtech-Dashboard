@@ -37,6 +37,7 @@ return (
         <ProfileMain>
                     <h1>My profile details</h1>
                     <hr/>
+                    <>{console.log(consultants.image)}</>
                       <img src={consultants.image} alt="error"></img>
                         <div>
                             <p>First name:</p>

@@ -63,7 +63,7 @@ const ProjectDetails = () => {
     },[])
 
     return (
-        <ProjectDetailsWrapper background={`http://localhost:8000${project?.image}`}>
+        <ProjectDetailsWrapper background={`${project?.image}`}>
             <div>
             <HeaderStyle>
             <h1>Project details</h1>
@@ -100,7 +100,7 @@ const ProjectDetails = () => {
                 {tools === undefined ? '' : tools.map(element => <h4>{element.title}</h4>)}
             </div>
             <ConsultantStyle>
-            <p>Consultants currently assigned to project:</p>
+            <p className="consultant-currently">Consultants currently assigned to project:</p>
             <ProjectConsultants consultant={project}/>
             </ConsultantStyle>
             </div>

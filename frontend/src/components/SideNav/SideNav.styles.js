@@ -92,7 +92,7 @@ div > button {
 
 img {
     width: 100px;
-    height: 20px;
+    height: 18px;
     margin-top: 30px;
     filter: opacity(75%)
 }

@@ -7,7 +7,7 @@ import ToolAddTag from "../Project-edit/Tool-add-tag";
 import AddTag from "../Project-edit/Consultant-add-tag";*/
 
 const CreateProject = () => {
-    
+
     let localToken = localStorage.getItem("valtech-auth")
     const navigate = useNavigate()
     const inputref = useRef([])
@@ -41,7 +41,7 @@ const CreateProject = () => {
 
     const parseStringToList = (inputString) => { return inputString.split(",").map(x => parseInt(x)) }
 
-    const body = () => {    
+    const body = () => {
 
         let newtoolsArray = [...tools]
         let toolsmagic = ""
@@ -62,7 +62,7 @@ const CreateProject = () => {
                 "date_started": `${startdate}`,
                 "date_finished": `${endDate}`
             },
-        })         
+        })
         return fetchbody
     }
 
@@ -259,7 +259,7 @@ const CreateProject = () => {
                 </div>
                 <div className="row">
                     {consultants === undefined ? "" : consultants.map((element, index) => <Tags id={index} consultant={element} remove={handleDeleteConsultant} />)}
-                </div>*/}
+                </div>
                 <div>
                     <button type='submit' form='test'>SUBMIT</button>
                 </div>
