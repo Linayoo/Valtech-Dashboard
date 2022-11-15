@@ -31,7 +31,7 @@ const goToUser = (id) => {
                         <td onClick={() => goToUser(val.id)}>{val.display_name}</td>
                         <td onClick={() => goToUser(val.id)}>{val.country}</td>
                         <td onClick={() => goToUser(val.id)}>{val.city}</td>
-                        <td onClick={() => goToUser(val.id)}>Not provided</td>
+                        <td onClick={() => goToUser(val.id)}>{val.manager_display_name}</td>
                         <td onClick={() => goToUser(val.id)}>{(val.unavailable[0] == undefined || new Date() > new Date(`${val.unavailable[0].date_finished}Z`)) ? 'Available' : 'On project'}</td>
                     </tr>
                    
