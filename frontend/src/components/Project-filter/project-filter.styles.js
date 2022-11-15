@@ -21,11 +21,13 @@ h1 {
 }
 
 form {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* grid-template-rows: 35px; */
   grid-row-gap: 10px;
-  grid-column-gap: 10px;
+  grid-column-gap: 10px; */
+  display: flex;
+  width: 620px;
+  justify-content: space-evenly;
 }
 
 input, select {
@@ -36,6 +38,7 @@ input, select {
     font-size: 15px;
     border-radius: 3px;
     padding-left: 20px;
+    margin-right: 10px;
  } 
 
 input::placeholder{
@@ -57,12 +60,13 @@ input:focus, select:focus {
 export const Flex = styled.div`
 display: flex;
 align-items: center;
-
+justify-content: space-between;
+width: 700px;
 `;
 
 export const GridItem = styled.div`
-grid-column: span 2;
-width: 80%;
+width: 100%;
+/* margin-left: 10px; */
 button {
     border: none;
     margin-left: -2px;

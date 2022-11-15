@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ProjectResultsContainer = styled.div`
 position: sticky;
-margin-top: 0%;
+margin-top: -3%;
 margin-left: 6%;
 width: 100%;
 color: grey;
