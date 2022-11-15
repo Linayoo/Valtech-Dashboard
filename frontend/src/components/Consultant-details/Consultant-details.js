@@ -115,7 +115,7 @@ const ConsultantDetails = (props) => {
                     
                         <div>
                             <p>LinkedIn</p>
-                            <p>{consultant === undefined ? "not provided" : consultant.linked_in_link }</p>
+                            <p><a href={consultant === undefined ? "not provided" : consultant.linked_in_link } target="_blank">Click to the link</a></p>
                         </div>
                         <div>
                             <p>Email</p>

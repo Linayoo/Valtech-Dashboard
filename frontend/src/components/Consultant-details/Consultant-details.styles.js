@@ -76,6 +76,25 @@ h4 {
     margin-right: 8px;
 }
 
+a {
+    outline: none;
+    font-size: 17px;
+    width: 400px;
+    padding: 10px 0;
+}
+
+a:link {
+    color: #1b253d;
+}
+
+a:hover {
+    color: purple;
+}
+
+a:visited {
+    color: purple;
+}
+
 `;
 
 export const HeaderStyle  = styled.div`
