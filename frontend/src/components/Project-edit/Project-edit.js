@@ -71,7 +71,7 @@ const EditProjects = () => {
             let fetchbody = JSON.stringify({
                 "name": formData.name,
                 "description": formData.description,
-                "link": formData.link,
+                "external_link": formData.link,
                 "assignee": consmagic,
                 "tools": toolsmagic,
             })         

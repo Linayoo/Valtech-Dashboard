@@ -3,8 +3,8 @@ import { CreateProjectContainer } from "./Project-create.styles";
 import { useNavigate } from "react-router";
 import ToolTag from "../Project-edit/Tool-tag";
 import ToolAddTag from "../Project-edit/Tool-add-tag";
-import Tags from "../Project-edit/Consultant-tag";
-import AddTag from "../Project-edit/Consultant-add-tag";
+/*import Tags from "../Project-edit/Consultant-tag";
+import AddTag from "../Project-edit/Consultant-add-tag";*/
 
 const CreateProject = () => {
     
@@ -56,7 +56,7 @@ const CreateProject = () => {
         let fetchbody = JSON.stringify({
             "name": `${projectName}`,
             "description": `${projectDescription}`,
-            "link": `${link}`,
+            "external_link": `${link}`,
             "tools": toolsmagic,
             "time_frame": {
                 "date_started": `${startdate}`,
@@ -159,7 +159,7 @@ const CreateProject = () => {
         }
     }
 
-    const handleAddConsultant = (event) => {
+    /*const handleAddConsultant = (event) => {
         event.preventDefault()
         let newArray = [...consultants]
         newArray.push(JSON.parse(event.target.id))
@@ -179,7 +179,7 @@ const CreateProject = () => {
         let magic = ""
         newArray.forEach(e => magic = `${magic}${e.id},`)
         setSendconsultants(magic)
-    }
+    }*/
 
     const handleAddTool = (event) => {
         event.preventDefault()
