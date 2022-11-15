@@ -63,7 +63,7 @@ const ProjectDetails = () => {
     },[])
 
     return (
-        <ProjectDetailsWrapper background={`http://localhost:8000${project?.image}`}>
+        <ProjectDetailsWrapper background={`https://valtech-dashboard.propulsion-learn.ch${project?.image}`}>
             <div>
             <HeaderStyle>
             <h1>Project details</h1>

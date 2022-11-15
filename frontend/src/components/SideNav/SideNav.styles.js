@@ -91,8 +91,8 @@ div > button {
 }
 
 img {
-    width: 180px;
-    height: 40px;
+    width: 100px;
+    height: 18px;
     margin-top: 30px;
     filter: opacity(75%)
 }
