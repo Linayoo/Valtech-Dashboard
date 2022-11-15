@@ -95,6 +95,11 @@ a:visited {
     color: purple;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 `;
 
 export const HeaderStyle  = styled.div`
@@ -104,10 +109,23 @@ display: flex;
 
 
 
+
 export const FlexColumn  = styled.div`
 display: flex;
 flex-direction: column;
-width: 250px;
+width: 800px;
+padding-top: 20px;
+padding-bottom: 20px;
+
+p {
+    font-size: 20px;
+    width: 400px;
+    padding: 10px 0;
+}
+
+:first-child {
+    padding-top: 0px;
+}
 
 :nth-child(2) {
     width: 400px;
@@ -115,6 +133,27 @@ width: 250px;
 
 div {
     display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.img-basic-info-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.basic-info-section {
+    margin-top: 100px;
+    margin-left: 100px;
+    display: flex;
     flex-direction: column;
+}
+
+.basic-info-section > div {
+    margin-bottom: 10px;
+}
+
+:last-child {
+    border: none;
 }
 `;
