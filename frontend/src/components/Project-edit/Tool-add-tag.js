@@ -17,7 +17,7 @@ const Tool = styled.div`
     color: #1b253d;
     border: 1px solid #42018cc2;
     padding: 9px 15px 9px 15px;
-    height: 35px;
+    height: auto;
     font-weight: bolder;
     border-radius: 18px;
     margin-left:20px;

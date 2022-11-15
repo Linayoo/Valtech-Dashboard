@@ -67,19 +67,18 @@ const InsightsPage = () => {
     }
 
     const employeefilter = () => {
-        let arr = []
         consultants.forEach((e) => {
-            e.unavailable.forEach((f) => {
-                if (f === undefined) {
-                    arr.push(0)
-                } else if (new Date() > new Date(`${f.time_frame.date_finished}Z`) && new Date() > new Date(`${f.time_frame.date_started}Z`)) {
+            let arr = []
+                if (e.unavailable.length === 0) {
+                    arr.push(1)
+                } else if (new Date() < new Date(`${e.unavailable.date_finished}Z`) && new Date() < new Date(`${e.unavailable.date_started}Z`)) {
                     arr.push(0)
                 } else {
                     arr.push(1)
                 }
-            })
+                console.log(arr)
         })
-        console.log(arr)
+        
     }
 
     return (
@@ -94,7 +93,7 @@ const InsightsPage = () => {
                 <WidgetFlexWrap>
                     <Widget name="TOTAL EMPLOYEES" num={consultants?.length} icon={<BsFillPersonFill width={22} height={22} color={'#000'} />} />
                     <Widget name="OPEN PROJECTS" num={projects === undefined ? "Loading..." : projectfilter()} />
-                    <Widget name="UNASSIGNED EMPLOYEE'S" num={ 3/*consultants === undefined ? "Loading..." : employeefilter()*/} />
+                    <Widget name="UNASSIGNED EMPLOYEE'S" num={ consultants === undefined ? "Loading..." : employeefilter()} />
                     <Widget name="FINISHED PROJECTS" num="123" />
                 </WidgetFlexWrap>
                 <ChartsFlexWrap>

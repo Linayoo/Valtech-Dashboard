@@ -1,6 +1,7 @@
 import { NavContainer } from "./SideNav.styles"
 import { BsPersonPlus, BsClipboardData, BsJournalCheck, BsFilePerson, BsBoxArrowLeft } from "react-icons/bs";
 import { useLocation, useNavigate } from "react-router-dom";
+import logo from './sit-learning-logo-white.png' 
 
 const SideNav = () => {
     let tabStyle = {
@@ -57,6 +58,7 @@ const SideNav = () => {
                 <p><BsBoxArrowLeft size={20}/></p>
             Sign out </button>
             </div>
+            <img src={logo}/>
         </NavContainer>
     )
 }

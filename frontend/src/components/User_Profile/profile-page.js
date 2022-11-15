@@ -35,37 +35,31 @@ useEffect((state) => {
 
 return (
         <ProfileMain>
-            <ProfileInfo>
-                <ProfileInfoLeftSide>
-                    <ProfilePhoto>
-                    <img src={consultants.image} alt="error"></img>
-                    </ProfilePhoto>
-                </ProfileInfoLeftSide>
-                <ProfileRightSide>
-                    <FieldsProfile>
-                    <NameLocation>
-                        <ProfileName>
-                            <p>First name: <span>{consultants.first_name}</span></p>
-                            <p>Last name: <span>{consultants.last_name}</span></p>
-                        </ProfileName>
-                    </NameLocation>
-                    <ProfileUsername>
-                        <p>Username: <span>{consultants.username}</span></p>
-                    </ProfileUsername>
-                    <ProfileEmail>
-                        <p>Email: <span>{consultants.email}</span></p>
-                    </ProfileEmail>
-                    <ProfileJoined>
-                        <p>Joined: <span>{consultants.date_joined}</span></p>
-                    </ProfileJoined>
-                    </FieldsProfile>
-                </ProfileRightSide>
-            </ProfileInfo>
-            <ButtonProfile>
-                <EditUserDetails>       
-                  <p onClick={() => navigate(`/profile/edit`)}>Edit User Details</p>
-                </EditUserDetails>
-            </ButtonProfile>
+                    <h1>My profile details</h1>
+                    <hr/>
+                    <>{console.log(consultants.image)}</>
+                      <img src={consultants.image} alt="error"></img>
+                        <div>
+                            <p>First name:</p>
+                            <p>{consultants.first_name}</p>
+                        </div>
+                        <div>
+                            <p>Last name:</p>
+                            <p>{consultants.last_name}</p>
+                        </div>
+                        <div>
+                            <p>Username:</p>
+                            <p>{consultants.username}</p>
+                        </div>
+                        <div>
+                            <p>Email: </p>
+                            <p>{consultants.email}</p>
+                        </div>
+                        <div>
+                            <p>Joined:</p>
+                            <p>{consultants.date_joined}</p>
+                        </div>
+                        <button onClick={() => navigate(`/profile/edit`)}>Edit Details</button>
         </ProfileMain>
     )
 }

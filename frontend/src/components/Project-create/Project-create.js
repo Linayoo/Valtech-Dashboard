@@ -3,10 +3,11 @@ import { CreateProjectContainer } from "./Project-create.styles";
 import { useNavigate } from "react-router";
 import ToolTag from "../Project-edit/Tool-tag";
 import ToolAddTag from "../Project-edit/Tool-add-tag";
-import Tags from "../Project-edit/Consultant-tag";
-import AddTag from "../Project-edit/Consultant-add-tag";
+/*import Tags from "../Project-edit/Consultant-tag";
+import AddTag from "../Project-edit/Consultant-add-tag";*/
 
 const CreateProject = () => {
+
     let localToken = localStorage.getItem("valtech-auth")
     const navigate = useNavigate()
     const inputref = useRef([])
@@ -40,7 +41,32 @@ const CreateProject = () => {
 
     const parseStringToList = (inputString) => { return inputString.split(",").map(x => parseInt(x)) }
 
-    const project = JSON.stringify({
+    const body = () => {
+
+        let newtoolsArray = [...tools]
+        let toolsmagic = ""
+        newtoolsArray.forEach(e => toolsmagic = `${toolsmagic}${e.id},`)
+        toolsmagic = toolsmagic.slice(0, -1)
+        toolsmagic = parseStringToList(toolsmagic)
+
+        if (toolsmagic.includes(NaN)) {
+            toolsmagic = []
+        }
+
+        let fetchbody = JSON.stringify({
+            "name": `${projectName}`,
+            "description": `${projectDescription}`,
+            "external_link": `${link}`,
+            "tools": toolsmagic,
+            "time_frame": {
+                "date_started": `${startdate}`,
+                "date_finished": `${endDate}`
+            },
+        })
+        return fetchbody
+    }
+
+    /*const project = JSON.stringify({
         "name": `${projectName}`,
         "description": `${projectDescription}`,
         "external_link": `${link}`,
@@ -50,7 +76,7 @@ const CreateProject = () => {
             "date_finished": `${endDate}`
         },
         "assignee": parseStringToList(sendconsultants),
-    })
+    })*/
 
     const imgData = new FormData()
     imgData.append("image", image)
@@ -58,7 +84,7 @@ const CreateProject = () => {
     const projectConfig = {
         method: post,
         headers: headers,
-        body: project,
+        body: body(),
     }
 
     const imgUploadConfig = {
@@ -79,7 +105,7 @@ const CreateProject = () => {
             .then(data => setAllcons(data))
             .catch(error => console.log(error));
 
-        fetch(`http://localhost:8000/api/skills/`, getconfig)
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/skills/`, getconfig)
             .then(response => response.json())
             .then(data => setAlltools(data))
             .catch(error => console.log(error));
@@ -133,7 +159,7 @@ const CreateProject = () => {
         }
     }
 
-    const handleAddConsultant = (event) => {
+    /*const handleAddConsultant = (event) => {
         event.preventDefault()
         let newArray = [...consultants]
         newArray.push(JSON.parse(event.target.id))
@@ -153,7 +179,7 @@ const CreateProject = () => {
         let magic = ""
         newArray.forEach(e => magic = `${magic}${e.id},`)
         setSendconsultants(magic)
-    }
+    }*/
 
     const handleAddTool = (event) => {
         event.preventDefault()
@@ -224,7 +250,7 @@ const CreateProject = () => {
                 <div className="row">
                     {tools === undefined ? "" : tools.map((element, index) => <ToolTag id={index} tool={element} remove={handleDeleteTool} />)}
                 </div>
-                {/* <div>
+                {/*<div>
                     Assignee
                 </div>
                 <div className="row">
@@ -233,7 +259,7 @@ const CreateProject = () => {
                 </div>
                 <div className="row">
                     {consultants === undefined ? "" : consultants.map((element, index) => <Tags id={index} consultant={element} remove={handleDeleteConsultant} />)}
-                </div> */}
+                </div>
                 <div>
                     <button type='submit' form='test'>SUBMIT</button>
                 </div>

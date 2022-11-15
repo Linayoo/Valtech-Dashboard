@@ -30,8 +30,8 @@ class CreateProject(GenericAPIView):
         project.save()
         list_of_tools = request.data['tools']
         project.tools.set(list_of_tools)  # accepts list of skills' IDs
-        list_of_assignees = request.data['assignee']  # accepts list of consultants' IDs these two can be used in patch
-        project.assignee.set(list_of_assignees)
+        # list_of_assignees = request.data['assignee']  # accepts list of consultants' IDs these two can be used in
+        # patch project.assignee.set(list_of_assignees)
         return Response(self.get_serializer(project).data)
 
     # def post(self, request, *args, **kwargs):
