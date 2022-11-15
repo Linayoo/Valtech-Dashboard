@@ -86,7 +86,6 @@ const CreateConsultant = () => {
             "addition_skills": parseStringToList(addSkill),
             "manager_display_name": `${manager}`,
             "role_category": `${role}`,
-            "username": `${firstname}${lastname}`,
 
         })
         return fetchbody

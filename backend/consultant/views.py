@@ -44,14 +44,14 @@ class CreateConsultantTest(GenericAPIView):
         list_of_add_skills = request.data[
             'addition_skills']  # accepts list of consultants' IDs these two can be used in patch
         consultant.addition_skills.set(list_of_add_skills)
-        list_of_educations = request.data['educations']
-        consultant.educations.set(list_of_educations)
-        list_of_certificates = request.data['certificates']
-        consultant.certificates.set(list_of_certificates)
+        # list_of_educations = request.data['educations']
+        # consultant.educations.set(list_of_educations)
+        # list_of_certificates = request.data['certificates']
+        # consultant.certificates.set(list_of_certificates)
         list_of_languages = request.data['language_skills']
         consultant.language_skills.set(list_of_languages)
-        list_of_unavailable = request.data['unavailable']
-        consultant.unavailable.set(list_of_unavailable)
+        # list_of_unavailable = request.data['unavailable']
+        # consultant.unavailable.set(list_of_unavailable)
         return Response(self.get_serializer(consultant).data)
 
 
