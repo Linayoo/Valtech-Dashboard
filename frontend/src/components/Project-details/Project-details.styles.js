@@ -128,4 +128,12 @@ p {
 .consultant-currently{
     width: 500px;
 }
+
+p > a:link {
+    font-size: 20px;
+    color: grey;
+    width: 400px;
+    padding: 10px 0;
+}
+
 `;

@@ -84,7 +84,7 @@ const ProjectDetails = () => {
             </div>
             <div>
                 <p>External link</p>
-                <p>{link ===  (null || "") ? 'Not provided' : link}</p>
+                <p><a href={link ===  (null || "") ? 'Not provided' : link} target="_blank">Click to the link</a></p>
             </div>
             <div>
                 <p>Project duration</p>
