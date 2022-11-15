@@ -24,7 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r&mwi+m^)j13$knywztdf!j!o!_4e6-1*6@z6bobqp&l3xx(05'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
+DEBUG = True
+# os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
 CSRF_TRUSTED_ORIGINS = ['http://167.99.243.225', "http://localhost:3000", 'https://valtech-dashboard.propulsion-learn.ch']
