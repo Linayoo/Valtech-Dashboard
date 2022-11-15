@@ -13,7 +13,9 @@ border-bottom: 1px solid #5a575712;
 
 
 img {
-    height: 40px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
 }
 
 button {

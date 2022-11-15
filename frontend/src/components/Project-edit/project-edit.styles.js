@@ -8,10 +8,13 @@ width: 100vw;
 height: 100vh;
 padding-top: 6%;
 padding-left: 5%;
+margin-left: 20%;
+margin-top: 2%;
+
 
 
 h1 {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     color: #1b253d;
     font-weight: bolder;
 }
@@ -42,6 +45,7 @@ hr {
 form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 150px;
 }
 
 label, input {
@@ -90,6 +94,14 @@ input:focus, select:focus {
     font-weight: bolder;
     border-radius: 5px;
     font-size: 15px;
+}
+button:hover {
+    background-color: #220641;
+    color: white;
+}
+
+.margin{
+    margin-bottom: 100px;
 }
 
 `;

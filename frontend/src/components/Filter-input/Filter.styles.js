@@ -94,6 +94,11 @@ button {
 input {
     padding: 10px;
 }
+
+.placeholder::placeholder {
+    color: #1b253d;
+    padding-left: 8px;
+}
 `;
 
 export const HeaderStyle = styled.div`

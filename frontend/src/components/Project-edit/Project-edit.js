@@ -322,7 +322,7 @@ const EditProjects = () => {
                         {tools === undefined ? <></> : tools.map((element, index) => <ToolTag id={index} tool={element} remove={handleDeleteTool} />)}
                     </div>
                 </label>
-                <button className="submitty" type="submit">Save changes</button>
+                <button className="submitty margin" type="submit">Save changes</button>
             </form>
         </EditProjectContainer>
 

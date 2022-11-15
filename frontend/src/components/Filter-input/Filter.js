@@ -154,6 +154,8 @@ const Filter = (props) => {
                             onChange={update => handleDatePicker(update)}
                             isClearable={true}
                             value={dateRange}
+                            placeholderText={"Select date range"}
+                            className={"placeholder"}
                         />
                     </GridItem>
                 </form>
