@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const EditUserProfile = () => {
-
+    const navigate = useNavigate()
     let localToken = localStorage.getItem("valtech-auth")
     const [consultants, setConsultants] = useState(
         {
@@ -61,7 +61,7 @@ const EditUserProfile = () => {
         e.preventDefault()
         const imageData = new FormData()
         imageData.append("image", e.target.files[0])
-        (fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/me/`, {
+        (fetch(`me/`, {
                 method: patch,
                 headers: fileUploadHeaders,
                 body: imageData
@@ -83,45 +83,26 @@ const EditUserProfile = () => {
     return (
 
         <ProfileMain form='user' onSubmit={handleSubmit}>
-            {/* <form form='user' onSubmit={handleSubmit}> */}
-                <ProfileInfo>
-                    <ProfileInfoLeftSide>
-                        <ProfilePhoto>
+            <h1>Edit my profile</h1>
+            <hr/>
                             <img src={consultants.image} alt="photo"></img>
-                        </ProfilePhoto>
-                    </ProfileInfoLeftSide>
-                    <ProfileRightSide>
-                    <FieldsProfile>
-                        <NameLocation>
-                            <ProfileName>
-                                <p>First name: <input type="text" value={consultants.first_name} name="first_name" onChange={handleChange}></input></p>
-                                <p>Last name: <input type="text" value={consultants.last_name} name="last_name" onChange={handleChange}></input></p>
-                            </ProfileName>
-                        </NameLocation>
-                        <ProfileUsername>
+
+                            <p>First name: <input type="text" value={consultants.first_name} name="first_name" onChange={handleChange}></input></p>
+
+                            <p>Last name: <input type="text" value={consultants.last_name} name="last_name" onChange={handleChange}></input></p>
+                        
                             <p>Username: <input type="text" value={consultants.username} name="username" onChange={handleChange}></input></p>
-                        </ProfileUsername>
-                        <ProfileEmail>
+                     
                             <p>Email: <input type="text" value={consultants.email} name="email" onChange={handleChange}></input></p>
-                        </ProfileEmail>
-                        <ProfileJoined>
+                    
                             <p>Joined: <input type="text" value={consultants.date_joined} name="date_joined" onChange={handleChange}></input></p>
-                        </ProfileJoined>
-                        </FieldsProfile>
-                        <ChangePhotoButton>
+                            <p>Image Upload</p>
                         <label for="save">   
                         <input id="save" multiple type="file" name="image/" onChange={handleImgUpload} />
-                        <p>Image Upload</p>
                         </label> 
-                        </ChangePhotoButton>
-                    </ProfileRightSide>
-                </ProfileInfo>
-                <ButtonProfile>
-                    <EditUserDetails>
-                        <p type='submit'>SAVE</p>
-                    </EditUserDetails>
-                </ButtonProfile>
-            {/* </form> */}
+                      
+                        <button onClick={() => navigate(`/profile/`)}type='submit'>SAVE</button>
+                 
         </ProfileMain>
     )
 }
