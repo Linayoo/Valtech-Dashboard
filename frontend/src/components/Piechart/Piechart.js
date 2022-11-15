@@ -2,41 +2,45 @@ import { ResponsivePie } from '@nivo/pie'
 import { PieWrap, Wrap } from './Piechart.styles'
 
 
-const data = [
-    {
-      "id": "Frontend",
-      "label": "Frontend",
-      "value": 30,
-      "color": "hsl(75, 70%, 50%)"
-    },
-    {
-      "id": "Backend",
-      "label": "Backend",
-      "value": 20,
-      "color": "hsl(118, 70%, 50%)"
-    },
-    {
-      "id": "Fullstack",
-      "label": "Fullstack",
-      "value": 10,
-      "color": "hsl(105, 70%, 50%)"
-    },
-    {
-      "id": "DevOps",
-      "label": "Devops",
-      "value": 10,
-      "color": "hsl(61, 70%, 50%)"
-    },
-    {
-      "id": "Manager",
-      "label": "Manager",
-      "value": 20,
-      "color": "hsl(350, 70%, 50%)"
-    }
-  ]
- 
-
 const MyResponsivePie = () => {
+    
+    
+    
+    
+    
+    const data = [
+        {
+          "id": "Frontend",
+          "label": "Frontend",
+          "value": 30,
+          "color": "hsl(75, 70%, 50%)"
+        },
+        {
+          "id": "Backend",
+          "label": "Backend",
+          "value": 20,
+          "color": "hsl(118, 70%, 50%)"
+        },
+        {
+          "id": "Fullstack",
+          "label": "Fullstack",
+          "value": 10,
+          "color": "hsl(105, 70%, 50%)"
+        },
+        {
+          "id": "DevOps",
+          "label": "Devops",
+          "value": 10,
+          "color": "hsl(61, 70%, 50%)"
+        },
+        {
+          "id": "Manager",
+          "label": "Manager",
+          "value": 20,
+          "color": "hsl(350, 70%, 50%)"
+        }
+      ]
+    
     return (
         <Wrap>
             <div>

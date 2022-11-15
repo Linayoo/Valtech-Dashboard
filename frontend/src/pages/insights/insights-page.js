@@ -86,6 +86,15 @@ const InsightsPage = () => {
         return available.length
     }
 
+    const finishprojectfilter = () => {
+        let arr = []
+        projects.forEach((e) => {
+            if (new Date() > new Date(`${e.time_frame.date_finished}Z`)) {
+                arr.push(e)
+            }
+        })
+        return arr.length
+    }
 
 
     return (
@@ -101,7 +110,7 @@ const InsightsPage = () => {
                     <Widget name="TOTAL EMPLOYEES" num={consultants === undefined ? 'Loading...' : consultants.length} icon={<BsFillPersonFill width={22} height={22} color={'#000'} />} />
                     <Widget name="OPEN PROJECTS" num={projects === undefined ? "Loading..." : projectfilter()} />
                     <Widget name="UNASSIGNED EMPLOYEE'S" num={consultants === undefined ? "Loading..." : employeefilter()} />
-                    <Widget name="FINISHED PROJECTS" num="123" />
+                    <Widget name="FINISHED PROJECTS" num={projects === undefined ? "Loading..." : finishprojectfilter()} />
                 </WidgetFlexWrap>
                 <ChartsFlexWrap>
                     <MyResponsivePie />

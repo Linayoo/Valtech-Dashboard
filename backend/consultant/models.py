@@ -20,6 +20,7 @@ class Consultant(models.Model):
         ('backend', 'Backend Developer'),
         ('devops', 'DevOps Developer'),
         ('fullstack', 'Fullstack Developer')
+        ('manager', 'Manager')
     ]
 
     def upload_to(instance, filename):
