@@ -124,4 +124,8 @@ margin-top: 2%;
 p {
     color: #1b253d;
 }
+
+.consultant-currently{
+    width: 500px;
+}
 `;
