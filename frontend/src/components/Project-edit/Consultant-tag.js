@@ -40,6 +40,7 @@ margin-top: 10px;
     background-position: center;
     margin-right: 10px;
     cursor: pointer;
+    margin-top: 0px;
 }
 `;
 
