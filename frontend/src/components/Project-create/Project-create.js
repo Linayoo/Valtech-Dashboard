@@ -224,7 +224,7 @@ const CreateProject = () => {
                 <div className="row">
                     {tools === undefined ? "" : tools.map((element, index) => <ToolTag id={index} tool={element} remove={handleDeleteTool} />)}
                 </div>
-                <div>
+                {/* <div>
                     Assignee
                 </div>
                 <div className="row">
@@ -233,7 +233,7 @@ const CreateProject = () => {
                 </div>
                 <div className="row">
                     {consultants === undefined ? "" : consultants.map((element, index) => <Tags id={index} consultant={element} remove={handleDeleteConsultant} />)}
-                </div>
+                </div> */}
                 <div>
                     <button type='submit' form='test'>SUBMIT</button>
                 </div>
