@@ -90,5 +90,11 @@ div > button {
     font-size: 20px;
 }
 
+img {
+    width: 180px;
+    height: 40px;
+    margin-top: 30px;
+    filter: opacity(75%)
+}
     
 `;
