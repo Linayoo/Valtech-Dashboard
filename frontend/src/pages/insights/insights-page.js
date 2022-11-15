@@ -67,19 +67,26 @@ const InsightsPage = () => {
     }
 
     const employeefilter = () => {
+        let available = []
+        let unavailable = []
         consultants.forEach((e) => {
-            let arr = []
-                if (e.unavailable.length === 0) {
-                    arr.push(1)
-                } else if (new Date() < new Date(`${e.unavailable.date_finished}Z`) && new Date() < new Date(`${e.unavailable.date_started}Z`)) {
-                    arr.push(0)
-                } else {
-                    arr.push(1)
-                }
-                console.log(arr)
+            if (e.unavailable.length === 0) {
+                available.push(e)
+            } else {
+                e.unavailable.forEach((f) => {
+                    if ((new Date() >= new Date(`${f.date_started}Z`)) && (new Date() <= new Date(`${f.date_finished}Z`))) {
+                        unavailable.push(e)
+                    } else {
+                        available.push(e)
+                    }
+                })
+            }
+            
         })
-        
+        return available.length
     }
+
+
 
     return (
         <InsightsContainer>
@@ -91,9 +98,9 @@ const InsightsPage = () => {
             </SideNavStyle>
             <MainFlexWrap>
                 <WidgetFlexWrap>
-                    <Widget name="TOTAL EMPLOYEES" num={consultants?.length} icon={<BsFillPersonFill width={22} height={22} color={'#000'} />} />
+                    <Widget name="TOTAL EMPLOYEES" num={consultants === undefined ? 'Loading...' : consultants.length} icon={<BsFillPersonFill width={22} height={22} color={'#000'} />} />
                     <Widget name="OPEN PROJECTS" num={projects === undefined ? "Loading..." : projectfilter()} />
-                    <Widget name="UNASSIGNED EMPLOYEE'S" num={ consultants === undefined ? "Loading..." : employeefilter()} />
+                    <Widget name="UNASSIGNED EMPLOYEE'S" num={consultants === undefined ? "Loading..." : employeefilter()} />
                     <Widget name="FINISHED PROJECTS" num="123" />
                 </WidgetFlexWrap>
                 <ChartsFlexWrap>
