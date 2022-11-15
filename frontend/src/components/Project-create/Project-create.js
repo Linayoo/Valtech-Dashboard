@@ -116,7 +116,7 @@ const CreateProject = () => {
         console.log(projectConfig.body)
         fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/new/`, projectConfig)
             .then(response => response.json())
-            .then((data) => fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/${data.id}/`, imgUploadConfig))
+            .then((data) => fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/patch/${data.id}/`, imgUploadConfig))
             .then(response => {
                 response.json();
                 navigate(`../projects/`)
