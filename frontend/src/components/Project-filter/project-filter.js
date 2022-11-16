@@ -106,7 +106,7 @@ const ProjectFilter = (props) => {
                                 onChange={update => handleDatePicker(update)}
                                 isClearable={true}
                                 value={dateRange}
-                                placeholderText={"select date range"}
+                                placeholderText={"Select date range"}
                                 className={"placeholder"}
                             />
                         </GridItem>

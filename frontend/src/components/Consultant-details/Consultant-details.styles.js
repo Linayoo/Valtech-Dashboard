@@ -5,6 +5,7 @@ margin-top: 90px;
 margin-left: 5%;
 width: 100vw;
 height: 100vh;
+overflow-y: auto;
 
 div > p:last-child {
     color: #1b253d;
@@ -58,6 +59,7 @@ p {
     width: 400px;
     padding: 10px 0;
     margin-top: -10px;
+
 }
 
 p:last-child {
@@ -95,10 +97,6 @@ a:visited {
     color: purple;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-}
 
 `;
 
@@ -117,10 +115,23 @@ width: 800px;
 padding-top: 20px;
 padding-bottom: 20px;
 
+:nth-of-type(2) {
+    margin-bottom: 200px;
+}
+
 p {
     font-size: 20px;
-    width: 400px;
+    width: 800px;
     padding: 10px 0;
+}
+
+div > p:last-child {
+    margin-left: 200px;
+    width: 100px;
+}
+
+div > p:first-child {
+    width: 100px;
 }
 
 :first-child {

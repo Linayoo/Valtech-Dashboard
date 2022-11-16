@@ -129,12 +129,7 @@ const ConsultantDetails = (props) => {
                                 <p>Email</p>
                                 <p>{consultant === undefined ? "not provided" : consultant.email}</p>
                             </div>
-
-                        </FlexColumn>
-
-                        {/* third column */}
-
-                        <FlexColumn>
+                   
                             <div>
                                 <p>Primary Language</p>
                                 <p>{consultant === undefined ? "not provided" : consultant.primary_language}</p>
