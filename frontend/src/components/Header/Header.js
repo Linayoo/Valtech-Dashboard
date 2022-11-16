@@ -24,7 +24,7 @@ const Header = () => {
 useEffect((state) => {
     fetch("https://valtech-dashboard.propulsion-learn.ch/backend/api/me/", getconfig)
         .then(response => response.json())
-        .then(data => {console.log(data); setCurrentUser(data)})
+        .then(data => {setCurrentUser(data)})
         .catch(error => console.log(error));
 }, [])
 

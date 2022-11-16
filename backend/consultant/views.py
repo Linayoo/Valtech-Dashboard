@@ -30,10 +30,10 @@ class CreateConsultantTest(GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         consultant = Consultant(display_name=request.data['display_name'], first_name=request.data['first_name'],
-                                last_name=request.data['last_name'], username=request.data['username'],
+                                last_name=request.data['last_name'],
                                 country=request.data['country'], city=request.data['city'],
                                 office_category=request.data['office_category'], email=request.data['email'],
-                                linked_in_link=request.data['linked_in_link'], summary=request.data['summary'],
+                                linked_in_link=request.data['linked_in_link'],
                                 primary_language=request.data['primary_language'], title=request.data['title'],
                                 manager_display_name=request.data['manager_display_name'],
                                 role_category=request.data['role_category']
@@ -44,14 +44,14 @@ class CreateConsultantTest(GenericAPIView):
         list_of_add_skills = request.data[
             'addition_skills']  # accepts list of consultants' IDs these two can be used in patch
         consultant.addition_skills.set(list_of_add_skills)
-        list_of_educations = request.data['educations']
-        consultant.educations.set(list_of_educations)
-        list_of_certificates = request.data['certificates']
-        consultant.certificates.set(list_of_certificates)
+        # list_of_educations = request.data['educations']
+        # consultant.educations.set(list_of_educations)
+        # list_of_certificates = request.data['certificates']
+        # consultant.certificates.set(list_of_certificates)
         list_of_languages = request.data['language_skills']
         consultant.language_skills.set(list_of_languages)
-        list_of_unavailable = request.data['unavailable']
-        consultant.unavailable.set(list_of_unavailable)
+        # list_of_unavailable = request.data['unavailable']
+        # consultant.unavailable.set(list_of_unavailable)
         return Response(self.get_serializer(consultant).data)
 
 

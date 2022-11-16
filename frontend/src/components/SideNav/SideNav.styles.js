@@ -91,9 +91,11 @@ div > button {
 }
 
 img {
-    width: 100px;
-    height: 18px;
+    width: 120px;
+    height: 30px;
     margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: -25px;
     filter: opacity(75%)
 }
     

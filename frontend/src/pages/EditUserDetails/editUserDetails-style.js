@@ -7,3 +7,7 @@ display: flex;
 flex-direction: row;
 background-color: #8080801e;
 `
+
+export const SideNavStyle = styled.div`
+width: 215px;
+`
