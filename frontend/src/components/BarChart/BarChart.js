@@ -1,115 +1,163 @@
 import { ResponsiveBar } from '@nivo/bar';
 import { BarWrap, Wrap } from './BarChart.styles';
+import { useState, useEffect } from "react"
 
-const data = [
-    {
-      "Project": "Lufthansa",
-"Frontend": 1,
-"FrontendColor": "hsl(338, 70%, 50%)",
-      "Backend": 3,
-      "BackendColor": "hsl(146, 70%, 50%)",
-      "Fullstack": 2,
-      "FullstackColor": "hsl(86, 70%, 50%)",
-      "Devops": 3,
-      "DevopsColor": "hsl(107, 70%, 50%)",
-      "Manager": 2,
-      "ManagerColor": "hsl(339, 70%, 50%)",
-      "donut": 1,
-      "donutColor": "hsl(310, 70%, 50%)"
-    },
-    {
-      "Project": "Toyota",
-"Frontend": 6,
-"FrontendColor": "hsl(217, 70%, 50%)",
-      "Backend": 3,
-      "BackendColor": "hsl(49, 70%, 50%)",
-      "Fullstack": 2,
-      "FullstackColor": "hsl(24, 70%, 50%)",
-      "Devops": 1,
-      "DevopsColor": "hsl(165, 70%, 50%)",
-      "Manager": 1,
-      "ManagerColor": "hsl(290, 70%, 50%)",
-      "donut": 105,
-      "donutColor": "hsl(80, 70%, 50%)"
-    },
-    {
-      "Project": "Pantene",
-"Frontend": 1,
-"FrontendColor": "hsl(95, 70%, 50%)",
-      "Backend": 4,
-      "BackendColor": "hsl(264, 70%, 50%)",
-      "Fullstack": 2,
-      "FullstackColor": "hsl(158, 70%, 50%)",
-      "Devops": 1,
-      "DevopsColor": "hsl(107, 70%, 50%)",
-      "Manager": 1,
-      "ManagerColor": "hsl(251, 70%, 50%)",
-      "donut": 66,
-      "donutColor": "hsl(74, 70%, 50%)"
-    },
-    {
-      "Project": "Valtech",
-"Frontend": 4,
-"FrontendColor": "hsl(278, 70%, 50%)",
-      "Backend": 4,
-      "BackendColor": "hsl(323, 70%, 50%)",
-      "Fullstack": 1,
-      "FullstackColor": "hsl(20, 70%, 50%)",
-      "Devops": 1,
-      "DevopsColor": "hsl(149, 70%, 50%)",
-      "Manager": 1,
-      "ManagerColor": "hsl(228, 70%, 50%)",
-      "donut": 3,
-      "donutColor": "hsl(38, 70%, 50%)"
-    },
-    {
-      "Project": "SIT",
-"Frontend": 2,
-"FrontendColor": "hsl(161, 70%, 50%)",
-      "Backend": 3,
-      "BackendColor": "hsl(294, 70%, 50%)",
-      "Fullstack": 2,
-      "FullstackColor": "hsl(204, 70%, 50%)",
-      "Devops": 1,
-      "DevopsColor": "hsl(160, 70%, 50%)",
-      "Manager": 1,
-      "ManagerColor": "hsl(187, 70%, 50%)",
-      "donut": 3,
-      "donutColor": "hsl(261, 70%, 50%)"
-    },
-    {
-      "Project": "Rolex",
-"Frontend": 4,
-"FrontendColor": "hsl(215, 70%, 50%)",
-      "Backend": 2,
-      "BackendColor": "hsl(84, 70%, 50%)",
-      "Fullstack": 2,
-      "FullstackColor": "hsl(5, 70%, 50%)",
-      "Devops": 1,
-      "DevopsColor": "hsl(74, 70%, 50%)",
-      "Manager": 2,
-      "ManagerColor": "hsl(233, 70%, 50%)",
-      "donut": 5,
-      "donutColor": "hsl(313, 70%, 50%)"
-    },
-    {
-      "Project": "Levi's",
-      "Frontend": 1,
-      "FrontendColor": "hsl(288, 70%, 50%)",
-      "Backend": 4,
-      "BackendColor": "hsl(129, 70%, 50%)",
-      "Fullstack": 1,
-      "FullstackColor": "hsl(261, 70%, 50%)",
-      "Devops": 2,
-      "DevopsColor": "hsl(138, 70%, 50%)",
-      "Manager": 1,
-      "ManagerColor": "hsl(231, 70%, 50%)",
-      "donut": 164,
-      "donutColor": "hsl(32, 70%, 50%)"
-    }
-  ]
 
 const MyResponsiveBar = () => {
+    
+    let localToken = localStorage.getItem("valtech-auth")
+    const [projects, setProjects] = useState()
+    
+    const get = "GET"
+    const header = new Headers({
+        "Authorization": `Bearer ${localToken}`,
+        "content-type": "application/json"
+    })
+    const getconfig = {
+        method: get,
+        headers: header
+    }
+
+    useEffect((state) => {
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/projects/`, getconfig)
+            .then(response => response.json())
+            .then(data => setProjects(data))
+            .catch(error => console.log(error));
+    }, []);
+
+    const projectfilter = (id) => {
+        let obj = {
+            name: projects[id].name,
+            front: [],
+            back: [],
+            full: [],
+            dev: [],
+            man: [],
+        }
+        projects[id].assignee.forEach((element) => {
+            if (element.role_category === 'frontend') {
+                obj.front.push(element)
+            } else if (element.role_category === 'backend') {
+                obj.back.push(element)
+            } else if (element.role_category === 'devops') {
+                obj.dev.push(element)
+            } else if (element.role_category === 'fullstack') {
+                obj.full.push(element)
+            } else if (element.role_category === 'manager') {
+                obj.man.push(element)
+            }
+        })
+        return obj
+    }
+
+    const data = [
+        {
+          "Project": `${projects === undefined ? 'Loading...' : projectfilter(0).name}`,
+          "Frontend": `${projects === undefined ? 'Loading...' : projectfilter(0).front.length}`,
+          "FrontendColor": "hsl(338, 70%, 50%)",
+          "Backend": `${projects === undefined ? 'Loading...' : projectfilter(0).back.length}`,
+          "BackendColor": "hsl(146, 70%, 50%)",
+          "Fullstack": `${projects === undefined ? 'Loading...' : projectfilter(0).full.length}`,
+          "FullstackColor": "hsl(86, 70%, 50%)",
+          "Devops": `${projects === undefined ? 'Loading...' : projectfilter(0).dev.length}`,
+          "DevopsColor": "hsl(107, 70%, 50%)",
+          "Manager": `${projects === undefined ? 'Loading...' : projectfilter(0).man.length}`,
+          "ManagerColor": "hsl(339, 70%, 50%)",
+          "donut": 105,
+          "donutColor": "hsl(310, 70%, 50%)"
+        },
+        {
+            "Project": `${projects === undefined ? 'Loading...' : projectfilter(1).name}`,
+            "Frontend": `${projects === undefined ? 'Loading...' : projectfilter(1).front.length}`,
+            "FrontendColor": "hsl(338, 70%, 50%)",
+            "Backend": `${projects === undefined ? 'Loading...' : projectfilter(1).back.length}`,
+            "BackendColor": "hsl(146, 70%, 50%)",
+            "Fullstack": `${projects === undefined ? 'Loading...' : projectfilter(1).full.length}`,
+            "FullstackColor": "hsl(86, 70%, 50%)",
+            "Devops": `${projects === undefined ? 'Loading...' : projectfilter(1).dev.length}`,
+            "DevopsColor": "hsl(107, 70%, 50%)",
+            "Manager": `${projects === undefined ? 'Loading...' : projectfilter(1).man.length}`,
+            "ManagerColor": "hsl(339, 70%, 50%)",
+            "donut": 105,
+            "donutColor": "hsl(310, 70%, 50%)"
+          },
+          {
+            "Project": `${projects === undefined ? 'Loading...' : projectfilter(2).name}`,
+            "Frontend": `${projects === undefined ? 'Loading...' : projectfilter(2).front.length}`,
+            "FrontendColor": "hsl(338, 70%, 50%)",
+            "Backend": `${projects === undefined ? 'Loading...' : projectfilter(2).back.length}`,
+            "BackendColor": "hsl(146, 70%, 50%)",
+            "Fullstack": `${projects === undefined ? 'Loading...' : projectfilter(2).full.length}`,
+            "FullstackColor": "hsl(86, 70%, 50%)",
+            "Devops": `${projects === undefined ? 'Loading...' : projectfilter(2).dev.length}`,
+            "DevopsColor": "hsl(107, 70%, 50%)",
+            "Manager": `${projects === undefined ? 'Loading...' : projectfilter(2).man.length}`,
+            "ManagerColor": "hsl(339, 70%, 50%)",
+            "donut": 105,
+            "donutColor": "hsl(310, 70%, 50%)"
+          },
+          {
+            "Project": `${projects === undefined ? 'Loading...' : projectfilter(3).name}`,
+            "Frontend": `${projects === undefined ? 'Loading...' : projectfilter(3).front.length}`,
+            "FrontendColor": "hsl(338, 70%, 50%)",
+            "Backend": `${projects === undefined ? 'Loading...' : projectfilter(3).back.length}`,
+            "BackendColor": "hsl(146, 70%, 50%)",
+            "Fullstack": `${projects === undefined ? 'Loading...' : projectfilter(3).full.length}`,
+            "FullstackColor": "hsl(86, 70%, 50%)",
+            "Devops": `${projects === undefined ? 'Loading...' : projectfilter(3).dev.length}`,
+            "DevopsColor": "hsl(107, 70%, 50%)",
+            "Manager": `${projects === undefined ? 'Loading...' : projectfilter(3).man.length}`,
+            "ManagerColor": "hsl(339, 70%, 50%)",
+            "donut": 105,
+            "donutColor": "hsl(310, 70%, 50%)"
+          },
+          {
+            "Project": `${projects === undefined ? 'Loading...' : projectfilter(4).name}`,
+            "Frontend": `${projects === undefined ? 'Loading...' : projectfilter(4).front.length}`,
+            "FrontendColor": "hsl(338, 70%, 50%)",
+            "Backend": `${projects === undefined ? 'Loading...' : projectfilter(4).back.length}`,
+            "BackendColor": "hsl(146, 70%, 50%)",
+            "Fullstack": `${projects === undefined ? 'Loading...' : projectfilter(4).full.length}`,
+            "FullstackColor": "hsl(86, 70%, 50%)",
+            "Devops": `${projects === undefined ? 'Loading...' : projectfilter(4).dev.length}`,
+            "DevopsColor": "hsl(107, 70%, 50%)",
+            "Manager": `${projects === undefined ? 'Loading...' : projectfilter(4).man.length}`,
+            "ManagerColor": "hsl(339, 70%, 50%)",
+            "donut": 105,
+            "donutColor": "hsl(310, 70%, 50%)"
+          },
+          {
+            "Project": `${projects === undefined ? 'Loading...' : projectfilter(6).name}`,
+            "Frontend": `${projects === undefined ? 'Loading...' : projectfilter(6).front.length}`,
+            "FrontendColor": "hsl(338, 70%, 50%)",
+            "Backend": `${projects === undefined ? 'Loading...' : projectfilter(6).back.length}`,
+            "BackendColor": "hsl(146, 70%, 50%)",
+            "Fullstack": `${projects === undefined ? 'Loading...' : projectfilter(6).full.length}`,
+            "FullstackColor": "hsl(86, 70%, 50%)",
+            "Devops": `${projects === undefined ? 'Loading...' : projectfilter(6).dev.length}`,
+            "DevopsColor": "hsl(107, 70%, 50%)",
+            "Manager": `${projects === undefined ? 'Loading...' : projectfilter(6).man.length}`,
+            "ManagerColor": "hsl(339, 70%, 50%)",
+            "donut": 105,
+            "donutColor": "hsl(310, 70%, 50%)"
+          },
+          {
+            "Project": `${projects === undefined ? 'Loading...' : projectfilter(7).name}`,
+            "Frontend": `${projects === undefined ? 'Loading...' : projectfilter(7).front.length}`,
+            "FrontendColor": "hsl(338, 70%, 50%)",
+            "Backend": `${projects === undefined ? 'Loading...' : projectfilter(7).back.length}`,
+            "BackendColor": "hsl(146, 70%, 50%)",
+            "Fullstack": `${projects === undefined ? 'Loading...' : projectfilter(7).full.length}`,
+            "FullstackColor": "hsl(86, 70%, 50%)",
+            "Devops": `${projects === undefined ? 'Loading...' : projectfilter(7).dev.length}`,
+            "DevopsColor": "hsl(107, 70%, 50%)",
+            "Manager": `${projects === undefined ? 'Loading...' : projectfilter(7).man.length}`,
+            "ManagerColor": "hsl(339, 70%, 50%)",
+            "donut": 105,
+            "donutColor": "hsl(310, 70%, 50%)"
+          },
+      ]
+    
     return (
         <Wrap>
              <div>

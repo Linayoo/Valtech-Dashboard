@@ -53,6 +53,10 @@ label, input {
     justify-content: flex-start;
 }
 
+.test {
+    height: -webkit-fit-content;
+}
+
 div {
     color: #1b253d;
     font-weight: bolder;
@@ -83,6 +87,26 @@ input:focus, select:focus {
     outline: none;
     border-bottom: 1px solid #837b7b8e;
     box-shadow: 0 1px 0 0 #837b7b8e;
+}
+
+.tools-search,
+.tools-onproject {
+    display: flex;
+    flex-direction: row;
+}
+
+.tools-input {
+    margin-bottom: 40px;
+}
+
+.tools-child {
+    width: 100%;
+}
+
+.tools-tags {
+    display: flex;
+    flex-direction: row;
+    border-left: 10px;
 }
 
 `;

@@ -1,42 +1,84 @@
 import { ResponsivePie } from '@nivo/pie'
 import { PieWrap, Wrap } from './Piechart.styles'
+import { useState, useEffect } from "react"
 
 
 const MyResponsivePie = () => {
     
     
+    let localToken = localStorage.getItem("valtech-auth")
+    const [consultants, setConsultants] = useState()
     
+    const get = "GET"
+    const header = new Headers({
+        "Authorization": `Bearer ${localToken}`,
+        "content-type": "application/json"
+    })
+    const getconfig = {
+        method: get,
+        headers: header
+    }
+
+    useEffect((state) => {
+        fetch(`https://valtech-dashboard.propulsion-learn.ch/backend/api/consultants/`, getconfig)
+            .then(response => response.json())
+            .then(data => setConsultants(data))
+            .catch(error => console.log(error));
+    }, []);
     
-    
+    const filterpositions = () => {
+        let cons = {
+            front: [],
+            back: [],
+            full: [],
+            dev: [],
+            man: [],
+        }
+        consultants.forEach((element) => {
+            if (element.role_category === 'frontend') {
+                cons.front.push(element)
+            } else if (element.role_category === 'backend') {
+                cons.back.push(element)
+            } else if (element.role_category === 'devops') {
+                cons.dev.push(element)
+            } else if (element.role_category === 'fullstack') {
+                cons.full.push(element)
+            } else if (element.role_category === 'manager') {
+                cons.man.push(element)
+            }
+        })
+        return cons
+    }
+
     const data = [
         {
           "id": "Frontend",
           "label": "Frontend",
-          "value": 30,
+          "value": `${consultants === undefined ? 'Loading...' : filterpositions().front.length}`,
           "color": "hsl(75, 70%, 50%)"
         },
         {
           "id": "Backend",
           "label": "Backend",
-          "value": 20,
+          "value": `${consultants === undefined ? 'Loading...' : filterpositions().back.length}`,
           "color": "hsl(118, 70%, 50%)"
         },
         {
           "id": "Fullstack",
           "label": "Fullstack",
-          "value": 10,
+          "value": `${consultants === undefined ? 'Loading...' : filterpositions().full.length}`,
           "color": "hsl(105, 70%, 50%)"
         },
         {
           "id": "DevOps",
           "label": "Devops",
-          "value": 10,
+          "value": `${consultants === undefined ? 'Loading...' : filterpositions().dev.length}`,
           "color": "hsl(61, 70%, 50%)"
         },
         {
           "id": "Manager",
           "label": "Manager",
-          "value": 20,
+          "value": `${consultants === undefined ? 'Loading...' : filterpositions().man.length}`,
           "color": "hsl(350, 70%, 50%)"
         }
       ]

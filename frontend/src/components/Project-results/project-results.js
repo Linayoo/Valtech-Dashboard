@@ -45,7 +45,9 @@ const ProjectResults = (props) => {
 
                                 <td onClick={(event) => navigateToProjectDetails(event, val)}>{val.assignee.length < 1 ? "" : val.assignee.length} {val.assignee?.length < 1 ? "no assignee" : "person(s)"}</td>
 
-                                <td onClick={(event) => navigateToProjectDetails(event, val)}>{val.time_frame === null || new Date() < new Date(`${val.time_frame.date_finished}Z`) ? 'Ongoing' : 'Finished'}</td>
+                                <td onClick={(event) => navigateToProjectDetails(event, val)}>{new Date() > new Date(`${val.time_frame.date_finished}Z`) ? 'Finished' : 
+                                ((new Date() <= new Date(`${val.time_frame.date_finished}Z`)) && (new Date() >= new Date(`${val.time_frame.date_started}Z`)) ? 'Ongoing' : 
+                                `${val.time_frame.date_started} Liftoff`)}</td>
 
                                 {/* <td>
                                     <div>

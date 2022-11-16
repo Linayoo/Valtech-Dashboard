@@ -81,7 +81,7 @@ const InsightsPage = () => {
                     }
                 })
             }
-            
+
         })
         return available.length
     }
@@ -107,7 +107,7 @@ const InsightsPage = () => {
             </SideNavStyle>
             <MainFlexWrap>
                 <WidgetFlexWrap>
-                    <Widget name="TOTAL EMPLOYEES" num={consultants === undefined ? 'Loading...' : consultants.length} icon={<BsFillPersonFill width={22} height={22} color={'#000'} />} />
+                    <Widget name="TOTAL EMPLOYEES" num={consultants === undefined ? 'Loading...' : consultants.length} /*icon={<BsFillPersonFill width={22} height={22} color={'#000'} />}*/ />
                     <Widget name="OPEN PROJECTS" num={projects === undefined ? "Loading..." : projectfilter()} />
                     <Widget name="UNASSIGNED EMPLOYEE'S" num={consultants === undefined ? "Loading..." : employeefilter()} />
                     <Widget name="FINISHED PROJECTS" num={projects === undefined ? "Loading..." : finishprojectfilter()} />
