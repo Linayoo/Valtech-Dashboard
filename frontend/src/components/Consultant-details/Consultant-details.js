@@ -1,6 +1,9 @@
 import { ConsultantDetailsWrapper, HeaderStyle, ConsultantStyle, FlexColumn } from "./Consultant-details.styles"
 import { useNavigate, useParams } from "react-router"
 import { useState, useEffect } from "react"
+import { AiOutlineMail } from 'react-icons/ai'
+import { HiOutlineOfficeBuilding } from 'react-icons/hi'
+import { GrUserManager } from 'react-icons/gr'
 
 
 
@@ -68,96 +71,65 @@ const ConsultantDetails = (props) => {
                                     </div>
                                 </div>
                                 <div className="basic-info-section">
-                                    <div>
-                                        <h1>{consultant === undefined ? "not provided" : consultant.display_name}</h1>
+                                    <div className="consultant-location-section">
+                                        <p className="consultant-location">{consultant === undefined ? "not provided" : consultant.city}, {consultant === undefined ? "not provided" : consultant.country}</p>
                                     </div>
                                     <div>
-                                        <h2>{consultant === undefined ? "not provided" : consultant.title}</h2>
+                                        <p className="consultant-name">{consultant === undefined ? "not provided" : consultant.display_name}</p>
                                     </div>
                                     <div>
-                                        <h3>{consultant === undefined ? "not provided" : consultant.summary}</h3>
+                                        <p className="consultant-title">{consultant === undefined ? "not provided" : consultant.title}</p>
+                                    </div>
+                                    <div>
+                                        <AiOutlineMail size="18px" />
+                                        <p className="email">{consultant === undefined ? "not provided" : consultant.email}</p>
+                                    </div>
+                                    <div>
+                                        <HiOutlineOfficeBuilding size="18px" />
+                                        <p className="office">{consultant === undefined ? "not provided" : consultant.office_category}</p>
+                                    </div>
+                                    <div>
+                                        <GrUserManager size="18px" />
+                                        <p className="manager">{consultant === undefined ? "not provided" : consultant.manager_display_name}</p>
                                     </div>
                                 </div>
                             </div>
-
-                            {/* <div>
-                            <p>First Name </p>
-                            <p>{consultant === undefined ? "not provided": consultant.first_name }</p>
-                        </div>
-                        <div>
-                            <p>Last Name </p>
-                            <p>{consultant === undefined ? "not provided" : consultant.last_name}</p>
-                        </div> */}
-
-                            {/* <div>
-                            <p>Username </p>
-                            <p>{consultant === undefined ? "not provided" : consultant.username}</p>
-                        </div> */}
-
-                            {/* <div>
-                            <p>Category </p>
-                            <p>{consultant === undefined ? "not provided" : consultant.role_category}</p>
-                        </div> */}
                         </FlexColumn>
+                        <FlexColumn>
+                            <div className="summary-section">
+                                <p className="summary">"{consultant === undefined ? "not provided" : consultant.summary}"</p>
+                            </div>
+                        </FlexColumn>
+
 
                         {/* second column */}
 
                         <FlexColumn>
-
-                            <div>
-                                <p>Country </p>
-                                <p>{consultant === undefined ? "not provided" : consultant.country}</p>
+                            <div className="more-info-section">
+                            <div className="skills-section">
+                                <p className="skills-left">Skills</p>
+                                <div className="skills-right">{consultant === undefined ? "not provided" : consultant.managed_skills.map(element => <h4>{element.title}</h4>)}</div>
                             </div>
                             <div>
-                                <p>City </p>
-                                <p>{consultant === undefined ? "not provided" : consultant.city}</p>
-                            </div>
-                            <div>
-                                <p>Office </p>
-                                <p>{consultant === undefined ? "not provided" : consultant.office_category}</p>
-                            </div>
-                            <div>
-                                <p>Manager</p>
-                                <p>{consultant === undefined ? "not provided" : consultant.manager_display_name}</p>
+                                <p className="left">LinkedIn</p>
+                                <p className="right"><a href={consultant === undefined ? "not provided" : consultant.linked_in_link} target="_blank">Click to the link</a></p>
                             </div>
 
+
                             <div>
-                                <p>LinkedIn</p>
-                                <p><a href={consultant === undefined ? "not provided" : consultant.linked_in_link} target="_blank">Click to the link</a></p>
+                                <p className="left">Primary Language</p>
+                                <p className="right"><h4>{consultant === undefined ? "not provided" : consultant.primary_language}</h4></p>
                             </div>
                             <div>
-                                <p>Email</p>
-                                <p>{consultant === undefined ? "not provided" : consultant.email}</p>
+                                <p className="left">Language Skills</p>
+                                <p className="right">{consultant === undefined ? "not provided" : consultant.language_skills.map(element => <h4>{element.title} - {element.level_category}</h4>)}</p>
                             </div>
-                   
+
                             <div>
-                                <p>Primary Language</p>
-                                <p>{consultant === undefined ? "not provided" : consultant.primary_language}</p>
+                                <p className="left">Additional Skills</p>
+                                <p className="right">{consultant === undefined ? "not provided" : consultant.addition_skills.map(element => <h4>{element.title}</h4>)} </p>
                             </div>
-                            <div>
-                                <p>Language Skills</p>
-                                <p>{consultant === undefined ? "not provided" : consultant.language_skills.map(element => <h5>-{element.title}</h5>)}</p>
-                            </div>
-                            <div>
-                                <p>Skills</p>
-                                <p>{consultant === undefined ? "not provided" : consultant.managed_skills.map(element => <h5>- {element.title}</h5>)}</p>
-                            </div>
-                            <div>
-                                <p>Additional Skills</p>
-                                <p>{consultant === undefined ? "not provided" : consultant.addition_skills.map(element => <h5>- {element.title}</h5>)} </p>
-                            </div>
-                            {/* <div>
-                            <p>Educations</p>
-                            <p>{consultant === undefined ?  "not provided" : consultant.educations.map(element => <h5> - {element.title}</h5>)}</p>
-                        </div> */}
-                            {/* <div>
-                            <p>Certificate</p>
-                            <p>{consultant === undefined ?  "not provided" : consultant.certificates.map(element => <h5>- {element.title}</h5>)}</p>
-                        </div> */}
-                            {/* <div>
-                            <p>Unavailable</p>
-                            <p>{consultant === undefined ? "not provided" : consultant.unavailable.map(element => <h5> -{element.title}</h5>)}</p>
-                        </div> */}
+                        </div>
                         </FlexColumn>
                     </div>
                 </div>
