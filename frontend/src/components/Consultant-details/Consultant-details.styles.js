@@ -117,6 +117,10 @@ width: 800px;
 padding-top: 20px;
 padding-bottom: 20px;
 
+img {
+    height: 300px;
+    width: 300px;
+}
 p {
     font-size: 20px;
     width: 400px;
