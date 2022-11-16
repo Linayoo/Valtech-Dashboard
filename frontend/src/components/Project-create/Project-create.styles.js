@@ -23,6 +23,20 @@ hr {
     background-color: grey;
 }
 
+.h1-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.h1-button > button {
+    margin-top: 5px;
+    margin-left: 240px;
+    font-size: 12px;
+    width: 90px;
+    height: 30px;
+    padding: 0px;
+}
+
 button {
     color: #1b253d;
     border: 1px solid #42018cc2;

@@ -209,23 +209,41 @@ const CreateProject = () => {
         setImage(imageUrl[0]);
     }
 
+    const [magic, setMagic] = useState({
+        "name": ""
+    })
+
+    const handleMagic = e => {
+        e.preventDefault()
+
+        setMagic({
+            "name": "Toyota",
+            "description": "Mobile App",
+            "external_link": "https://www.toyota.com",
+            "tools": "React"
+        })
+    }
+
 
 
     return (
         <CreateProjectContainer>
-            <h1>Create new project</h1>
+            <div className="h1-button">
+                <h1>Create new project</h1>
+                <button className="magic-button" onClick={handleMagic}>Magic Button</button>
+            </div>
             <form id='test' onSubmit={createProject}>
                 <div>
                     Project Name *
-                    <input form='test' type='text' name='name' onChange={(e) => setProjectName(e.target.value)} required></input>
+                    <input form='test' type='text' name='name' onChange={(e) => setProjectName(e.target.value)} value={magic.name} required></input>
                 </div>
                 <div>
                     Description *
-                    <input form='test' type='text' onChange={(e) => setProjectDescription(e.target.value)} required></input>
+                    <input form='test' type='text' name="description" onChange={(e) => setProjectDescription(e.target.value)} value={magic.description} required></input>
                 </div>
                 <div>
                     External Link
-                    <input form='test' type='text' onChange={(e) => setLink(e.target.value)}></input>
+                    <input form='test' type='text' name="external_link" onChange={(e) => setLink(e.target.value)} value={magic.external_link}></input>
                 </div>
                 <div>
                     Image
@@ -244,7 +262,7 @@ const CreateProject = () => {
                     Tools
                 </div>
                 <div className="row">
-                    <input form='test' ref={ref => inputref.current.tools = ref} type='text' placeholder='Search for tools...' onChange={handleToolFilter} />
+                    <input form='test' name="tools" ref={ref => inputref.current.tools = ref} type='text' placeholder='Search for tools...' onChange={handleToolFilter} />
                     {toolsresults === undefined ? <></> : toolsresults.map((element, index) => <ToolAddTag element={element} add={handleAddTool} />)}
                 </div>
                 <div className="row">
