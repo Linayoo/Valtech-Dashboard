@@ -8,6 +8,10 @@
  background-color: #8080801e;
  `
 
+export const SideNavStyle = styled.div`
+width: 215px;
+`
+
 //  export const Header = styled.div`
 // display: flex;
 // flex-direction: column;
