@@ -68,14 +68,17 @@ div:not(:first-child) {
 } */
 
 h4 {
-    font-weight: 400;
-    color: white;
-    background-color: black;
-    border-radius: 16px;
+    color: #1b253d;
+    border: 1px solid #42018cc2;
+    padding: 9px 15px 9px 15px;
+    height: auto;
     text-align: center;
-    height: 30px;
-    padding: 6px;
-    margin-right: 8px;
+    font-weight: bolder;
+    border-radius: 18px;
+    margin-left:20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
 }
 
 a {
@@ -121,6 +124,7 @@ width: 800px;
 img {
     height: 200px;
     width: 200px;
+    box-shadow: 5px 4px 10px #8888888b;
 }
 p {
     width: 400px;
@@ -258,44 +262,75 @@ div {
 
 .right {
     width: 370px;
+
 }
 
 .right > h4 {
-    font-weight: 400;
+    color: #1b253d;
+    border: 1px solid #42018cc2;
+    padding: 9px 15px 9px 15px;
+    height: auto;
+    font-weight: bolder;
+    border-radius: 18px;
+    margin-left:20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 12px;
-    color: white;
-    background-color: black;
-    border-radius: 16px;
-    text-align: center;
-    height: 30px;
-    padding: 6px;
-    margin-right: 8px;
-    margin-bottom: 3px;
 }
 
 .skills-section {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
     width: 570px;
     overflow-wrap: inherit;
+
+    div {
+        display: grid;
+         grid-template-columns: repeat(4, 1fr);
+         grid-row-gap: 0px;
+         grid-column-gap: 0px;
+
+    }
 
 }
 
 .skills-right {
     width: 370px;
-    overflow: auto;
+    /* overflow: auto; */
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+
+
 }
 
 .skills-right > h4 {
     font-weight: 400;
     font-size: 12px;
     color: white;
-    background-color: black;
-    border-radius: 16px;
+    border-radius: 18px;
     text-align: center;
-    height: 30px;
-    padding: 6px;
-    margin-right: 8px;
+    height: auto;
+    margin-right: 0px;
+    background-color: #220641;
+    font-weight: bolder;
+    border: 1px solid #42018cc2;
+    padding: 9px 15px 9px 15px;
+    margin-left:11px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.linkedin {
+    margin-left: 25px;
+}
+
+.last {
+    margin-bottom: 200px;
 }
 `;

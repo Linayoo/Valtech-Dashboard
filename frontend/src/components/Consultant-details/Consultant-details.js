@@ -112,7 +112,7 @@ const ConsultantDetails = (props) => {
                             </div>
                             <div>
                                 <p className="left">LinkedIn</p>
-                                <p className="right"><a href={consultant === undefined ? "not provided" : consultant.linked_in_link} target="_blank">Click to the link</a></p>
+                                <p className="right linkedin"><a href={consultant === undefined ? "not provided" : consultant.linked_in_link} target="_blank">Click to the link</a></p>
                             </div>
 
 
@@ -125,7 +125,7 @@ const ConsultantDetails = (props) => {
                                 <p className="right">{consultant === undefined ? "not provided" : consultant.language_skills.map(element => <h4>{element.title} - {element.level_category}</h4>)}</p>
                             </div>
 
-                            <div>
+                            <div className="last">
                                 <p className="left">Additional Skills</p>
                                 <p className="right">{consultant === undefined ? "not provided" : consultant.addition_skills.map(element => <h4>{element.title}</h4>)} </p>
                             </div>
