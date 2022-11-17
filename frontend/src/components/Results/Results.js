@@ -2,9 +2,11 @@ import { ResultsContainer, OverFlow } from "./Results.styles"
 import { BsChevronDown } from "react-icons/bs";
 import React from "react";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 
 const Results = (props) => {
+
     const navigate = useNavigate()
     const navigateToConsultantDetails = (event, val) => {
         navigate(`/consultant/${val.id}`);
@@ -39,16 +41,11 @@ const Results = (props) => {
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)}>{val.unavailable.length === 0 ? 'Instantly' : val.unavailable.map(e => `${e.date_finished}`)}</td>
 
                                 <td onClick={(event) => navigateToConsultantDetails(event, val)}>{(val.unavailable[0] == undefined || new Date() > new Date(`${val.unavailable[0].date_finished}Z`)) ? 'Available' : 'On project'}</td>
-
-                                {/* <td><div>
-                                    
-                                </div></td> */}
                             </tr>
                         )
                     })}
                      </OverFlow>
                 </table>
-           
         </ResultsContainer>
     )
 }

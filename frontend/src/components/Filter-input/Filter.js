@@ -56,7 +56,7 @@ const Filter = (props) => {
             city: inputref.current.city.value,
             country: inputref.current.country.value,
             skills: inputref.current.skills.value,
-            languages: inputref.current.languages.value,
+            roles: inputref.current.roles.value,
             dates: inputref.current.date.value,
         }
 
@@ -102,7 +102,7 @@ const Filter = (props) => {
             element.city.toLowerCase().indexOf(query.city.toLowerCase()) !== -1 &&
             element.country.toLowerCase().indexOf(query.country.toLowerCase()) !== -1 &&
             (element.managed_skills.some(element => element['id'] === parseInt(query.skills)) || query.skills === '0') &&
-            (element.language_skills.some(element => element['id'] === parseInt(query.languages)) || query.languages === '0')
+            ((element.role_category === query.roles) || query.roles === '0')
         )
                   
         if (query.dates != undefined) {
@@ -132,18 +132,33 @@ const Filter = (props) => {
                     <input ref={ref => inputref.current.city = ref} type="text" name="city" placeholder="Filter by city" autoComplete="none" onChange={handleChange} />
                     <select ref={ref => inputref.current.country = ref} name="country" onChange={handleChange}>
                         <option value="">Select a country ...</option>
-                        <option value="switzerland">Switzerland</option>
-                        <option value="germany">Germany</option>
-                        <option value="italy">Netherlands</option>
-                        <option value="france">France</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Finland">Finland</option>
+                        <option value="France">France</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Hungary">Hungary</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Ukraine">Ukraine</option>
+
                     </select>
                     <select ref={ref => inputref.current.skills = ref} name="skills" onChange={handleChange}>
                         <option value='0'>Select a skill</option>
                         {skills === undefined ? <option>Loading...</option> : skills.map(element => <option value={element.id}>{element.title}</option>)}
                     </select>
-                    <select ref={ref => inputref.current.languages = ref} name="language" onChange={handleChange}>
-                        <option value="0">Select a language</option>
-                        {languages === undefined ? <option>Loading...</option> : languages.map(element => <option value={element.id}>{element.title} - {element.level_category}</option>)}
+                    <select ref={ref => inputref.current.roles = ref} name="roles" onChange={handleChange}>
+                        <option value="0">Select a role</option>
+                        <option value="frontend">Frontend Developer</option>
+                        <option value="backend">Backend Developer</option>
+                        <option value="devops">DevOps Developer</option>
+                        <option value="devops">Fullstack Developer</option>
+                        <option value="manager">Manager</option>
+                        {/*languages === undefined ? <option>Loading...</option> : languages.map(element => <option value={element.id}>{element.title} - {element.level_category}</option>)*/}
                     </select>
                     <GridItem>
                         <DatePicker

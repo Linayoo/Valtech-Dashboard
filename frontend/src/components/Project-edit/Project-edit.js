@@ -7,6 +7,7 @@ import Tags from "./Consultant-tag"
 import AddTag from "./Consultant-add-tag"
 import ToolTag from "./Tool-tag"
 import ToolAddTag from "./Tool-add-tag"
+import DatePicker from 'react-datepicker';
 
 
 const EditProjects = () => {
@@ -15,6 +16,9 @@ const EditProjects = () => {
     const inputref = useRef([])
     const navigate = useNavigate()
     const initialID = useParams().projectId
+
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
 
     const [allcons, setAllcons] = useState()
     const [image, setImage] = useState("")
@@ -179,18 +183,65 @@ const EditProjects = () => {
     const handleUserFilter = () => {
         const query = {
             name: inputref.current.name.value,
+            dates: inputref.current.date.value,
+            skills: inputref.current.skills.value,
+        }
+
+        const datefilter = (element) => {
+            if (element.unavailable.length === 0) {
+                return true
+            } else {  
+                let result = true
+                element.unavailable.forEach(e => {
+                    let userStart = e.date_started
+                    let userEnd = e.date_finished
+                    let filterStart = query.dates[0]
+                    let filterEnd = query.dates[1]
+                    userStart = new Date(`${userStart}Z`)
+                    userEnd = new Date(`${userEnd}Z`)
+                    if (userStart < filterStart && (userEnd > filterStart && userEnd < filterEnd)) {
+                        result = false // consultant starts a project earlier and finishes it during the filtered period
+                    } else if (userStart === filterStart && userEnd > filterEnd) {
+                        result = false // consultant starts a project the same time as filter start and finishes it after filter end
+                    } else if (userStart === filterStart && userEnd < filterEnd) {
+                        result = false // consultant starts a project the same time as filter start and finishes it before filter end
+                    } else if (userStart > filterStart && userEnd < filterEnd) {
+                        result = false // consultant starts project after filter start and finished it before filter end
+                    } else if (userStart > filterStart && userStart === filterEnd) {
+                        result = false // consultant starts a project after the filter start and finishes it the same day as filter end
+                    } else if (userStart === filterStart && userEnd === filterEnd) {
+                        result = false // consultant starts a project the same day as filter start and finishes it the same day as filter end
+                    } else if (userStart < filterStart && userEnd > filterEnd) {
+                        result = false // consultant starts a project before filter start and finishes it after filter end
+                    } else if (userStart < filterStart && userEnd === filterEnd) {
+                        result = false // consultant starts a project before filter start and finishes it the same day as filter end
+                    } else if ((userStart > filterStart && userStart < filterEnd) && userEnd > filterEnd) {
+                        result = false // consultant starts a project after filter start and finishes it after filter end
+                    }
+                })
+                return result
+            }
         }
 
         let updatedList = [...allcons];
         updatedList = updatedList.filter(element =>
             element.display_name.toLowerCase().indexOf(query.name.toLowerCase()) !== -1 &&
-            !JSON.stringify(consultants).includes(JSON.stringify(element))
+            !JSON.stringify(consultants).includes(JSON.stringify(element)) &&
+            (element.managed_skills.some(element => element['id'] === parseInt(query.skills)) || query.skills === '0')
         )
-
+        
+        console.log(dateRange)
         if (query.name === "") {
             setConsresults([])
         } else {
             setConsresults(updatedList)
+        }
+
+        if (query.dates != undefined) {
+            if (query.dates[0] && query.dates[1] != null) {
+                updatedList = updatedList.filter(datefilter)
+                setConsresults(updatedList)
+            }
         }
     }
 
@@ -216,6 +267,9 @@ const EditProjects = () => {
         newArray.push(JSON.parse(event.target.id))
         setConsultants(newArray)
         inputref.current.name.value = ""
+        inputref.current.date.value = undefined
+        setDateRange([null, null])
+        inputref.current.name.skills = "0"
         handleUserFilter()
         let ID = JSON.parse(event.target.id).id
         let toSend = []
@@ -273,6 +327,12 @@ const EditProjects = () => {
         setTools(newArray)
     }
 
+    const handleDatePicker = (update) => {
+        inputref.current.date.value = update;
+        setDateRange(update);
+        handleUserFilter()
+    };
+
     return (
         <EditProjectContainer >
             <h1>Edit Project</h1>
@@ -308,7 +368,25 @@ const EditProjects = () => {
                     Add consultants to project
                     <div className="consultant-search">
                         <input ref={ref => inputref.current.name = ref} type='text' placeholder='Search for consultants...' onChange={handleUserFilter} />
-                        {consresults === undefined ? <></> : consresults.map((element, index) => <AddTag element={element} add={handleAddConsultant} />)}
+                        <select ref={ref => inputref.current.skills = ref} name="skills" onChange={handleUserFilter}>
+                        <option value='0'>Select a skill</option>
+                        {alltools === undefined ? <option>Loading...</option> : alltools.map(element => <option value={element.id}>{element.title}</option>)}
+                    </select>
+                    <DatePicker
+                            ref={ref => inputref.current.date = ref}
+                            selectsRange={true}
+                            startDate={startDate}
+                            endDate={endDate}
+                            onChange={update => handleDatePicker(update)}
+                            isClearable={true}
+                            value={dateRange}
+                            placeholderText={"Select date range"}
+                            className={"placeholder"}
+                        />
+                        
+                    </div>
+                    <div className="consultant-search">
+                    {consresults === undefined ? <></> : consresults.map((element, index) => <AddTag element={element} add={handleAddConsultant} />)}
                     </div>
                     <div className="consultant-onproject">
                         {consultants === undefined ? "" : consultants.map((element, index) => <Tags id={index} consultant={element} remove={handleDeleteConsultant} />)}
