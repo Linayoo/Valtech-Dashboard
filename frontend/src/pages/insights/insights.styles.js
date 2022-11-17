@@ -23,6 +23,9 @@ export const WidgetFlexWrap  = styled.div`
 display: flex;
 height: 200px;
 margin-left: 10%;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content:flex-start;
 
 `;
 
