@@ -35,6 +35,7 @@ hr {
 .consultant-search {
     height: 20px;
     margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 h4 {

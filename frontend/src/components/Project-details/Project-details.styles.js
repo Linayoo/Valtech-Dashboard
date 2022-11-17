@@ -157,6 +157,11 @@ p {
 .consultant-currently{
     width: 500px;
 }
+`;
+
+export const OverFlow  = styled.div`
+overflow-y: auto;
+height: 200px;
 
 
 
