@@ -17,6 +17,10 @@ table > tr:first-of-type{
    background-color: #f3e9e94;
 }
 
+table {
+  margin-right: 10px;
+}
+
 table > tr{
     display: flex;
 }
@@ -94,4 +98,31 @@ tr:last-child:hover td {
 
 export const OverFlow= styled.div`
 overflow-y: auto;
+overflow-x: hidden;
+height: 200px;
+margin-top: -5px;
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: white;
+  box-shadow: inset 0 0 5px #9ea3ac49; 
+  border-radius: 10px;
+  border: 1px solid #a9abb05f;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;  
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1b253da1; 
+}
+
 `;

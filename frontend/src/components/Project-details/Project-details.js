@@ -3,6 +3,7 @@ import { useParams } from "react-router"
 import { useEffect, useState} from "react"
 import ProjectConsultants from "../Project-consultants/Project-consultants"
 import { useNavigate } from "react-router"
+import { OverFlow } from "../Project-consultants/Project-consultants.styles"
 
 
 const ProjectDetails = () => {
@@ -101,7 +102,9 @@ const ProjectDetails = () => {
             </div>
             <ConsultantStyle>
             <p className="consultant-currently">Consultants currently assigned to project:</p>
+            <OverFlow>
             <ProjectConsultants consultant={project}/>
+            </OverFlow>
             </ConsultantStyle>
             </div>
             
