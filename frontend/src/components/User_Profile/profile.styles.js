@@ -11,8 +11,8 @@ p:last-child {
 }
 
 img {
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     box-shadow: 5px 4px 10px #8888888b;
     margin-bottom: 20px;
 }
