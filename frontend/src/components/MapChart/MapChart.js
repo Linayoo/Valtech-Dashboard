@@ -769,7 +769,7 @@ const MyResponsiveChoropleth = () => {
     return (
         <Wrap>
             <div>
-                <p>Client distribution by country</p>
+                <p>Employees distribution by country</p>
                 <hr />
             </div>
             <MapWrap>
