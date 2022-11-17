@@ -32,6 +32,15 @@ hr {
     flex-direction: column;
 }
 
+.consultant-search {
+    height: 20px;
+    margin-top: 20px;
+}
+
+h4 {
+    margin-top: 20px;
+}
+
 .dates,
 .search,
 .consultant-search, 
@@ -46,7 +55,11 @@ form {
     display: flex;
     flex-direction: column;
     margin-bottom: 150px;
+
+  
 }
+
+
 
 label, input {
     display: flex;
@@ -60,7 +73,7 @@ label {
 }
 
 
-input {
+input, select {
    display: flex;
    border-top: none;
    border-left: none;
@@ -88,7 +101,7 @@ input:focus, select:focus {
 
 .submitty {
     color: #1b253d;
-    margin-top: 5px;
+    margin-top: 15px;
     border: 1px solid #42018cc2;
     height: 25px;
     width: 100px;
@@ -115,6 +128,7 @@ button:hover {
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 15px;
+    margin-bottom: 100px;
 }
 
 `;

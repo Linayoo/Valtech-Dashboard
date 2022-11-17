@@ -5,9 +5,11 @@ display: flex;
 flex-direction: column;
 justify-content: flex-start;
 margin-top: 110px;
-margin-left: 80px;
+margin-left: 70px;
 height: 100vh;
 position: relative;
+padding: 10px;
+
 
 .hero {
     background: linear-gradient(
@@ -25,7 +27,9 @@ position: relative;
     left: 0px;
     width: 100px;
     height: 80vh;
-    width: 80vw;
+    width: 75vw;
+   
+  
 }
 
 div > p:last-child {
@@ -100,13 +104,19 @@ p:first-child {
 
 h4 {
     font-weight: 400;
+    font-size: 12px;
     color: white;
-    background-color: black;
-    border-radius: 16px;
+    border-radius: 18px;
     text-align: center;
-    height: 30px;
-    padding: 6px;
-    margin-right: 8px;
+    height: auto;
+    background-color: #220641;
+    font-weight: bolder;
+    border: 1px solid #42018cc2;
+    padding: 9px 15px 9px 15px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
 }
 
 a {
