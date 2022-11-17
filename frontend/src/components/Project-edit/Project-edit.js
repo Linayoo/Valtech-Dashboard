@@ -365,7 +365,7 @@ const EditProjects = () => {
                     </div>
                 </label>
                 <label htmlFor="">
-                    Add consultants to project
+                <h4>Add consultants to project</h4>
                     <div className="consultant-search">
                         <input ref={ref => inputref.current.name = ref} type='text' placeholder='Search for consultants...' onChange={handleUserFilter} />
                         <select ref={ref => inputref.current.skills = ref} name="skills" onChange={handleUserFilter}>

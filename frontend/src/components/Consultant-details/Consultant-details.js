@@ -54,7 +54,7 @@ const ConsultantDetails = (props) => {
                 <div>
                     <HeaderStyle>
                         <h1>Consultant details</h1>
-                        <button onClick={() => navigate(`consultant/${initialID}/edit`)}>Edit details</button>
+                        <button >Edit details</button>
                         <button className="deleteButton" onClick={handleDelete}>Delete consultant</button>
                     </HeaderStyle>
                     <hr />

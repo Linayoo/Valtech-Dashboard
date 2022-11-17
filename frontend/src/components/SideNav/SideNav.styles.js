@@ -88,6 +88,7 @@ div {
 
 div > button {
     font-size: 20px;
+    margin-left: 5px;
 }
 
 img {

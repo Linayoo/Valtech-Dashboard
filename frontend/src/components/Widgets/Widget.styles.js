@@ -14,6 +14,7 @@ background-color: #ffffffc8;
 border-radius: 10px;
 box-shadow: 0 0 15px #9999;
 color: #99a0b0;
+margin-left: 29px;
 
 i {
     height: 10px;

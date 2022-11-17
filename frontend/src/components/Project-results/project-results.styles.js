@@ -74,7 +74,7 @@ table > div > tr > td:nth-of-type(1), th:nth-of-type(1) {
 }
 
 table > div > tr > td:nth-of-type(2), th:nth-of-type(2) {
-    width: 250px;
+    width: 280px;
 }
 
 table > div > tr > td:nth-of-type(3), th:nth-of-type(3) {
