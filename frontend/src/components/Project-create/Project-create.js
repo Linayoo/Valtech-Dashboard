@@ -209,19 +209,13 @@ const CreateProject = () => {
         setImage(imageUrl[0]);
     }
 
-    const [magic, setMagic] = useState({
-        "name": ""
-    })
+   
 
     const handleMagic = e => {
         e.preventDefault()
-
-        setMagic({
-            "name": "Toyota",
-            "description": "Mobile App",
-            "external_link": "https://www.toyota.com",
-            "tools": "React"
-        })
+        setProjectName("Toyota")
+        setProjectDescription("Mobile App")
+        setLink("https://www.toyota.com")
     }
 
 
@@ -235,15 +229,15 @@ const CreateProject = () => {
             <form id='test' onSubmit={createProject}>
                 <div>
                     Project Name *
-                    <input form='test' type='text' name='name' onChange={(e) => setProjectName(e.target.value)} value={magic.name} required></input>
+                    <input form='test' type='text' name='name' onChange={(e) => setProjectName(e.target.value)} value={projectName} required></input>
                 </div>
                 <div>
                     Description *
-                    <input form='test' type='text' name="description" onChange={(e) => setProjectDescription(e.target.value)} value={magic.description} required></input>
+                    <input form='test' type='text' name="description" onChange={(e) => setProjectDescription(e.target.value)} value={projectDescription} required></input>
                 </div>
                 <div>
                     External Link
-                    <input form='test' type='text' name="external_link" onChange={(e) => setLink(e.target.value)} value={magic.external_link}></input>
+                    <input form='test' type='text' name="external_link" onChange={(e) => setLink(e.target.value)} value={link}></input>
                 </div>
                 <div>
                     Image
