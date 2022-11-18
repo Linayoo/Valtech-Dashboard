@@ -39,6 +39,7 @@ p {
 hr {
     width: 450px;
     margin-top: 10px;
+    margin-left: -8px;
     border: none;
     height: 2px;
     background-color: #80808038;

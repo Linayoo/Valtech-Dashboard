@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const BarWrap  = styled.div`
 height: 350px;
-width: 650px;
+width: 98%;
 `;
 
 export const Wrap  = styled.div`
@@ -13,7 +13,7 @@ flex-direction: column; */
 margin-left: 20px;
 margin-top: 1%;
 height: 390px;
-width: 670px;
+width: 600px;
 background-color: #ffffffc8;
 border-radius: 10px;
 box-shadow: 0 0 15px #9999;
@@ -40,7 +40,7 @@ p {
 }
 
 hr {
-    width: 670px;
+    width: 100%;
     margin-top: 5px;
     border: none;
     height: 2px;

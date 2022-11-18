@@ -108,26 +108,29 @@ const InsightsPage = () => {
 
     return (
         <InsightsContainer>
-            <HeaderStyle>
-                <Header />
-            </HeaderStyle>
-            <SideNavStyle>
+            <div className="sidenav">
                 <SideNav />
-            </SideNavStyle>
-            <MainFlexWrap>
-                <WidgetFlexWrap>
-                    <Widget name="TOTAL EMPLOYEES" num={consultants === undefined ? 'Loading...' : consultants.length} /*icon={<BsFillPersonFill width={22} height={22} color={'#000'} />}*/ />
+            </div>
+            <div className="right">
+                <div className="header">
+                    <Header />
+                </div>
+                <div className="widgets">
+                    <Widget name="TOTAL EMPLOYEES" num={consultants === undefined ? 'Loading...' : consultants.length} />
                     <Widget name="UNASSIGNED EMPLOYEE'S" num={consultants === undefined ? "Loading..." : employeefilter()} />
                     <Widget name="PROJECTS WITHOUT ASSIGNEE" num={projects === undefined ? "Loading..." : emptyprojectfilter()} />
                     <Widget name="OPEN PROJECTS" num={projects === undefined ? "Loading..." : projectfilter()} />
                     <Widget name="FINISHED PROJECTS" num={projects === undefined ? "Loading..." : finishprojectfilter()} />
-                </WidgetFlexWrap>
-                <ChartsFlexWrap>
+                </div>
+                <div className="charts">
                     <MyResponsivePie />
                     <MyResponsiveBar />
-                    <MyResponsiveChoropleth />
-                </ChartsFlexWrap>
-            </MainFlexWrap>
+                </div>
+                <div className="mapchart">
+                <MyResponsiveChoropleth />
+                </div>
+                <div className="asd">/ </div>
+            </div>
         </InsightsContainer>
     )
 }
